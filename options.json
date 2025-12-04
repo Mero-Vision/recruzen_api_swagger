@@ -1,8 +1,8 @@
 {
     "info": {
-        "title": "Sikshya Mart API Swagger",
+        "title": "Recruzen API Swagger",
         "version": "1.0",
-        "description": "Sikshya Mart API documentation",
+        "description": "Recruzen API documentation",
         "termsOfService": "#",
         "license": {
             "name": "MIT",
@@ -21,7 +21,7 @@
     },
     "servers": [
         {
-            "url": "https://api.sikshyamart.com/",
+            "url": "https://api.recruzen.com/",
             "description": "server"
         }
     ]
