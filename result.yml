@@ -31,6 +31,7 @@ tags:
   - name: Admin > HR Master > Department
   - name: Admin > HR Master > Designation
   - name: Admin > HR Master > Employee Types
+  - name: Admin > HR Master > Employees
 paths:
   /api/admin/login:
     post:
@@ -484,6 +485,211 @@ paths:
       tags:
         - Admin > HR Master > Employee Types
       summary: delete employee type
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/employees:
+    post:
+      tags:
+        - Admin > HR Master > Employees
+      summary: store employees data
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Hari
+                department_id:
+                  type: integer
+                  example: '1'
+                designation_id:
+                  type: integer
+                  example: '1'
+                employee_type_id:
+                  type: integer
+                  example: '1'
+                gender:
+                  type: string
+                  example: Male
+                dob:
+                  type: string
+                  example: '2000-01-20'
+                phone_number:
+                  type: integer
+                  example: '98234455'
+                personal_email:
+                  type: string
+                  example: hy@gmail.com
+                work_email:
+                  type: string
+                  example: hello@gmail.com
+                address:
+                  type: string
+                  example: KTM
+                district:
+                  type: string
+                  example: Jhapa
+                province:
+                  type: string
+                  example: Koshi Province
+                country:
+                  type: string
+                  example: Nepal
+                join_date:
+                  type: string
+                  example: '2025-01-20'
+                employee_image:
+                  type: string
+                  format: binary
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Admin > HR Master > Employees
+      summary: show employees data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/employees/{id}:
+    post:
+      tags:
+        - Admin > HR Master > Employees
+      summary: update employees data
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Hari
+                department_id:
+                  type: integer
+                  example: '1'
+                designation_id:
+                  type: integer
+                  example: '1'
+                employee_type_id:
+                  type: integer
+                  example: '1'
+                gender:
+                  type: string
+                  example: Male
+                dob:
+                  type: string
+                  example: '2000-01-20'
+                phone_number:
+                  type: integer
+                  example: '98234455'
+                personal_email:
+                  type: string
+                  example: hy@gmail.com
+                work_email:
+                  type: string
+                  example: hello@gmail.com
+                address:
+                  type: string
+                  example: KTM
+                district:
+                  type: string
+                  example: Jhapa
+                province:
+                  type: string
+                  example: Koshi Province
+                country:
+                  type: string
+                  example: Nepal
+                join_date:
+                  type: string
+                  example: '2025-01-20'
+                employee_image:
+                  type: string
+                  format: binary
+                _method:
+                  type: string
+                  example: PUT
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Admin > HR Master > Employees
+      summary: show employee data
       security:
         - bearerAuth: []
       parameters:
