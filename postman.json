@@ -1144,6 +1144,425 @@
 									"response": []
 								}
 							]
+						},
+						{
+							"name": "Employee Identity",
+							"item": [
+								{
+									"name": "store employee identity",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "branch-id",
+												"value": "1",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "employee_id",
+													"value": "5",
+													"type": "text"
+												},
+												{
+													"key": "document_type",
+													"value": "Citizenship",
+													"type": "text"
+												},
+												{
+													"key": "document_number",
+													"value": "54546",
+													"type": "text"
+												},
+												{
+													"key": "employee_document",
+													"type": "file",
+													"src": "/Users/hanciephago/Desktop/Black-and-Red-Simple-Car-Icon-Industrial-Logo-(6).jpeg"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{url}}/api/admin/employee-identities",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"admin",
+												"employee-identities"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "show identity by employee id",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "branch-id",
+												"value": "1",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/api/admin/employee-identities/{employee_id}",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"admin",
+												"employee-identities",
+												"{employee_id}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "update employee identity",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "document_type",
+													"value": "PAN",
+													"type": "text"
+												},
+												{
+													"key": "document_number",
+													"value": "54546",
+													"type": "text"
+												},
+												{
+													"key": "employee_document",
+													"type": "file",
+													"src": "/Users/hanciephago/Desktop/Black-and-Red-Simple-Car-Icon-Industrial-Logo-(6).jpeg"
+												},
+												{
+													"key": "_method",
+													"value": "PUT",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{url}}/api/admin/employee-identities/{id}",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"admin",
+												"employee-identities",
+												"{id}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "delete employee identity",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/api/admin/employee-identities/{id}",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"admin",
+												"employee-identities",
+												"{id}"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Employee Bank Account",
+							"item": [
+								{
+									"name": "store bank account details",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "branch-id",
+												"value": "1",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "employee_id",
+													"value": "5",
+													"type": "text"
+												},
+												{
+													"key": "bank_name",
+													"value": "NIC Bank",
+													"type": "text"
+												},
+												{
+													"key": "account_name",
+													"value": "Pravesh Rai",
+													"type": "text"
+												},
+												{
+													"key": "account_number",
+													"value": "3435436346",
+													"type": "text"
+												},
+												{
+													"key": "branch",
+													"value": "Birtamode Branch",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{url}}/api/admin/employee-bank-accounts",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"admin",
+												"employee-bank-accounts"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "update bank account details",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "branch-id",
+												"value": "1",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "bank_name",
+													"value": "NIC Bank",
+													"type": "text"
+												},
+												{
+													"key": "account_name",
+													"value": "Pravesh Rai",
+													"type": "text"
+												},
+												{
+													"key": "account_number",
+													"value": "3435436346",
+													"type": "text"
+												},
+												{
+													"key": "branch",
+													"value": "Birtamode Branch",
+													"type": "text"
+												},
+												{
+													"key": "_method",
+													"value": "PUT",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{url}}/api/admin/employee-bank-accounts/{id}",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"admin",
+												"employee-bank-accounts",
+												"{id}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "show employee bank detail by emaploye id",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "branch-id",
+												"value": "1",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/api/admin/employee-bank-accounts/{employee_id}",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"admin",
+												"employee-bank-accounts",
+												"{employee_id}"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Company Branches",
+					"item": [
+						{
+							"name": "show user branches",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/admin/user-branches",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"user-branches"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				}

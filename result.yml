@@ -32,6 +32,9 @@ tags:
   - name: Admin > HR Master > Designation
   - name: Admin > HR Master > Employee Types
   - name: Admin > HR Master > Employees
+  - name: Admin > HR Master > Employee Identity
+  - name: Admin > HR Master > Employee Bank Account
+  - name: Admin > Company Branches
 paths:
   /api/admin/login:
     post:
@@ -708,6 +711,270 @@ paths:
           schema:
             type: string
           required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/employee-identities:
+    post:
+      tags:
+        - Admin > HR Master > Employee Identity
+      summary: store employee identity
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                employee_id:
+                  type: integer
+                  example: '5'
+                document_type:
+                  type: string
+                  example: Citizenship
+                document_number:
+                  type: integer
+                  example: '54546'
+                employee_document:
+                  type: string
+                  format: binary
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/employee-identities/{employee_id}:
+    get:
+      tags:
+        - Admin > HR Master > Employee Identity
+      summary: show identity by employee id
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: employee_id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/employee-identities/{id}:
+    post:
+      tags:
+        - Admin > HR Master > Employee Identity
+      summary: update employee identity
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                document_type:
+                  type: string
+                  example: PAN
+                document_number:
+                  type: integer
+                  example: '54546'
+                employee_document:
+                  type: string
+                  format: binary
+                _method:
+                  type: string
+                  example: PUT
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Admin > HR Master > Employee Identity
+      summary: delete employee identity
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/employee-bank-accounts:
+    post:
+      tags:
+        - Admin > HR Master > Employee Bank Account
+      summary: store bank account details
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                employee_id:
+                  type: integer
+                  example: '5'
+                bank_name:
+                  type: string
+                  example: NIC Bank
+                account_name:
+                  type: string
+                  example: Pravesh Rai
+                account_number:
+                  type: integer
+                  example: '3435436346'
+                branch:
+                  type: string
+                  example: Birtamode Branch
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/employee-bank-accounts/{id}:
+    post:
+      tags:
+        - Admin > HR Master > Employee Bank Account
+      summary: update bank account details
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                bank_name:
+                  type: string
+                  example: NIC Bank
+                account_name:
+                  type: string
+                  example: Pravesh Rai
+                account_number:
+                  type: integer
+                  example: '3435436346'
+                branch:
+                  type: string
+                  example: Birtamode Branch
+                _method:
+                  type: string
+                  example: PUT
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/employee-bank-accounts/{employee_id}:
+    get:
+      tags:
+        - Admin > HR Master > Employee Bank Account
+      summary: show employee bank detail by emaploye id
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: employee_id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/user-branches:
+    get:
+      tags:
+        - Admin > Company Branches
+      summary: show user branches
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
       responses:
         '200':
           description: Successful response
