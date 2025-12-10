@@ -27,6 +27,8 @@ tags:
   - name: Admin
   - name: Admin > Auth
   - name: Admin > Admin
+  - name: Admin > Company Branches
+  - name: Admin > Company
   - name: Admin > HR Master
   - name: Admin > HR Master > Department
   - name: Admin > HR Master > Designation
@@ -34,7 +36,8 @@ tags:
   - name: Admin > HR Master > Employees
   - name: Admin > HR Master > Employee Identity
   - name: Admin > HR Master > Employee Bank Account
-  - name: Admin > Company Branches
+  - name: Admin > Attendance/Leave
+  - name: Admin > Attendance/Leave > Shifts
 paths:
   /api/admin/login:
     post:
@@ -102,6 +105,42 @@ paths:
                 password_confirmation:
                   type: integer
                   example: '12121212'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/user-branches:
+    get:
+      tags:
+        - Admin > Company Branches
+      summary: show user branches
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/user-company:
+    get:
+      tags:
+        - Admin > Company
+      summary: show user company details
       security:
         - bearerAuth: []
       parameters:
@@ -934,6 +973,28 @@ paths:
           description: Successful response
           content:
             application/json: {}
+    delete:
+      tags:
+        - Admin > HR Master > Employee Bank Account
+      summary: delete employee bank details
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/admin/employee-bank-accounts/{employee_id}:
     get:
       tags:
@@ -962,11 +1023,32 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/admin/user-branches:
-    get:
+  /api/admin/shifts:
+    post:
       tags:
-        - Admin > Company Branches
-      summary: show user branches
+        - Admin > Attendance/Leave > Shifts
+      summary: store shift data
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Morning
+                start_time:
+                  type: string
+                  example: '06:00'
+                end_time:
+                  type: string
+                  example: '14:00'
+                grace_minutes:
+                  type: integer
+                  example: '10'
+                break_minutes:
+                  type: integer
+                  example: '30'
       security:
         - bearerAuth: []
       parameters:
@@ -975,6 +1057,33 @@ paths:
           schema:
             type: string
           example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Admin > Attendance/Leave > Shifts
+      summary: show all shift list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
