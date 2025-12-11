@@ -1716,7 +1716,211 @@
 											]
 										}
 									},
-									"response": []
+									"response": [
+										{
+											"name": "store shift data",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json",
+														"type": "text"
+													},
+													{
+														"key": "branch-id",
+														"value": "1",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "name",
+															"value": "Morning",
+															"type": "text"
+														},
+														{
+															"key": "start_time",
+															"value": "06:00",
+															"type": "text"
+														},
+														{
+															"key": "end_time",
+															"value": "14:00",
+															"type": "text"
+														},
+														{
+															"key": "grace_minutes",
+															"value": "10",
+															"type": "text"
+														},
+														{
+															"key": "break_minutes",
+															"value": "30",
+															"type": "text"
+														}
+													]
+												},
+												"url": {
+													"raw": "{{url}}/api/admin/shifts",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"api",
+														"admin",
+														"shifts"
+													]
+												}
+											},
+											"_postman_previewlanguage": null,
+											"header": null,
+											"cookie": [],
+											"body": null
+										}
+									]
+								},
+								{
+									"name": "update shift",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "branch-id",
+												"value": "1",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "name",
+													"value": "Morning",
+													"type": "text"
+												},
+												{
+													"key": "start_time",
+													"value": "06:00",
+													"type": "text"
+												},
+												{
+													"key": "end_time",
+													"value": "14:00",
+													"type": "text"
+												},
+												{
+													"key": "grace_minutes",
+													"value": "10",
+													"type": "text"
+												},
+												{
+													"key": "break_minutes",
+													"value": "30",
+													"type": "text"
+												},
+												{
+													"key": "_method",
+													"value": "PUT",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{url}}/api/admin/shifts/{id}",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"admin",
+												"shifts",
+												"{id}"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "store shift data",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json",
+														"type": "text"
+													},
+													{
+														"key": "branch-id",
+														"value": "1",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "name",
+															"value": "Morning",
+															"type": "text"
+														},
+														{
+															"key": "start_time",
+															"value": "06:00",
+															"type": "text"
+														},
+														{
+															"key": "end_time",
+															"value": "14:00",
+															"type": "text"
+														},
+														{
+															"key": "grace_minutes",
+															"value": "10",
+															"type": "text"
+														},
+														{
+															"key": "break_minutes",
+															"value": "30",
+															"type": "text"
+														}
+													]
+												},
+												"url": {
+													"raw": "{{url}}/api/admin/shifts",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"api",
+														"admin",
+														"shifts"
+													]
+												}
+											},
+											"_postman_previewlanguage": null,
+											"header": null,
+											"cookie": [],
+											"body": null
+										}
+									]
 								},
 								{
 									"name": "show all shift list",
@@ -1753,6 +1957,197 @@
 												"api",
 												"admin",
 												"shifts"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "delete shift",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "branch-id",
+												"value": "1",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/api/admin/shifts/{id}",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"admin",
+												"shifts",
+												"{id}"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Employee Attendance",
+							"item": [
+								{
+									"name": "store attendance",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "branch-id",
+												"value": "1",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"type\": \"check_in\",\n  \"log_date\": \"2025-12-11\",\n  \"employees\": [\n    { \"employee_id\": 1, \"check_in\": \"2025-12-11 09:15:00\", \"remarks\": \"On time\" },\n    { \"employee_id\": 2, \"check_in\": \"2025-12-11 09:20:00\" }\n  ]\n}\n\n{\n  \"type\": \"check_out\",\n  \"log_date\": \"2025-12-11\",\n  \"employees\": [\n    { \"employee_id\": 1, \"check_out\": \"2025-12-11 17:45:00\" },\n    { \"employee_id\": 2, \"check_out\": \"2025-12-11 18:00:00\" }\n  ]\n}\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/api/admin/employee-attendances/bulk",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"admin",
+												"employee-attendances",
+												"bulk"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "show all attendance",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "branch-id",
+												"value": "1",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"type\": \"check_in\",\n  \"log_date\": \"2025-12-11\",\n  \"employees\": [\n    { \"employee_id\": 1, \"check_in\": \"2025-12-11 09:15:00\", \"remarks\": \"On time\" },\n    { \"employee_id\": 2, \"check_in\": \"2025-12-11 09:20:00\" }\n  ]\n}\n\n{\n  \"type\": \"check_out\",\n  \"log_date\": \"2025-12-11\",\n  \"employees\": [\n    { \"employee_id\": 1, \"check_out\": \"2025-12-11 17:45:00\" },\n    { \"employee_id\": 2, \"check_out\": \"2025-12-11 18:00:00\" }\n  ]\n}\n"
+										},
+										"url": {
+											"raw": "{{url}}/api/admin/employee-attendances",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"admin",
+												"employee-attendances"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "show single attendace data",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "branch-id",
+												"value": "1",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"type\": \"check_in\",\n  \"log_date\": \"2025-12-11\",\n  \"employees\": [\n    { \"employee_id\": 1, \"check_in\": \"2025-12-11 09:15:00\", \"remarks\": \"On time\" },\n    { \"employee_id\": 2, \"check_in\": \"2025-12-11 09:20:00\" }\n  ]\n}\n\n{\n  \"type\": \"check_out\",\n  \"log_date\": \"2025-12-11\",\n  \"employees\": [\n    { \"employee_id\": 1, \"check_out\": \"2025-12-11 17:45:00\" },\n    { \"employee_id\": 2, \"check_out\": \"2025-12-11 18:00:00\" }\n  ]\n}\n"
+										},
+										"url": {
+											"raw": "{{url}}/api/admin/employee-attendances/{id}",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"admin",
+												"employee-attendances",
+												"{id}"
 											]
 										}
 									},
