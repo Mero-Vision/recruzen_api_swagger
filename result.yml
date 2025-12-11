@@ -756,6 +756,38 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/admin/short-employees:
+    get:
+      tags:
+        - Admin > HR Master > Employees
+      summary: show all short employees data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: pagination_limit
+          in: query
+          schema:
+            type: integer
+          example: '8'
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/admin/employee-identities:
     post:
       tags:
@@ -936,6 +968,9 @@ paths:
             schema:
               type: object
               properties:
+                employee_id:
+                  type: integer
+                  example: '5'
                 bank_name:
                   type: string
                   example: NIC Bank

@@ -1222,6 +1222,56 @@
 										}
 									},
 									"response": []
+								},
+								{
+									"name": "show all short employees data",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "branch-id",
+												"value": "1",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/api/admin/short-employees?pagination_limit=8&search_keyword",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"admin",
+												"short-employees"
+											],
+											"query": [
+												{
+													"key": "pagination_limit",
+													"value": "8"
+												},
+												{
+													"key": "search_keyword",
+													"value": null
+												}
+											]
+										}
+									},
+									"response": []
 								}
 							]
 						},
@@ -1519,6 +1569,11 @@
 										"body": {
 											"mode": "formdata",
 											"formdata": [
+												{
+													"key": "employee_id",
+													"value": "5",
+													"type": "text"
+												},
 												{
 													"key": "bank_name",
 													"value": "NIC Bank",
