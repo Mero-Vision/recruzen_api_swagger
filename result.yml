@@ -1462,7 +1462,7 @@ paths:
   /api/admin/projects/{id}:
     delete:
       tags:
-        - Admin > Attendance/Leave > Employee Attendance
+        - Admin > Projects > Projects
       summary: delete project
       security:
         - bearerAuth: []
