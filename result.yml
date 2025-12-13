@@ -42,6 +42,7 @@ tags:
   - name: Admin > Attendance/Leave > Employee Attendance
   - name: Admin > Projects
   - name: Admin > Projects > Client
+  - name: Admin > Projects > Projects
 paths:
   /api/admin/login:
     post:
@@ -1458,6 +1459,91 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/admin/projects/{id}:
+    delete:
+      tags:
+        - Admin > Attendance/Leave > Employee Attendance
+      summary: delete project
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Admin > Projects > Projects
+      summary: update project data
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Recruzen
+                type:
+                  type: string
+                  example: fixed
+                start_date:
+                  type: string
+                  example: '2025-12-12'
+                end_date:
+                  type: string
+                  example: '2026-01-20'
+                status:
+                  type: string
+                  example: planning
+                budget_amount:
+                  type: integer
+                  example: '10000'
+                description:
+                  type: string
+                  example: hy
+                _method:
+                  type: string
+                  example: PUT
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/admin/clients:
     post:
       tags:
@@ -1595,6 +1681,118 @@ paths:
             type: integer
           example: '1'
         - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/projects:
+    post:
+      tags:
+        - Admin > Projects > Projects
+      summary: store project data
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                client_id:
+                  type: integer
+                  example: '1'
+                name:
+                  type: string
+                  example: Recruzen
+                type:
+                  type: string
+                  example: fixed,hourly,monthly
+                start_date:
+                  type: string
+                  example: '2025-12-12'
+                end_date:
+                  type: string
+                  example: '2026-01-20'
+                status:
+                  type: string
+                  example: planning,active,on_hold,completed
+                budget_amount:
+                  type: integer
+                  example: '10000'
+                description:
+                  type: string
+                  example: hy
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Admin > Projects > Projects
+      summary: show all project list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: pagination_limit
+          in: query
+          schema:
+            type: integer
+          example: '8'
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/projects/{slug}:
+    get:
+      tags:
+        - Admin > Projects > Projects
+      summary: show single project data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: slug
           in: path
           schema:
             type: string
