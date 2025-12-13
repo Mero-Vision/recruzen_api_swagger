@@ -38,7 +38,10 @@ tags:
   - name: Admin > HR Master > Employee Bank Account
   - name: Admin > Attendance/Leave
   - name: Admin > Attendance/Leave > Shifts
+  - name: Admin > Attendance/Leave > Employee Shift
   - name: Admin > Attendance/Leave > Employee Attendance
+  - name: Admin > Projects
+  - name: Admin > Projects > Client
 paths:
   /api/admin/login:
     post:
@@ -1208,6 +1211,137 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/admin/employee-shifts:
+    get:
+      tags:
+        - Admin > Attendance/Leave > Employee Shift
+      summary: show all employees shift by shift
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Admin > Attendance/Leave > Employee Shift
+      summary: store employee shift
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                employee_id:
+                  type: integer
+                  example: '5'
+                shift_id:
+                  type: integer
+                  example: '1'
+                effective_from:
+                  type: string
+                  example: '2025-01-26'
+                effective_to:
+                  type: string
+                  example: '2025-02-25'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/employee-shifts/{id}:
+    post:
+      tags:
+        - Admin > Attendance/Leave > Employee Shift
+      summary: update employee shift
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                shift_id:
+                  type: integer
+                  example: '1'
+                effective_from:
+                  type: string
+                  example: '2025-01-26'
+                effective_to:
+                  type: string
+                  example: '2025-02-25'
+                _method:
+                  type: string
+                  example: PUT
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Admin > Attendance/Leave > Employee Shift
+      summary: delete employee shift
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/admin/employee-attendances/bulk:
     post:
       tags:
@@ -1218,24 +1352,15 @@ paths:
           application/json:
             schema:
               type: object
-              example: |
-                {
-                  "type": "check_in",
-                  "log_date": "2025-12-11",
-                  "employees": [
-                    { "employee_id": 1, "check_in": "2025-12-11 09:15:00", "remarks": "On time" },
-                    { "employee_id": 2, "check_in": "2025-12-11 09:20:00" }
-                  ]
-                }
-
-                {
-                  "type": "check_out",
-                  "log_date": "2025-12-11",
-                  "employees": [
-                    { "employee_id": 1, "check_out": "2025-12-11 17:45:00" },
-                    { "employee_id": 2, "check_out": "2025-12-11 18:00:00" }
-                  ]
-                }
+              example:
+                type: check_in
+                log_date: '2025-12-11'
+                employees:
+                  - employee_id: 1
+                    check_in: '2025-12-11 06:01:00'
+                    remarks: On time
+                  - employee_id: 5
+                    check_in: '2025-12-11 09:20:00'
       security:
         - bearerAuth: []
       parameters:
@@ -1282,6 +1407,180 @@ paths:
       tags:
         - Admin > Attendance/Leave > Employee Attendance
       summary: show single attendace data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/show-employee-attendances:
+    get:
+      tags:
+        - Admin > Attendance/Leave > Employee Attendance
+      summary: show employee attendance by date
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: date
+          in: query
+          schema:
+            type: string
+          example: '2025-12-11'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/clients:
+    post:
+      tags:
+        - Admin > Projects > Client
+      summary: store client data
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Mero Vision Pvt. Ltd
+                pan_vat_number:
+                  type: string
+                email:
+                  type: string
+                phone:
+                  type: string
+                address:
+                  type: string
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Admin > Projects > Client
+      summary: show all client list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: pagination_limit
+          in: query
+          schema:
+            type: integer
+          example: '8'
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/clients/{id}:
+    post:
+      tags:
+        - Admin > Projects > Client
+      summary: update client data
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Mero Vision Pvt. Ltd
+                pan_vat_number:
+                  type: string
+                email:
+                  type: string
+                phone:
+                  type: string
+                address:
+                  type: string
+                _method:
+                  type: string
+                  example: PUT
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Admin > Projects > Client
+      summary: delete client data
       security:
         - bearerAuth: []
       parameters:

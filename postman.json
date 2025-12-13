@@ -2061,6 +2061,218 @@
 							]
 						},
 						{
+							"name": "Employee Shift",
+							"item": [
+								{
+									"name": "show all employees shift by shift",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "branch-id",
+												"value": "1",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/api/admin/employee-shifts",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"admin",
+												"employee-shifts"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "store employee shift",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "branch-id",
+												"value": "1",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "employee_id",
+													"value": "5",
+													"type": "text"
+												},
+												{
+													"key": "shift_id",
+													"value": "1",
+													"type": "text"
+												},
+												{
+													"key": "effective_from",
+													"value": "2025-01-26",
+													"type": "text"
+												},
+												{
+													"key": "effective_to",
+													"value": "2025-02-25",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{url}}/api/admin/employee-shifts",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"admin",
+												"employee-shifts"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "update employee shift",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "branch-id",
+												"value": "1",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "shift_id",
+													"value": "1",
+													"type": "text"
+												},
+												{
+													"key": "effective_from",
+													"value": "2025-01-26",
+													"type": "text"
+												},
+												{
+													"key": "effective_to",
+													"value": "2025-02-25",
+													"type": "text"
+												},
+												{
+													"key": "_method",
+													"value": "PUT",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{url}}/api/admin/employee-shifts/{id}",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"admin",
+												"employee-shifts",
+												"{id}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "delete employee shift",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/api/admin/employee-shifts/{id}",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"admin",
+												"employee-shifts",
+												"{id}"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
 							"name": "Employee Attendance",
 							"item": [
 								{
@@ -2091,7 +2303,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"type\": \"check_in\",\n  \"log_date\": \"2025-12-11\",\n  \"employees\": [\n    { \"employee_id\": 1, \"check_in\": \"2025-12-11 09:15:00\", \"remarks\": \"On time\" },\n    { \"employee_id\": 2, \"check_in\": \"2025-12-11 09:20:00\" }\n  ]\n}\n\n{\n  \"type\": \"check_out\",\n  \"log_date\": \"2025-12-11\",\n  \"employees\": [\n    { \"employee_id\": 1, \"check_out\": \"2025-12-11 17:45:00\" },\n    { \"employee_id\": 2, \"check_out\": \"2025-12-11 18:00:00\" }\n  ]\n}\n",
+											"raw": "{\n  \"type\": \"check_in\",\n  \"log_date\": \"2025-12-11\",\n  \"employees\": [\n    { \"employee_id\": 1, \"check_in\": \"2025-12-11 06:01:00\", \"remarks\": \"On time\" },\n    { \"employee_id\": 5, \"check_in\": \"2025-12-11 09:20:00\" }\n  ]\n}\n\n\n",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -2202,6 +2414,299 @@
 												"api",
 												"admin",
 												"employee-attendances",
+												"{id}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "show employee attendance by date",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "branch-id",
+												"value": "1",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/api/admin/show-employee-attendances?date=2025-12-11",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"admin",
+												"show-employee-attendances"
+											],
+											"query": [
+												{
+													"key": "date",
+													"value": "2025-12-11"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Projects",
+					"item": [
+						{
+							"name": "Client",
+							"item": [
+								{
+									"name": "store client data",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "branch-id",
+												"value": "1",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "name",
+													"value": "Mero Vision Pvt. Ltd",
+													"type": "text"
+												},
+												{
+													"key": "pan_vat_number",
+													"value": "",
+													"type": "text"
+												},
+												{
+													"key": "email",
+													"value": "",
+													"type": "text"
+												},
+												{
+													"key": "phone",
+													"value": "",
+													"type": "text"
+												},
+												{
+													"key": "address",
+													"value": "",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{url}}/api/admin/clients",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"admin",
+												"clients"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "update client data",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "branch-id",
+												"value": "1",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "name",
+													"value": "Mero Vision Pvt. Ltd",
+													"type": "text"
+												},
+												{
+													"key": "pan_vat_number",
+													"value": "",
+													"type": "text"
+												},
+												{
+													"key": "email",
+													"value": "",
+													"type": "text"
+												},
+												{
+													"key": "phone",
+													"value": "",
+													"type": "text"
+												},
+												{
+													"key": "address",
+													"value": "",
+													"type": "text"
+												},
+												{
+													"key": "_method",
+													"value": "PUT",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{url}}/api/admin/clients/{id}",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"admin",
+												"clients",
+												"{id}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "show all client list",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "branch-id",
+												"value": "1",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/api/admin/clients?pagination_limit=8&search_keyword",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"admin",
+												"clients"
+											],
+											"query": [
+												{
+													"key": "pagination_limit",
+													"value": "8"
+												},
+												{
+													"key": "search_keyword",
+													"value": null
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "delete client data",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "branch-id",
+												"value": "1",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/api/admin/clients/{id}",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"admin",
+												"clients",
 												"{id}"
 											]
 										}
