@@ -43,6 +43,7 @@ tags:
   - name: Admin > Projects
   - name: Admin > Projects > Client
   - name: Admin > Projects > Projects
+  - name: Admin > Projects > Project Mmebers
 paths:
   /api/admin/login:
     post:
@@ -1797,6 +1798,41 @@ paths:
           schema:
             type: string
           required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/project-members:
+    post:
+      tags:
+        - Admin > Projects > Project Mmebers
+      summary: store project members
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                project_id: 1
+                employees:
+                  - employee_id: 1
+                    role: Developer
+                  - employee_id: 5
+                    role: Designer
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response

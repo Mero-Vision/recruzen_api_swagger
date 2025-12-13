@@ -3063,6 +3063,60 @@
 									"response": []
 								}
 							]
+						},
+						{
+							"name": "Project Mmebers",
+							"item": [
+								{
+									"name": "store project members",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "branch-id",
+												"value": "1",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"project_id\": 1,\n  \"employees\": [\n    { \"employee_id\": 1, \"role\": \"Developer\" },\n    { \"employee_id\": 5, \"role\": \"Designer\" }\n  ]\n}\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/api/admin/project-members",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"admin",
+												"project-members"
+											]
+										}
+									},
+									"response": []
+								}
+							]
 						}
 					]
 				}
