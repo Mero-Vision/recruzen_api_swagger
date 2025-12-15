@@ -44,6 +44,7 @@ tags:
   - name: Admin > Projects > Client
   - name: Admin > Projects > Projects
   - name: Admin > Projects > Project Mmebers
+  - name: Admin > Settings
 paths:
   /api/admin/login:
     post:
@@ -1691,6 +1692,33 @@ paths:
           description: Successful response
           content:
             application/json: {}
+    get:
+      tags:
+        - Admin > Projects > Client
+      summary: show single client data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/admin/projects:
     post:
       tags:
@@ -1820,6 +1848,84 @@ paths:
                     role: Developer
                   - employee_id: 5
                     role: Designer
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/site-settings:
+    get:
+      tags:
+        - Admin > Settings
+      summary: show site settings data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Admin > Settings
+      summary: store site setting data
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                site_name:
+                  type: string
+                  example: Recruzen
+                site_description:
+                  type: string
+                  example: Best HR management software
+                timezone:
+                  type: string
+                  example: Asia/Kathmandu
+                currency:
+                  type: string
+                  example: NPR
+                maintenance_mode:
+                  type: string
+                  example: 'off'
+                theme_mode:
+                  type: string
+                  example: dark
+                primary_color:
+                  type: string
+                  example: '#4F46E5'
+                sidebar_collapsed:
+                  type: boolean
+                  example: 'false'
+                font_family:
+                  type: string
+                  example: Poppins
       security:
         - bearerAuth: []
       parameters:

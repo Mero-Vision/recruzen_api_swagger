@@ -2753,6 +2753,47 @@
 										}
 									},
 									"response": []
+								},
+								{
+									"name": "show single client data",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "branch-id",
+												"value": "1",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/api/admin/clients/{id}",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"admin",
+												"clients",
+												"{id}"
+											]
+										}
+									},
+									"response": []
 								}
 							]
 						},
@@ -3117,6 +3158,141 @@
 									"response": []
 								}
 							]
+						}
+					]
+				},
+				{
+					"name": "Settings",
+					"item": [
+						{
+							"name": "show site settings data",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "branch-id",
+										"value": "1",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/admin/site-settings",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"site-settings"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "store site setting data",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "branch-id",
+										"value": "1",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "site_name",
+											"value": "Recruzen",
+											"type": "text"
+										},
+										{
+											"key": "site_description",
+											"value": "Best HR management software",
+											"type": "text"
+										},
+										{
+											"key": "timezone",
+											"value": "Asia/Kathmandu",
+											"type": "text"
+										},
+										{
+											"key": "currency",
+											"value": "NPR",
+											"type": "text"
+										},
+										{
+											"key": "maintenance_mode",
+											"value": "off",
+											"type": "text"
+										},
+										{
+											"key": "theme_mode",
+											"value": "dark",
+											"type": "text"
+										},
+										{
+											"key": "primary_color",
+											"value": "#4F46E5",
+											"type": "text"
+										},
+										{
+											"key": "sidebar_collapsed",
+											"value": "false",
+											"type": "text"
+										},
+										{
+											"key": "font_family",
+											"value": "Poppins",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/site-settings",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"site-settings"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				}
