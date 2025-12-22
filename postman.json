@@ -3215,7 +3215,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{url}}/api/admin/projects?pagination_limit=8&search_keyword",
+											"raw": "{{url}}/api/admin/projects?pagination_limit=8&search_keyword&status=planning,active,on_hold,completed&type=fixed,hourly,monthly&client_id=1",
 											"host": [
 												"{{url}}"
 											],
@@ -3232,6 +3232,18 @@
 												{
 													"key": "search_keyword",
 													"value": null
+												},
+												{
+													"key": "status",
+													"value": "planning,active,on_hold,completed"
+												},
+												{
+													"key": "type",
+													"value": "fixed,hourly,monthly"
+												},
+												{
+													"key": "client_id",
+													"value": "1"
 												}
 											]
 										}
@@ -3839,6 +3851,88 @@
 												"admin",
 												"invoices",
 												"{id}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "show project invoices",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "branch-id",
+												"value": "1",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/api/admin/project-invoices/{project_id}",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"admin",
+												"project-invoices",
+												"{project_id}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "show client invoices",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "branch-id",
+												"value": "1",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/api/admin/client-invoices/{client_id}",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"admin",
+												"client-invoices",
+												"{client_id}"
 											]
 										}
 									},
