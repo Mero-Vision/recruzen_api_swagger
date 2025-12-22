@@ -2508,6 +2508,223 @@
 									"response": []
 								}
 							]
+						},
+						{
+							"name": "Public Holidays",
+							"item": [
+								{
+									"name": "store public holidays",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "branch-id",
+												"value": "1",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "title",
+													"value": "New Year",
+													"type": "text"
+												},
+												{
+													"key": "holiday_date",
+													"value": "2026-01-20",
+													"type": "text"
+												},
+												{
+													"key": "description",
+													"value": "First day of the new year",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{url}}/api/admin/public-holidays",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"admin",
+												"public-holidays"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "update public holidays",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "branch-id",
+												"value": "1",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "title",
+													"value": "New Year",
+													"type": "text"
+												},
+												{
+													"key": "holiday_date",
+													"value": "2026-01-20",
+													"type": "text"
+												},
+												{
+													"key": "description",
+													"value": "First day of the new year",
+													"type": "text"
+												},
+												{
+													"key": "_method",
+													"value": "PUT",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{url}}/api/admin/public-holidays/{id}",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"admin",
+												"public-holidays",
+												"{id}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "show all public holidays",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "branch-id",
+												"value": "1",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/api/admin/public-holidays?pagination_limit&search_keyword",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"admin",
+												"public-holidays"
+											],
+											"query": [
+												{
+													"key": "pagination_limit",
+													"value": null
+												},
+												{
+													"key": "search_keyword",
+													"value": null
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "delete public holiday",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/api/admin/public-holidays/{id}",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"admin",
+												"public-holidays",
+												"{id}"
+											]
+										}
+									},
+									"response": []
+								}
+							]
 						}
 					]
 				},
@@ -3295,6 +3512,353 @@
 							"response": []
 						}
 					]
+				},
+				{
+					"name": "Accounting",
+					"item": [
+						{
+							"name": "show all charts of accounts",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "branch-id",
+										"value": "1",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "New Year",
+											"type": "text"
+										},
+										{
+											"key": "holiday_date",
+											"value": "2026-01-20",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "First day of the new year",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/api/admin/chart-of-accounts?search_keyword=",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"chart-of-accounts"
+									],
+									"query": [
+										{
+											"key": "search_keyword",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Invoices, Payments, Expenses",
+					"item": [
+						{
+							"name": "Invoice",
+							"item": [
+								{
+									"name": "store invoice",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "branch-id",
+												"value": "1",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"client_id\": 5,\n    \"project_id\": 7,\n    \"issue_date\": \"2025-12-22\",\n    \"due_date\": \"2026-01-05\",\n    \"discount\": 50,\n    \"tax_amount\": 13,\n    \"status\": \"draft\",\n    \"notes\": \"Thank you\",\n    \"items\": [\n        {\n            \"name\": \"Software\",\n            \"quantity\": 2,\n            \"rate\": 100\n        },\n        {\n            \"name\": \"Software2\",\n            \"quantity\": 1.5,\n            \"rate\": 200\n        }\n    ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/api/admin/invoices",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"admin",
+												"invoices"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "update invoice data",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "branch-id",
+												"value": "1",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"client_id\": 5,\n    \"project_id\": 7,\n    \"issue_date\": \"2025-12-22\",\n    \"due_date\": \"2026-01-05\",\n    \"discount\": 50,\n    \"tax_amount\": 13,\n    \"notes\": \"Thank you\",\n    \"items\": [\n        {\n            \"name\": \"Software\",\n            \"quantity\": 2,\n            \"rate\": 100\n        },\n        {\n            \"name\": \"Software2\",\n            \"quantity\": 1.5,\n            \"rate\": 200\n        }\n    ],\n    \"_method\": \"PUT\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/api/admin/invoices/10",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"admin",
+												"invoices",
+												"10"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "show all invoice",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "branch-id",
+												"value": "1",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/api/admin/invoices?client_id&project_id&status=draft', 'sent','overdue', 'cancelled",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"admin",
+												"invoices"
+											],
+											"query": [
+												{
+													"key": "client_id",
+													"value": null
+												},
+												{
+													"key": "project_id",
+													"value": null
+												},
+												{
+													"key": "status",
+													"value": "draft', 'sent','overdue', 'cancelled"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "update invoice status",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "branch-id",
+												"value": "1",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "status",
+													"value": "cancelled,draft,sent,overdue",
+													"type": "text"
+												},
+												{
+													"key": "_method",
+													"value": "PATCH",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{url}}/api/admin/invoices/update-status/{id}",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"admin",
+												"invoices",
+												"update-status",
+												"{id}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "show single invoice data",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "branch-id",
+												"value": "1",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/api/admin/invoices/{id}",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"admin",
+												"invoices",
+												"{id}"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Assets & Software Licenses",
+					"item": []
+				},
+				{
+					"name": "Recruitment",
+					"item": []
+				},
+				{
+					"name": "Payroll (SSF/CIT/PF + Payslip)",
+					"item": []
 				}
 			]
 		}
