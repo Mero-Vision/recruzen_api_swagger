@@ -29,6 +29,11 @@ tags:
   - name: Admin > Admin
   - name: Admin > Company Branches
   - name: Admin > Company
+  - name: Admin > Applications
+  - name: Admin > Applications > Notes
+  - name: Admin > Applications > Notes > Notes
+  - name: Admin > Applications > Notes > Labels
+  - name: Admin > Applications > Notes > Label Notes
   - name: Admin > HR Master
   - name: Admin > HR Master > Department
   - name: Admin > HR Master > Designation
@@ -163,6 +168,314 @@ paths:
           schema:
             type: string
           example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/applications/notes:
+    post:
+      tags:
+        - Admin > Applications > Notes > Notes
+      summary: store notes
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  example: hy
+                body:
+                  type: string
+                  example: hy
+                color:
+                  type: string
+                  example: '#567656'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Admin > Applications > Notes > Notes
+      summary: show all notes
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: pagination_limit
+          in: query
+          schema:
+            type: integer
+          example: '20'
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/applications/notes/{note_id}/pin:
+    post:
+      tags:
+        - Admin > Applications > Notes > Notes
+      summary: pin note
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                _method:
+                  type: string
+                  example: PATCH
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: note_id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/applications/notes/{note_id}/archive:
+    post:
+      tags:
+        - Admin > Applications > Notes > Notes
+      summary: archive note
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                _method:
+                  type: string
+                  example: PATCH
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: note_id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/applications/labels:
+    post:
+      tags:
+        - Admin > Applications > Notes > Labels
+      summary: store labels
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Devops
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Admin > Applications > Notes > Labels
+      summary: show all labels
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/applications/labels/{id}:
+    post:
+      tags:
+        - Admin > Applications > Notes > Labels
+      summary: update labels
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: hy
+                _method:
+                  type: string
+                  example: PUT
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Admin > Applications > Notes > Labels
+      summary: delete label
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/applications/label-notes:
+    post:
+      tags:
+        - Admin > Applications > Notes > Label Notes
+      summary: store label notes
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                note_id: 3
+                label_ids:
+                  - 1
+                  - 2
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/applications/label-notes/{note_id}:
+    post:
+      tags:
+        - Admin > Applications > Notes > Label Notes
+      summary: update label notes
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                label_ids: []
+                _method: PUT
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: note_id
+          in: path
+          schema:
+            type: string
+          required: true
       responses:
         '200':
           description: Successful response
