@@ -242,6 +242,129 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/admin/applications/notes/{note_id}:
+    post:
+      tags:
+        - Admin > Applications > Notes > Notes
+      summary: update notes
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  example: hy2
+                body:
+                  type: string
+                  example: hy
+                color:
+                  type: string
+                  example: '#567656'
+                _method:
+                  type: string
+                  example: PUT
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: note_id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Admin > Applications > Notes > Notes
+      summary: delete note
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: note_id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/applications/notes/{id}/restore:
+    post:
+      tags:
+        - Admin > Applications > Notes > Notes
+      summary: restore note
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                _method:
+                  type: string
+                  example: PATCH
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/applications/notes/{id}/force:
+    delete:
+      tags:
+        - Admin > Applications > Notes > Notes
+      summary: delete note permanently
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/admin/applications/notes/{note_id}/pin:
     post:
       tags:
@@ -301,6 +424,24 @@ paths:
           schema:
             type: string
           required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/applications/notes/trash:
+    get:
+      tags:
+        - Admin > Applications > Notes > Notes
+      summary: show only trash notesh
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/ecmascript
       responses:
         '200':
           description: Successful response
