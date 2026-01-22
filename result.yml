@@ -28,6 +28,7 @@ tags:
   - name: Admin > Auth
   - name: Admin > Admin
   - name: Admin > Company Branches
+  - name: Admin > Reference Data
   - name: Admin > Company
   - name: Admin > Applications
   - name: Admin > Applications > Notes
@@ -52,8 +53,9 @@ tags:
   - name: Admin > Projects > Project Mmebers
   - name: Admin > Settings
   - name: Admin > Accounting
-  - name: Admin > Invoices, Payments, Expenses
-  - name: Admin > Invoices, Payments, Expenses > Invoice
+  - name: Admin > Accounting > Invoice
+  - name: Admin > Accounting > Chart of Accounts
+  - name: Admin > Accounting > Quotations
   - name: Admin > Assets & Software Licenses
   - name: Admin > Recruitment
   - name: Admin > Payroll (SSF/CIT/PF + Payslip)
@@ -142,6 +144,24 @@ paths:
       tags:
         - Admin > Company Branches
       summary: show user branches
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/reference-data/timezones:
+    get:
+      tags:
+        - Admin > Reference Data
+      summary: show all timezones
       security:
         - bearerAuth: []
       parameters:
@@ -2443,6 +2463,24 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/admin/project-summaries:
+    get:
+      tags:
+        - Admin > Projects > Projects
+      summary: show all project summaries
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/admin/project-members:
     post:
       tags:
@@ -2556,37 +2594,10 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/admin/chart-of-accounts:
-    get:
-      tags:
-        - Admin > Accounting
-      summary: show all charts of accounts
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: branch-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-        - name: search_keyword
-          in: query
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
   /api/admin/invoices:
     post:
       tags:
-        - Admin > Invoices, Payments, Expenses > Invoice
+        - Admin > Accounting > Invoice
       summary: store invoice
       requestBody:
         content:
@@ -2629,7 +2640,7 @@ paths:
             application/json: {}
     get:
       tags:
-        - Admin > Invoices, Payments, Expenses > Invoice
+        - Admin > Accounting > Invoice
       summary: show all invoice
       security:
         - bearerAuth: []
@@ -2665,7 +2676,7 @@ paths:
   /api/admin/invoices/10:
     post:
       tags:
-        - Admin > Invoices, Payments, Expenses > Invoice
+        - Admin > Accounting > Invoice
       summary: update invoice data
       requestBody:
         content:
@@ -2709,7 +2720,7 @@ paths:
   /api/admin/invoices/update-status/{id}:
     post:
       tags:
-        - Admin > Invoices, Payments, Expenses > Invoice
+        - Admin > Accounting > Invoice
       summary: update invoice status
       requestBody:
         content:
@@ -2749,7 +2760,7 @@ paths:
   /api/admin/invoices/{id}:
     get:
       tags:
-        - Admin > Invoices, Payments, Expenses > Invoice
+        - Admin > Accounting > Invoice
       summary: show single invoice data
       security:
         - bearerAuth: []
@@ -2777,7 +2788,7 @@ paths:
   /api/admin/project-invoices/{project_id}:
     get:
       tags:
-        - Admin > Invoices, Payments, Expenses > Invoice
+        - Admin > Accounting > Invoice
       summary: show project invoices
       security:
         - bearerAuth: []
@@ -2805,7 +2816,7 @@ paths:
   /api/admin/client-invoices/{client_id}:
     get:
       tags:
-        - Admin > Invoices, Payments, Expenses > Invoice
+        - Admin > Accounting > Invoice
       summary: show client invoices
       security:
         - bearerAuth: []
@@ -2821,6 +2832,247 @@ paths:
             type: integer
           example: '1'
         - name: client_id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/chart-of-accounts:
+    get:
+      tags:
+        - Admin > Accounting > Chart of Accounts
+      summary: show all charts of accounts
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/quotations:
+    post:
+      tags:
+        - Admin > Accounting > Quotations
+      summary: store quotations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                client_id: 1
+                quotation_date: '2026-01-22'
+                valid_until: '2026-02-05'
+                discount_amount: 100
+                non_taxable_amount: 200
+                taxable_amount: 300
+                tax_amount: 0
+                status: draft
+                terms_and_conditions: Payment within 7 days.
+                notes: HR software quotation
+                items:
+                  - name: Payroll Module
+                    quantity: 1
+                    rate: 15000
+                    tax: null
+                  - name: Attendance Module
+                    quantity: 1
+                    rate: 8000
+                    tax: null
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Admin > Accounting > Quotations
+      summary: show all quotation list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/quotations/1:
+    post:
+      tags:
+        - Admin > Accounting > Quotations
+      summary: update quotation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                client_id: 1
+                quotation_date: '2026-01-22'
+                valid_until: '2026-02-05'
+                discount_amount: 100
+                non_taxable_amount: 200
+                taxable_amount: 300
+                tax_amount: 0
+                status: draft
+                terms_and_conditions: Payment within 7 days.
+                notes: HR software quotation
+                items:
+                  - name: Payroll Module
+                    quantity: 1
+                    rate: 15000
+                    tax: null
+                  - name: Attendance Module
+                    quantity: 1
+                    rate: 8000
+                    tax: null
+                _method: PUT
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/quotations/{id}:
+    delete:
+      tags:
+        - Admin > Accounting > Quotations
+      summary: delete quotation
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Admin > Accounting > Quotations
+      summary: show single quotation data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/quotations/{id}/status:
+    post:
+      tags:
+        - Admin > Accounting > Quotations
+      summary: update quotation status
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  example: draft, sent, approved, rejected, cancelled
+                _method:
+                  type: string
+                  example: PATCH
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
           in: path
           schema:
             type: string
