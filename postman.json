@@ -1743,7 +1743,7 @@
                       "formdata": [
                         {
                           "key": "name",
-                          "value": "Hari",
+                          "value": "Pravesh Rai",
                           "type": "text",
                           "uuid": "f56c7ebd-8f76-439b-ac30-c506d70dcaef"
                         },
@@ -1779,19 +1779,19 @@
                         },
                         {
                           "key": "phone_number",
-                          "value": "98234455",
+                          "value": "4654656777",
                           "type": "text",
                           "uuid": "f5183fa9-d0a3-476f-8289-706c65571b2e"
                         },
                         {
                           "key": "personal_email",
-                          "value": "hy@gmail.com",
+                          "value": "pravesh6565@gmail.com",
                           "type": "text",
                           "uuid": "a644c617-ca50-4cb1-bd14-540ea89a22e7"
                         },
                         {
                           "key": "work_email",
-                          "value": "hello@gmail.com",
+                          "value": "pravesh7565@gmail.com",
                           "type": "text",
                           "uuid": "8e01eb41-3114-4f77-af99-4bbf1db1b11c"
                         },
@@ -1830,6 +1830,30 @@
                           "type": "file",
                           "uuid": "38f6544e-77cc-49a1-b62e-28bf067914ac",
                           "src": "/Users/hanciephago/Desktop/Black-and-Red-Simple-Car-Icon-Industrial-Logo-(6).jpeg"
+                        },
+                        {
+                          "key": "salary",
+                          "value": "10000",
+                          "type": "text",
+                          "uuid": "3a6eafc8-9252-4e5d-be4b-7b52ac3d3c1a"
+                        },
+                        {
+                          "key": "tds",
+                          "value": "250",
+                          "type": "text",
+                          "uuid": "d46e2ae9-08ab-48e3-a9d9-9898c9635942"
+                        },
+                        {
+                          "key": "allowances[0][allowance_name]",
+                          "value": "Festival Allowance",
+                          "type": "text",
+                          "uuid": "459b687b-d3d3-4fd6-9f5a-f5eb6a6957ca"
+                        },
+                        {
+                          "key": "allowances[0][amount]",
+                          "value": "100",
+                          "type": "text",
+                          "uuid": "c25a6a4b-556d-40d4-9c82-aedae47bd924"
                         }
                       ]
                     },
@@ -2562,6 +2586,167 @@
                   "response": []
                 }
               ]
+            },
+            {
+              "name": "Employee Payroll",
+              "item": [
+                {
+                  "name": "show employee payroll",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{url}}/api/admin/employees-payroll?year=2082&month=1",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "employees-payroll"
+                      ],
+                      "query": [
+                        {
+                          "key": "year",
+                          "value": "2082"
+                        },
+                        {
+                          "key": "month",
+                          "value": "1"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "store employee payroll",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"pay_year\": 2082,\r\n  \"pay_month\": 1,\r\n  \"employees\": [\r\n    { \"employee_id\": 6, \"bonus_amount\": 5000, \"deductions\": 1200 },\r\n    { \"employee_id\": 5, \"bonus_amount\": 0, \"deductions\": 200 }\r\n  ]\r\n}\r\n",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/admin/employees-payroll",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "employees-payroll"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "show employee payroll header data",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": []
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/admin/employees-payroll-header?year=2082&month=1",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "employees-payroll-header"
+                      ],
+                      "query": [
+                        {
+                          "key": "year",
+                          "value": "2082"
+                        },
+                        {
+                          "key": "month",
+                          "value": "1"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
             }
           ]
         },
@@ -3200,7 +3385,7 @@
                     ],
                     "body": {
                       "mode": "raw",
-                      "raw": "{\n  \"type\": \"check_in\",\n  \"log_date\": \"2025-12-11\",\n  \"employees\": [\n    { \"employee_id\": 1, \"check_in\": \"2025-12-11 06:01:00\", \"remarks\": \"On time\" },\n    { \"employee_id\": 5, \"check_in\": \"2025-12-11 09:20:00\" }\n  ]\n}\n\n\n",
+                      "raw": "{\n  \"type\": \"check_in\",\n  \"log_date\": \"2026-01-11\",\n  \"employees\": [\n    { \"employee_id\": 1, \"check_in\": \"2026-01-11 06:01:00\", \"remarks\": \"On time\" },\n    { \"employee_id\": 2, \"check_in\": \"2026-01-11 09:20:00\" }\n  ]\n}\n\n\n",
                       "options": {
                         "raw": {
                           "language": "json"
@@ -3400,6 +3585,53 @@
                         "admin",
                         "projects",
                         "{id}"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "show current month attendace on grid",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{url}}/api/admin/employee-attendances-current-month-grid?month=2026-01",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "employee-attendances-current-month-grid"
+                      ],
+                      "query": [
+                        {
+                          "key": "month",
+                          "value": "2026-01",
+                          "type": "text"
+                        }
                       ]
                     }
                   },
