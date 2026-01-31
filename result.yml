@@ -42,6 +42,7 @@ tags:
   - name: Admin > HR Master > Employees
   - name: Admin > HR Master > Employee Identity
   - name: Admin > HR Master > Employee Bank Account
+  - name: Admin > HR Master > Employee Payroll
   - name: Admin > Attendance/Leave
   - name: Admin > Attendance/Leave > Shifts
   - name: Admin > Attendance/Leave > Employee Shift
@@ -1051,7 +1052,7 @@ paths:
               properties:
                 name:
                   type: string
-                  example: Hari
+                  example: Pravesh Rai
                 department_id:
                   type: integer
                   example: '1'
@@ -1069,13 +1070,13 @@ paths:
                   example: '2000-01-20'
                 phone_number:
                   type: integer
-                  example: '98234455'
+                  example: '4654656777'
                 personal_email:
                   type: string
-                  example: hy@gmail.com
+                  example: pravesh6565@gmail.com
                 work_email:
                   type: string
-                  example: hello@gmail.com
+                  example: pravesh7565@gmail.com
                 address:
                   type: string
                   example: KTM
@@ -1094,6 +1095,18 @@ paths:
                 employee_image:
                   type: string
                   format: binary
+                salary:
+                  type: integer
+                  example: '10000'
+                tds:
+                  type: integer
+                  example: '250'
+                allowances[0][allowance_name]:
+                  type: string
+                  example: Festival Allowance
+                allowances[0][amount]:
+                  type: integer
+                  example: '100'
       security:
         - bearerAuth: []
       parameters:
@@ -1546,6 +1559,109 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/admin/employees-payroll:
+    get:
+      tags:
+        - Admin > HR Master > Employee Payroll
+      summary: show employee payroll
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: year
+          in: query
+          schema:
+            type: integer
+          example: '2082'
+        - name: month
+          in: query
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Admin > HR Master > Employee Payroll
+      summary: store employee payroll
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                pay_year: 2082
+                pay_month: 1
+                employees:
+                  - employee_id: 6
+                    bonus_amount: 5000
+                    deductions: 1200
+                  - employee_id: 5
+                    bonus_amount: 0
+                    deductions: 200
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/employees-payroll-header:
+    get:
+      tags:
+        - Admin > HR Master > Employee Payroll
+      summary: show employee payroll header data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: year
+          in: query
+          schema:
+            type: integer
+          example: '2082'
+        - name: month
+          in: query
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/admin/shifts:
     post:
       tags:
@@ -1838,13 +1954,13 @@ paths:
               type: object
               example:
                 type: check_in
-                log_date: '2025-12-11'
+                log_date: '2026-01-11'
                 employees:
                   - employee_id: 1
-                    check_in: '2025-12-11 06:01:00'
+                    check_in: '2026-01-11 06:01:00'
                     remarks: On time
-                  - employee_id: 5
-                    check_in: '2025-12-11 09:20:00'
+                  - employee_id: 2
+                    check_in: '2026-01-11 09:20:00'
       security:
         - bearerAuth: []
       parameters:
@@ -2022,6 +2138,34 @@ paths:
           schema:
             type: string
           required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/employee-attendances-current-month-grid:
+    get:
+      tags:
+        - Admin > Attendance/Leave > Employee Attendance
+      summary: show current month attendace on grid
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: month
+          in: query
+          schema:
+            type: string
+          example: 2026-01
       responses:
         '200':
           description: Successful response
