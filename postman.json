@@ -4159,6 +4159,97 @@
                     }
                   },
                   "response": []
+                },
+                {
+                  "name": "client due payment",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"client_id\": 1,\r\n  \"payment_date\": \"2026-01-31\",\r\n  \"payment_method_id\":1,\r\n  \"paid_amount\": 100,\r\n  \"reference_no\": \"DUE-REF-01\"\r\n}\r\n",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/admin/due-payments",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "due-payments"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "show client payment data",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{url}}/api/admin/clients/{client_id}/payments",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "clients",
+                        "{client_id}",
+                        "payments"
+                      ]
+                    }
+                  },
+                  "response": []
                 }
               ]
             },
@@ -4596,143 +4687,526 @@
           "name": "Settings",
           "item": [
             {
-              "name": "show site settings data",
-              "request": {
-                "auth": {
-                  "type": "bearer",
-                  "bearer": [
-                    {
-                      "key": "token",
-                      "value": "{{token}}",
-                      "type": "string"
+              "name": "App Setting",
+              "item": [
+                {
+                  "name": "show site settings data",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{url}}/api/admin/site-settings",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "site-settings"
+                      ]
                     }
-                  ]
-                },
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json",
-                    "type": "text"
                   },
-                  {
-                    "key": "branch-id",
-                    "value": "1",
-                    "type": "text"
-                  }
-                ],
-                "url": {
-                  "raw": "{{url}}/api/admin/site-settings",
-                  "host": [
-                    "{{url}}"
-                  ],
-                  "path": [
-                    "api",
-                    "admin",
-                    "site-settings"
-                  ]
+                  "response": []
+                },
+                {
+                  "name": "store site setting data",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "site_name",
+                          "value": "Recruzen",
+                          "type": "text",
+                          "uuid": "b7b54e2f-bb72-43c7-9557-427fef864fb8"
+                        },
+                        {
+                          "key": "site_description",
+                          "value": "Best HR management software",
+                          "type": "text",
+                          "uuid": "706660d4-6bc8-4a93-92af-96b84a4053d0"
+                        },
+                        {
+                          "key": "timezone",
+                          "value": "Asia/Kathmandu",
+                          "type": "text",
+                          "uuid": "1146db5b-5a1b-4b20-bbd4-4e36cf4249c3"
+                        },
+                        {
+                          "key": "currency",
+                          "value": "NPR",
+                          "type": "text",
+                          "uuid": "f75132cd-00a8-4656-bf84-0a28c4e52028"
+                        },
+                        {
+                          "key": "maintenance_mode",
+                          "value": "off",
+                          "type": "text",
+                          "uuid": "44f1e99a-5b3c-4e1c-a604-89f2f1b7092e"
+                        },
+                        {
+                          "key": "theme_mode",
+                          "value": "dark",
+                          "type": "text",
+                          "uuid": "4e72bcbb-5a34-41b6-b846-7562dc4372c7"
+                        },
+                        {
+                          "key": "primary_color",
+                          "value": "#4F46E5",
+                          "type": "text",
+                          "uuid": "361a53ba-ec5d-4c7c-92fc-335a57d508b9"
+                        },
+                        {
+                          "key": "sidebar_collapsed",
+                          "value": "false",
+                          "type": "text",
+                          "uuid": "30fe2c8e-a885-45d0-9ca7-e41b81aba65f"
+                        },
+                        {
+                          "key": "font_family",
+                          "value": "Poppins",
+                          "type": "text",
+                          "uuid": "d81721e4-6723-4d31-ba3d-b61bab2412cf"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/admin/site-settings",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "site-settings"
+                      ]
+                    }
+                  },
+                  "response": []
                 }
-              },
-              "response": []
+              ]
             },
             {
-              "name": "store site setting data",
-              "request": {
-                "auth": {
-                  "type": "bearer",
-                  "bearer": [
-                    {
-                      "key": "token",
-                      "value": "{{token}}",
-                      "type": "string"
+              "name": "Payment Method",
+              "item": [
+                {
+                  "name": "store payment method data",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "name",
+                          "value": "Fonepay",
+                          "type": "text",
+                          "uuid": "836d4875-c181-421f-9a05-c0be61cbb971"
+                        },
+                        {
+                          "key": "secret_key",
+                          "value": "",
+                          "type": "text",
+                          "uuid": "91744d2f-3893-4d66-aa1f-82c0dae8ef3a"
+                        },
+                        {
+                          "key": "public_key",
+                          "value": "",
+                          "type": "text",
+                          "uuid": "94ea2107-eedd-40f2-b824-da2184312b19"
+                        },
+                        {
+                          "key": "merchant_code",
+                          "value": "",
+                          "type": "text",
+                          "uuid": "3077ff30-ea8f-4e54-a0a0-44bce7c1f3eb"
+                        },
+                        {
+                          "key": "username",
+                          "value": "",
+                          "type": "text",
+                          "uuid": "1db6032d-954f-4e7d-a6eb-2e750bb285a2"
+                        },
+                        {
+                          "key": "password",
+                          "value": "",
+                          "type": "text",
+                          "uuid": "3c6fb304-c06f-4957-90c5-a6b2815cb22d"
+                        },
+                        {
+                          "key": "status",
+                          "value": "active",
+                          "type": "text",
+                          "uuid": "a7e142ca-1435-4a0a-af63-997c7dab0ccb"
+                        },
+                        {
+                          "key": "is_fonepay_qr",
+                          "value": "1",
+                          "type": "text",
+                          "uuid": "82d6c79a-f17e-4ab4-8c29-7613871c569e"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/admin/payment-method",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "payment-method"
+                      ]
                     }
-                  ]
-                },
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "application/json",
-                    "type": "text"
                   },
-                  {
-                    "key": "branch-id",
-                    "value": "1",
-                    "type": "text"
-                  }
-                ],
-                "body": {
-                  "mode": "formdata",
-                  "formdata": [
-                    {
-                      "key": "site_name",
-                      "value": "Recruzen",
-                      "type": "text",
-                      "uuid": "b7b54e2f-bb72-43c7-9557-427fef864fb8"
-                    },
-                    {
-                      "key": "site_description",
-                      "value": "Best HR management software",
-                      "type": "text",
-                      "uuid": "706660d4-6bc8-4a93-92af-96b84a4053d0"
-                    },
-                    {
-                      "key": "timezone",
-                      "value": "Asia/Kathmandu",
-                      "type": "text",
-                      "uuid": "1146db5b-5a1b-4b20-bbd4-4e36cf4249c3"
-                    },
-                    {
-                      "key": "currency",
-                      "value": "NPR",
-                      "type": "text",
-                      "uuid": "f75132cd-00a8-4656-bf84-0a28c4e52028"
-                    },
-                    {
-                      "key": "maintenance_mode",
-                      "value": "off",
-                      "type": "text",
-                      "uuid": "44f1e99a-5b3c-4e1c-a604-89f2f1b7092e"
-                    },
-                    {
-                      "key": "theme_mode",
-                      "value": "dark",
-                      "type": "text",
-                      "uuid": "4e72bcbb-5a34-41b6-b846-7562dc4372c7"
-                    },
-                    {
-                      "key": "primary_color",
-                      "value": "#4F46E5",
-                      "type": "text",
-                      "uuid": "361a53ba-ec5d-4c7c-92fc-335a57d508b9"
-                    },
-                    {
-                      "key": "sidebar_collapsed",
-                      "value": "false",
-                      "type": "text",
-                      "uuid": "30fe2c8e-a885-45d0-9ca7-e41b81aba65f"
-                    },
-                    {
-                      "key": "font_family",
-                      "value": "Poppins",
-                      "type": "text",
-                      "uuid": "d81721e4-6723-4d31-ba3d-b61bab2412cf"
-                    }
-                  ]
+                  "response": []
                 },
-                "url": {
-                  "raw": "{{url}}/api/admin/site-settings",
-                  "host": [
-                    "{{url}}"
-                  ],
-                  "path": [
-                    "api",
-                    "admin",
-                    "site-settings"
-                  ]
+                {
+                  "name": "update payment method data",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "name",
+                          "value": "Cash",
+                          "type": "text",
+                          "uuid": "836d4875-c181-421f-9a05-c0be61cbb971"
+                        },
+                        {
+                          "key": "secret_key",
+                          "value": "",
+                          "type": "text",
+                          "uuid": "91744d2f-3893-4d66-aa1f-82c0dae8ef3a"
+                        },
+                        {
+                          "key": "public_key",
+                          "value": "",
+                          "type": "text",
+                          "uuid": "94ea2107-eedd-40f2-b824-da2184312b19"
+                        },
+                        {
+                          "key": "merchant_code",
+                          "value": "",
+                          "type": "text",
+                          "uuid": "3077ff30-ea8f-4e54-a0a0-44bce7c1f3eb"
+                        },
+                        {
+                          "key": "username",
+                          "value": "",
+                          "type": "text",
+                          "uuid": "1db6032d-954f-4e7d-a6eb-2e750bb285a2"
+                        },
+                        {
+                          "key": "password",
+                          "value": "",
+                          "type": "text",
+                          "uuid": "3c6fb304-c06f-4957-90c5-a6b2815cb22d"
+                        },
+                        {
+                          "key": "status",
+                          "value": "active",
+                          "type": "text",
+                          "uuid": "a7e142ca-1435-4a0a-af63-997c7dab0ccb"
+                        },
+                        {
+                          "key": "is_fonepay_qr",
+                          "value": "0",
+                          "type": "text",
+                          "uuid": "82d6c79a-f17e-4ab4-8c29-7613871c569e"
+                        },
+                        {
+                          "key": "_method",
+                          "value": "PUT",
+                          "type": "text",
+                          "uuid": "1151d7b9-6899-44f3-92ef-6239e6a2def6"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/admin/payment-method/{id}",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "payment-method",
+                        "{id}"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "show payment method list",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{url}}/api/admin/payment-method",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "payment-method"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "update payment method status",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "status",
+                          "value": "inactive",
+                          "type": "text",
+                          "uuid": "b9a57b26-511f-44fa-8a92-db50328b7a37"
+                        },
+                        {
+                          "key": "_method",
+                          "value": "PATCH",
+                          "type": "text",
+                          "uuid": "42044d1e-99da-4ce7-9805-e115191410d9"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/admin/payment-method/{id}/status",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "payment-method",
+                        "{id}",
+                        "status"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "delete payment method",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{url}}/api/admin/payment-method/{id}",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "payment-method",
+                        "{id}"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "show all active payment method only",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{url}}/api/admin/active-payment-methods",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "active-payment-methods"
+                      ]
+                    }
+                  },
+                  "response": []
                 }
-              },
-              "response": []
+              ]
             }
           ]
         },
@@ -5433,6 +5907,60 @@
                         "quotations",
                         "{id}",
                         "status"
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "Invoice Payment",
+              "item": [
+                {
+                  "name": "store invoice payment",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"invoice_id\": 1,\r\n  \"payment_method_id\": 2,\r\n  \"reference_no\": \"TXN123456789\",\r\n  \"payment_date\": \"2026-01-31\",\r\n  \"paid_amount\": 200\r\n}\r\n",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/admin/invoice-payments",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "invoice-payments"
                       ]
                     }
                   },
