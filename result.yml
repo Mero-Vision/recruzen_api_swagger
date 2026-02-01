@@ -53,10 +53,13 @@ tags:
   - name: Admin > Projects > Projects
   - name: Admin > Projects > Project Mmebers
   - name: Admin > Settings
+  - name: Admin > Settings > App Setting
+  - name: Admin > Settings > Payment Method
   - name: Admin > Accounting
   - name: Admin > Accounting > Invoice
   - name: Admin > Accounting > Chart of Accounts
   - name: Admin > Accounting > Quotations
+  - name: Admin > Accounting > Invoice Payment
   - name: Admin > Assets & Software Licenses
   - name: Admin > Recruitment
   - name: Admin > Payroll (SSF/CIT/PF + Payslip)
@@ -2480,6 +2483,68 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/admin/due-payments:
+    post:
+      tags:
+        - Admin > Projects > Client
+      summary: client due payment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                client_id: 1
+                payment_date: '2026-01-31'
+                payment_method_id: 1
+                paid_amount: 100
+                reference_no: DUE-REF-01
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/clients/{client_id}/payments:
+    get:
+      tags:
+        - Admin > Projects > Client
+      summary: show client payment data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: client_id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/admin/projects:
     post:
       tags:
@@ -2663,7 +2728,7 @@ paths:
   /api/admin/site-settings:
     get:
       tags:
-        - Admin > Settings
+        - Admin > Settings > App Setting
       summary: show site settings data
       security:
         - bearerAuth: []
@@ -2685,7 +2750,7 @@ paths:
             application/json: {}
     post:
       tags:
-        - Admin > Settings
+        - Admin > Settings > App Setting
       summary: store site setting data
       requestBody:
         content:
@@ -2720,6 +2785,222 @@ paths:
                 font_family:
                   type: string
                   example: Poppins
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/payment-method:
+    post:
+      tags:
+        - Admin > Settings > Payment Method
+      summary: store payment method data
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Fonepay
+                secret_key:
+                  type: string
+                public_key:
+                  type: string
+                merchant_code:
+                  type: string
+                username:
+                  type: string
+                password:
+                  type: string
+                status:
+                  type: string
+                  example: active
+                is_fonepay_qr:
+                  type: integer
+                  example: '1'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Admin > Settings > Payment Method
+      summary: show payment method list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/payment-method/{id}:
+    post:
+      tags:
+        - Admin > Settings > Payment Method
+      summary: update payment method data
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Cash
+                secret_key:
+                  type: string
+                public_key:
+                  type: string
+                merchant_code:
+                  type: string
+                username:
+                  type: string
+                password:
+                  type: string
+                status:
+                  type: string
+                  example: active
+                is_fonepay_qr:
+                  type: integer
+                  example: '0'
+                _method:
+                  type: string
+                  example: PUT
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Admin > Settings > Payment Method
+      summary: delete payment method
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/payment-method/{id}/status:
+    post:
+      tags:
+        - Admin > Settings > Payment Method
+      summary: update payment method status
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  example: inactive
+                _method:
+                  type: string
+                  example: PATCH
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/active-payment-methods:
+    get:
+      tags:
+        - Admin > Settings > Payment Method
+      summary: show all active payment method only
       security:
         - bearerAuth: []
       parameters:
@@ -3221,6 +3502,40 @@ paths:
           schema:
             type: string
           required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/invoice-payments:
+    post:
+      tags:
+        - Admin > Accounting > Invoice Payment
+      summary: store invoice payment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                invoice_id: 1
+                payment_method_id: 2
+                reference_no: TXN123456789
+                payment_date: '2026-01-31'
+                paid_amount: 200
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
