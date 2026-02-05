@@ -26,7 +26,9 @@ components:
 tags:
   - name: Admin
   - name: Admin > Auth
+  - name: Admin > Authentication Log
   - name: Admin > Admin
+  - name: Admin > Dashboard
   - name: Admin > Company Branches
   - name: Admin > Reference Data
   - name: Admin > Company
@@ -42,7 +44,7 @@ tags:
   - name: Admin > HR Master > Employees
   - name: Admin > HR Master > Employee Identity
   - name: Admin > HR Master > Employee Bank Account
-  - name: Admin > HR Master > Employee Payroll
+  - name: Admin > HR Master > Employee Resignation
   - name: Admin > Attendance/Leave
   - name: Admin > Attendance/Leave > Shifts
   - name: Admin > Attendance/Leave > Employee Shift
@@ -60,9 +62,13 @@ tags:
   - name: Admin > Accounting > Chart of Accounts
   - name: Admin > Accounting > Quotations
   - name: Admin > Accounting > Invoice Payment
+  - name: Admin > Payroll
+  - name: Admin > Payroll > Employee Payroll
   - name: Admin > Assets & Software Licenses
   - name: Admin > Recruitment
-  - name: Admin > Payroll (SSF/CIT/PF + Payslip)
+  - name: Admin > Purchase
+  - name: Admin > Purchase > Financial Expenses
+  - name: Admin > Purchase > Supplier
 paths:
   /api/admin/login:
     post:
@@ -81,6 +87,44 @@ paths:
                 password:
                   type: string
                   example: Password
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/auth-logs:
+    get:
+      tags:
+        - Admin > Authentication Log
+      summary: show auth logs
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/logout-others:
+    post:
+      tags:
+        - Admin > Authentication Log
+      summary: logout other
+      requestBody:
+        content: {}
+      security:
+        - bearerAuth: []
       parameters:
         - name: Accept
           in: header
@@ -143,11 +187,69 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/admin/dashboard/dashboard-overview:
+    get:
+      tags:
+        - Admin > Dashboard
+      summary: show dashboard overview
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/admin/user-branches:
     get:
       tags:
         - Admin > Company Branches
       summary: show user branches
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Admin > Company Branches
+      summary: create new branch
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: KTM Branch2
+                address:
+                  type: string
+                  example: Babarmahal
+                district:
+                  type: string
+                  example: Kathmandu
+                province:
+                  type: string
+                  example: Bagmati Province
       security:
         - bearerAuth: []
       parameters:
@@ -1291,6 +1393,34 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/admin/employees/{employee_id}/experience-letter:
+    get:
+      tags:
+        - Admin > HR Master > Employees
+      summary: generate employee experience letter
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: employee_id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/admin/employee-identities:
     post:
       tags:
@@ -1562,58 +1692,32 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/admin/employees-payroll:
-    get:
-      tags:
-        - Admin > HR Master > Employee Payroll
-      summary: show employee payroll
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: branch-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-        - name: year
-          in: query
-          schema:
-            type: integer
-          example: '2082'
-        - name: month
-          in: query
-          schema:
-            type: integer
-          example: '1'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
+  /api/admin/employee-resignations:
     post:
       tags:
-        - Admin > HR Master > Employee Payroll
-      summary: store employee payroll
+        - Admin > HR Master > Employee Resignation
+      summary: store employee resignation
       requestBody:
         content:
-          application/json:
+          multipart/form-data:
             schema:
               type: object
-              example:
-                pay_year: 2082
-                pay_month: 1
-                employees:
-                  - employee_id: 6
-                    bonus_amount: 5000
-                    deductions: 1200
-                  - employee_id: 5
-                    bonus_amount: 0
-                    deductions: 200
+              properties:
+                employee_id:
+                  type: integer
+                  example: '2'
+                notice_date:
+                  type: string
+                  example: '2025-01-20'
+                resignation_date:
+                  type: string
+                  example: '2025-01-20'
+                reason:
+                  type: string
+                  example: retirement
+                status:
+                  type: string
+                  example: approved
       security:
         - bearerAuth: []
       parameters:
@@ -1632,11 +1736,10 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/admin/employees-payroll-header:
     get:
       tags:
-        - Admin > HR Master > Employee Payroll
-      summary: show employee payroll header data
+        - Admin > HR Master > Employee Resignation
+      summary: show all resigned employees
       security:
         - bearerAuth: []
       parameters:
@@ -1650,16 +1753,113 @@ paths:
           schema:
             type: integer
           example: '1'
-        - name: year
-          in: query
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/employee-resignations/{id}:
+    post:
+      tags:
+        - Admin > HR Master > Employee Resignation
+      summary: update resignation data
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                employee_id:
+                  type: integer
+                  example: '2'
+                notice_date:
+                  type: string
+                  example: '2025-01-20'
+                resignation_date:
+                  type: string
+                  example: '2025-01-20'
+                reason:
+                  type: string
+                  example: retirement
+                status:
+                  type: string
+                  example: approved
+                _method:
+                  type: string
+                  example: PUT
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
           schema:
-            type: integer
-          example: '2082'
-        - name: month
-          in: query
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
           schema:
             type: integer
           example: '1'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Admin > HR Master > Employee Resignation
+      summary: delete pending regisnation only
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/employee-resignations/{employee_slug}:
+    get:
+      tags:
+        - Admin > HR Master > Employee Resignation
+      summary: show single resigned employee data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: employee_slug
+          in: path
+          schema:
+            type: string
+          required: true
       responses:
         '200':
           description: Successful response
@@ -2517,7 +2717,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/admin/clients/{client_id}/payments:
+  /api/admin/clients/1/payments:
     get:
       tags:
         - Admin > Projects > Client
@@ -2535,11 +2735,6 @@ paths:
           schema:
             type: integer
           example: '1'
-        - name: client_id
-          in: path
-          schema:
-            type: string
-          required: true
       responses:
         '200':
           description: Successful response
@@ -3523,6 +3718,429 @@ paths:
                 reference_no: TXN123456789
                 payment_date: '2026-01-31'
                 paid_amount: 200
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/employees-payroll:
+    get:
+      tags:
+        - Admin > Payroll > Employee Payroll
+      summary: show employee payroll
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: year
+          in: query
+          schema:
+            type: integer
+          example: '2082'
+        - name: month
+          in: query
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Admin > Payroll > Employee Payroll
+      summary: store employee payroll
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                pay_year: 2026
+                pay_month: 1
+                employees:
+                  - employee_id: 6
+                    bonus_amount: 5000
+                    deductions: 1200
+                  - employee_id: 5
+                    bonus_amount: 0
+                    deductions: 200
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/employees-payroll-header:
+    get:
+      tags:
+        - Admin > Payroll > Employee Payroll
+      summary: show employee payroll header data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: year
+          in: query
+          schema:
+            type: integer
+          example: '2082'
+        - name: month
+          in: query
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/accounting/financial-expenses:
+    post:
+      tags:
+        - Admin > Purchase > Financial Expenses
+      summary: store financial expenses
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                supplier_id: 1
+                expense_date: '2026-01-09'
+                reference_no: EXP-2026-001
+                paid_amount: 200
+                sub_total: 1000
+                non_taxable_total: 0
+                taxable_total: 1000
+                vat_amount: 130
+                grand_total: 1230
+                note: Office stationery purchase
+                items:
+                  - particulars: A4 Paper (Bundle)
+                    expense_account_id: 12
+                    amount: 1000
+                    tax_rate: 13
+                    tax_amount: 130
+                    total: 1130
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Admin > Purchase > Financial Expenses
+      summary: show financial expenses all
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: from_date
+          in: query
+          schema:
+            type: string
+          example: '2026-01-09'
+        - name: to_date
+          in: query
+          schema:
+            type: string
+          example: '2026-01-09'
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+          example: EXP-20260109-1
+        - name: pagination_limit
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/accounting/financial-expenses/{id}:
+    get:
+      tags:
+        - Admin > Purchase > Financial Expenses
+      summary: show single financial data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/accounting/suppliers:
+    post:
+      tags:
+        - Admin > Purchase > Supplier
+      summary: store supplier data
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Sikshya Mart Pvt. Ltd
+                phone:
+                  type: string
+                email:
+                  type: string
+                address:
+                  type: string
+                vat_pan_number:
+                  type: string
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Admin > Purchase > Supplier
+      summary: show all supplier list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: pagination_limit
+          in: query
+          schema:
+            type: integer
+          example: '12'
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/accounting/suppliers/{id}:
+    post:
+      tags:
+        - Admin > Purchase > Supplier
+      summary: update supplier
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Sikshya Mart Pvt. Ltd
+                phone:
+                  type: string
+                email:
+                  type: string
+                address:
+                  type: string
+                vat_pan_number:
+                  type: string
+                _method:
+                  type: string
+                  example: PUT
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: school-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Admin > Purchase > Supplier
+      summary: show single supplier data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Admin > Purchase > Supplier
+      summary: delete supplier
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/accounting/suppliers/1/pay-due:
+    post:
+      tags:
+        - Admin > Purchase > Supplier
+      summary: pay supplier due amount
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                paid_amount: 1000
+                payment_method_id: 1
+                note: hy
       security:
         - bearerAuth: []
       parameters:
