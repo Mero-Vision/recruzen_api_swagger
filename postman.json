@@ -72,6 +72,81 @@
           ]
         },
         {
+          "name": "Authentication Log",
+          "item": [
+            {
+              "name": "show auth logs",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/admin/auth-logs",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "auth-logs"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "logout other",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/admin/logout-others",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "logout-others"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
           "name": "Admin",
           "item": [
             {
@@ -188,6 +263,52 @@
           ]
         },
         {
+          "name": "Dashboard",
+          "item": [
+            {
+              "name": "show dashboard overview",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/admin/dashboard/dashboard-overview",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "dashboard",
+                    "dashboard-overview"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
           "name": "Company Branches",
           "item": [
             {
@@ -211,6 +332,70 @@
                     "type": "text"
                   }
                 ],
+                "url": {
+                  "raw": "{{url}}/api/admin/user-branches",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "user-branches"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "create new branch",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "name",
+                      "value": "KTM Branch2",
+                      "type": "text",
+                      "uuid": "8f0a950d-ed07-4b13-b7e3-2b29c71efbc0"
+                    },
+                    {
+                      "key": "address",
+                      "value": "Babarmahal",
+                      "type": "text",
+                      "uuid": "7ae49d94-2ab4-4cca-b509-3da8bbd45a5f"
+                    },
+                    {
+                      "key": "district",
+                      "value": "Kathmandu",
+                      "type": "text",
+                      "uuid": "b3e1195b-927d-4652-8d84-7b109f524166"
+                    },
+                    {
+                      "key": "province",
+                      "value": "Bagmati Province",
+                      "type": "text",
+                      "uuid": "2a5b9671-32ba-49a5-9578-07ef1434cb67"
+                    }
+                  ]
+                },
                 "url": {
                   "raw": "{{url}}/api/admin/user-branches",
                   "host": [
@@ -2145,6 +2330,48 @@
                     }
                   },
                   "response": []
+                },
+                {
+                  "name": "generate employee experience letter",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{url}}/api/admin/employees/{employee_id}/experience-letter",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "employees",
+                        "{employee_id}",
+                        "experience-letter"
+                      ]
+                    }
+                  },
+                  "response": []
                 }
               ]
             },
@@ -2588,60 +2815,10 @@
               ]
             },
             {
-              "name": "Employee Payroll",
+              "name": "Employee Resignation",
               "item": [
                 {
-                  "name": "show employee payroll",
-                  "request": {
-                    "auth": {
-                      "type": "bearer",
-                      "bearer": [
-                        {
-                          "key": "token",
-                          "value": "{{token}}",
-                          "type": "string"
-                        }
-                      ]
-                    },
-                    "method": "GET",
-                    "header": [
-                      {
-                        "key": "Accept",
-                        "value": "application/json",
-                        "type": "text"
-                      },
-                      {
-                        "key": "branch-id",
-                        "value": "1",
-                        "type": "text"
-                      }
-                    ],
-                    "url": {
-                      "raw": "{{url}}/api/admin/employees-payroll?year=2082&month=1",
-                      "host": [
-                        "{{url}}"
-                      ],
-                      "path": [
-                        "api",
-                        "admin",
-                        "employees-payroll"
-                      ],
-                      "query": [
-                        {
-                          "key": "year",
-                          "value": "2082"
-                        },
-                        {
-                          "key": "month",
-                          "value": "1"
-                        }
-                      ]
-                    }
-                  },
-                  "response": []
-                },
-                {
-                  "name": "store employee payroll",
+                  "name": "store employee resignation",
                   "request": {
                     "auth": {
                       "type": "bearer",
@@ -2667,30 +2844,179 @@
                       }
                     ],
                     "body": {
-                      "mode": "raw",
-                      "raw": "{\r\n  \"pay_year\": 2082,\r\n  \"pay_month\": 1,\r\n  \"employees\": [\r\n    { \"employee_id\": 6, \"bonus_amount\": 5000, \"deductions\": 1200 },\r\n    { \"employee_id\": 5, \"bonus_amount\": 0, \"deductions\": 200 }\r\n  ]\r\n}\r\n",
-                      "options": {
-                        "raw": {
-                          "language": "json"
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "employee_id",
+                          "value": "2",
+                          "type": "text",
+                          "uuid": "18fabbad-6668-4cfe-9d13-c56593b393ae"
+                        },
+                        {
+                          "key": "notice_date",
+                          "value": "2025-01-20",
+                          "type": "text",
+                          "uuid": "2bde3992-c35f-428f-bfe9-9aead6188e0c"
+                        },
+                        {
+                          "key": "resignation_date",
+                          "value": "2025-01-20",
+                          "type": "text",
+                          "uuid": "832078a5-8a6e-4097-a0c6-8bc7e6942ced"
+                        },
+                        {
+                          "key": "reason",
+                          "value": "retirement",
+                          "type": "text",
+                          "uuid": "8b251d34-a52e-411f-a783-a30b19caceb0"
+                        },
+                        {
+                          "key": "status",
+                          "value": "approved",
+                          "type": "text",
+                          "uuid": "d83a8da6-3a80-4393-9023-665a61d3a582"
                         }
-                      }
+                      ]
                     },
                     "url": {
-                      "raw": "{{url}}/api/admin/employees-payroll",
+                      "raw": "{{url}}/api/admin/employee-resignations",
                       "host": [
                         "{{url}}"
                       ],
                       "path": [
                         "api",
                         "admin",
-                        "employees-payroll"
+                        "employee-resignations"
                       ]
                     }
                   },
                   "response": []
                 },
                 {
-                  "name": "show employee payroll header data",
+                  "name": "update resignation data",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "employee_id",
+                          "value": "2",
+                          "type": "text",
+                          "uuid": "18fabbad-6668-4cfe-9d13-c56593b393ae"
+                        },
+                        {
+                          "key": "notice_date",
+                          "value": "2025-01-20",
+                          "type": "text",
+                          "uuid": "2bde3992-c35f-428f-bfe9-9aead6188e0c"
+                        },
+                        {
+                          "key": "resignation_date",
+                          "value": "2025-01-20",
+                          "type": "text",
+                          "uuid": "832078a5-8a6e-4097-a0c6-8bc7e6942ced"
+                        },
+                        {
+                          "key": "reason",
+                          "value": "retirement",
+                          "type": "text",
+                          "uuid": "8b251d34-a52e-411f-a783-a30b19caceb0"
+                        },
+                        {
+                          "key": "status",
+                          "value": "approved",
+                          "type": "text",
+                          "uuid": "d83a8da6-3a80-4393-9023-665a61d3a582"
+                        },
+                        {
+                          "key": "_method",
+                          "value": "PUT",
+                          "type": "text",
+                          "uuid": "a97b0650-4a60-4eb5-b026-a42255fa4aff"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/admin/employee-resignations/{id}",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "employee-resignations",
+                        "{id}"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "delete pending regisnation only",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{url}}/api/admin/employee-resignations/{id}",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "employee-resignations",
+                        "{id}"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "show all resigned employees",
                   "protocolProfileBehavior": {
                     "disableBodyPruning": true
                   },
@@ -2723,24 +3049,55 @@
                       "formdata": []
                     },
                     "url": {
-                      "raw": "{{url}}/api/admin/employees-payroll-header?year=2082&month=1",
+                      "raw": "{{url}}/api/admin/employee-resignations",
                       "host": [
                         "{{url}}"
                       ],
                       "path": [
                         "api",
                         "admin",
-                        "employees-payroll-header"
-                      ],
-                      "query": [
+                        "employee-resignations"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "show single resigned employee data",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
                         {
-                          "key": "year",
-                          "value": "2082"
-                        },
-                        {
-                          "key": "month",
-                          "value": "1"
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
                         }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{url}}/api/admin/employee-resignations/{employee_slug}",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "employee-resignations",
+                        "{employee_slug}"
                       ]
                     }
                   },
@@ -4236,7 +4593,7 @@
                       }
                     ],
                     "url": {
-                      "raw": "{{url}}/api/admin/clients/{client_id}/payments",
+                      "raw": "{{url}}/api/admin/clients/1/payments",
                       "host": [
                         "{{url}}"
                       ],
@@ -4244,7 +4601,7 @@
                         "api",
                         "admin",
                         "clients",
-                        "{client_id}",
+                        "1",
                         "payments"
                       ]
                     }
@@ -5971,6 +6328,172 @@
           ]
         },
         {
+          "name": "Payroll",
+          "item": [
+            {
+              "name": "Employee Payroll",
+              "item": [
+                {
+                  "name": "show employee payroll",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{url}}/api/admin/employees-payroll?year=2082&month=1",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "employees-payroll"
+                      ],
+                      "query": [
+                        {
+                          "key": "year",
+                          "value": "2082"
+                        },
+                        {
+                          "key": "month",
+                          "value": "1"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "store employee payroll",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"pay_year\": 2026,\r\n  \"pay_month\": 1,\r\n  \"employees\": [\r\n    { \"employee_id\": 6, \"bonus_amount\": 5000, \"deductions\": 1200 },\r\n    { \"employee_id\": 5, \"bonus_amount\": 0, \"deductions\": 200 }\r\n  ]\r\n}\r\n",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/admin/employees-payroll",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "employees-payroll"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "show employee payroll header data",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": []
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/admin/employees-payroll-header?year=2082&month=1",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "employees-payroll-header"
+                      ],
+                      "query": [
+                        {
+                          "key": "year",
+                          "value": "2082"
+                        },
+                        {
+                          "key": "month",
+                          "value": "1"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            }
+          ]
+        },
+        {
           "name": "Assets & Software Licenses",
           "item": []
         },
@@ -5979,8 +6502,519 @@
           "item": []
         },
         {
-          "name": "Payroll (SSF/CIT/PF + Payslip)",
-          "item": []
+          "name": "Purchase",
+          "item": [
+            {
+              "name": "Financial Expenses",
+              "item": [
+                {
+                  "name": "store financial expenses",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"supplier_id\": 1,\r\n  \"expense_date\": \"2026-01-09\",\r\n  \"reference_no\": \"EXP-2026-001\",\r\n  \"paid_amount\": 200,\r\n  \"sub_total\": 1000,\r\n  \"non_taxable_total\": 0,\r\n  \"taxable_total\": 1000,\r\n  \"vat_amount\": 130,\r\n  \"grand_total\": 1230,\r\n  \"note\": \"Office stationery purchase\",\r\n  \"items\": [\r\n    {\r\n      \"particulars\": \"A4 Paper (Bundle)\",\r\n      \"expense_account_id\": 12,\r\n      \"amount\": 1000,\r\n      \"tax_rate\": 13,\r\n      \"tax_amount\": 130,\r\n      \"total\": 1130\r\n    }\r\n  ]\r\n}\r\n",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/admin/accounting/financial-expenses",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "accounting",
+                        "financial-expenses"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "show financial expenses all",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{url}}/api/admin/accounting/financial-expenses?from_date=2026-01-09&to_date=2026-01-09&search_keyword=EXP-20260109-1&pagination_limit",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "accounting",
+                        "financial-expenses"
+                      ],
+                      "query": [
+                        {
+                          "key": "from_date",
+                          "value": "2026-01-09"
+                        },
+                        {
+                          "key": "to_date",
+                          "value": "2026-01-09"
+                        },
+                        {
+                          "key": "search_keyword",
+                          "value": "EXP-20260109-1"
+                        },
+                        {
+                          "key": "pagination_limit",
+                          "value": null,
+                          "type": "text"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "show single financial data",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{url}}/api/admin/accounting/financial-expenses/{id}",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "accounting",
+                        "financial-expenses",
+                        "{id}"
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "Supplier",
+              "item": [
+                {
+                  "name": "store supplier data",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "name",
+                          "value": "Sikshya Mart Pvt. Ltd",
+                          "type": "text",
+                          "uuid": "b40ee36f-86f4-412c-b4cf-9356a06de671"
+                        },
+                        {
+                          "key": "phone",
+                          "value": "",
+                          "type": "text",
+                          "uuid": "441acea4-2a81-42bc-8638-3c033c6bfd45"
+                        },
+                        {
+                          "key": "email",
+                          "value": "",
+                          "type": "text",
+                          "uuid": "540caffe-810e-4a24-86e2-0a6026ddb306"
+                        },
+                        {
+                          "key": "address",
+                          "value": "",
+                          "type": "text",
+                          "uuid": "58028bce-a245-4e47-85ea-df79155033a3"
+                        },
+                        {
+                          "key": "vat_pan_number",
+                          "value": "",
+                          "type": "text",
+                          "uuid": "23a187ff-818f-40db-ae78-673e8e27e98e"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/admin/accounting/suppliers",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "accounting",
+                        "suppliers"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "update supplier",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "school-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "name",
+                          "value": "Sikshya Mart Pvt. Ltd",
+                          "type": "text",
+                          "uuid": "b40ee36f-86f4-412c-b4cf-9356a06de671"
+                        },
+                        {
+                          "key": "phone",
+                          "value": "",
+                          "type": "text",
+                          "uuid": "441acea4-2a81-42bc-8638-3c033c6bfd45"
+                        },
+                        {
+                          "key": "email",
+                          "value": "",
+                          "type": "text",
+                          "uuid": "540caffe-810e-4a24-86e2-0a6026ddb306"
+                        },
+                        {
+                          "key": "address",
+                          "value": "",
+                          "type": "text",
+                          "uuid": "58028bce-a245-4e47-85ea-df79155033a3"
+                        },
+                        {
+                          "key": "vat_pan_number",
+                          "value": "",
+                          "type": "text",
+                          "uuid": "23a187ff-818f-40db-ae78-673e8e27e98e"
+                        },
+                        {
+                          "key": "_method",
+                          "value": "PUT",
+                          "type": "text",
+                          "uuid": "d57c4fc3-c5e7-44af-8754-10c502987918"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/admin/accounting/suppliers/{id}",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "accounting",
+                        "suppliers",
+                        "{id}"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "show all supplier list",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{url}}/api/admin/accounting/suppliers?pagination_limit=12&search_keyword",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "accounting",
+                        "suppliers"
+                      ],
+                      "query": [
+                        {
+                          "key": "pagination_limit",
+                          "value": "12",
+                          "type": "text"
+                        },
+                        {
+                          "key": "search_keyword",
+                          "value": null,
+                          "type": "text"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "show single supplier data",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{url}}/api/admin/accounting/suppliers/{id}",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "accounting",
+                        "suppliers",
+                        "{id}"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "delete supplier",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{url}}/api/admin/accounting/suppliers/{id}",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "accounting",
+                        "suppliers",
+                        "{id}"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "pay supplier due amount",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"paid_amount\": 1000,\r\n  \"payment_method_id\": 1,\r\n  \"note\": \"hy\"\r\n}\r\n",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/admin/accounting/suppliers/1/pay-due",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "accounting",
+                        "suppliers",
+                        "1",
+                        "pay-due"
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            }
+          ]
         }
       ]
     }
