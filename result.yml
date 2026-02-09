@@ -38,6 +38,7 @@ tags:
   - name: Admin > Applications > Notes > Labels
   - name: Admin > Applications > Notes > Label Notes
   - name: Admin > Applications > Contacts
+  - name: Admin > Applications > Events
   - name: Admin > HR Master
   - name: Admin > HR Master > Department
   - name: Admin > HR Master > Designation
@@ -972,6 +973,189 @@ paths:
           schema:
             type: integer
           example: '1'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/applications/events:
+    post:
+      tags:
+        - Admin > Applications > Events
+      summary: store events
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  example: hhh
+                description:
+                  type: string
+                  example: hhh
+                date:
+                  type: string
+                  example: '2023-08-20 '
+                time:
+                  type: string
+                  example: 02:12 pm
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Admin > Applications > Events
+      summary: show all events
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/applications/events/{id}:
+    post:
+      tags:
+        - Admin > Applications > Events
+      summary: update events
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  example: hhh
+                description:
+                  type: string
+                  example: hhh
+                date:
+                  type: string
+                  example: '2023-08-20 '
+                time:
+                  type: string
+                  example: 02:12 pm
+                _method:
+                  type: string
+                  example: PUT
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Admin > Applications > Events
+      summary: show single event
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/applications/upcoming-events:
+    get:
+      tags:
+        - Admin > Applications > Events
+      summary: show all upcoming events
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/applications/past-events:
+    get:
+      tags:
+        - Admin > Applications > Events
+      summary: show all past events
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/agent/events/{id}:
+    delete:
+      tags:
+        - Admin > Applications > Events
+      summary: delete event
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
         - name: id
           in: path
           schema:
