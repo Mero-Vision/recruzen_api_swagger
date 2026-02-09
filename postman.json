@@ -1244,6 +1244,431 @@
                   ]
                 }
               ]
+            },
+            {
+              "name": "Contacts",
+              "item": [
+                {
+                  "name": "store contact details",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "name",
+                          "value": "Johny Doe",
+                          "type": "text",
+                          "uuid": "bdde1c82-a13f-47e4-b5de-daf31c252ffe"
+                        },
+                        {
+                          "key": "designation",
+                          "value": "Actor",
+                          "type": "text",
+                          "uuid": "f6030be1-1f84-4056-b117-8a4621e2a4e3"
+                        },
+                        {
+                          "key": "primary_phone",
+                          "value": "",
+                          "type": "text",
+                          "uuid": "fc560584-035e-4a42-ae7c-dae4e151edc0"
+                        },
+                        {
+                          "key": "secondary_phone",
+                          "value": "",
+                          "type": "text",
+                          "uuid": "710ba40a-68a5-4a1b-a768-c40da1885a92"
+                        },
+                        {
+                          "key": "email",
+                          "value": "",
+                          "type": "text",
+                          "uuid": "d59f14b5-04f0-4b8d-8759-f66ef2802afa"
+                        },
+                        {
+                          "key": "company_email",
+                          "value": "",
+                          "type": "text",
+                          "uuid": "b3123cf7-8754-4f58-b22e-83de47a86b4d"
+                        },
+                        {
+                          "key": "address",
+                          "value": "",
+                          "type": "text",
+                          "uuid": "03f4cf63-e9e9-477e-b1df-7c594a83ca57"
+                        },
+                        {
+                          "key": "company_name",
+                          "value": "",
+                          "type": "text",
+                          "uuid": "fd9e6548-f308-4a1f-88e0-600781871b1c"
+                        },
+                        {
+                          "key": "website",
+                          "value": "",
+                          "type": "text",
+                          "uuid": "f2f1393e-d7b4-4575-a9a9-ff8d00478489"
+                        },
+                        {
+                          "key": "notes",
+                          "value": "",
+                          "type": "text",
+                          "uuid": "93fa03a5-72c3-457e-bd53-31320baff27e"
+                        },
+                        {
+                          "key": "is_favorite",
+                          "value": "",
+                          "type": "text",
+                          "uuid": "022613b0-a143-451f-9805-c59acca239ed"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/admin/applications/contacts",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "applications",
+                        "contacts"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "update contact details",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "name",
+                          "value": "Johny Doe",
+                          "type": "text",
+                          "uuid": "bdde1c82-a13f-47e4-b5de-daf31c252ffe"
+                        },
+                        {
+                          "key": "designation",
+                          "value": "Actor",
+                          "type": "text",
+                          "uuid": "f6030be1-1f84-4056-b117-8a4621e2a4e3"
+                        },
+                        {
+                          "key": "primary_phone",
+                          "value": "",
+                          "type": "text",
+                          "uuid": "fc560584-035e-4a42-ae7c-dae4e151edc0"
+                        },
+                        {
+                          "key": "secondary_phone",
+                          "value": "",
+                          "type": "text",
+                          "uuid": "710ba40a-68a5-4a1b-a768-c40da1885a92"
+                        },
+                        {
+                          "key": "email",
+                          "value": "",
+                          "type": "text",
+                          "uuid": "d59f14b5-04f0-4b8d-8759-f66ef2802afa"
+                        },
+                        {
+                          "key": "company_email",
+                          "value": "",
+                          "type": "text",
+                          "uuid": "b3123cf7-8754-4f58-b22e-83de47a86b4d"
+                        },
+                        {
+                          "key": "address",
+                          "value": "",
+                          "type": "text",
+                          "uuid": "03f4cf63-e9e9-477e-b1df-7c594a83ca57"
+                        },
+                        {
+                          "key": "company_name",
+                          "value": "",
+                          "type": "text",
+                          "uuid": "fd9e6548-f308-4a1f-88e0-600781871b1c"
+                        },
+                        {
+                          "key": "website",
+                          "value": "",
+                          "type": "text",
+                          "uuid": "f2f1393e-d7b4-4575-a9a9-ff8d00478489"
+                        },
+                        {
+                          "key": "notes",
+                          "value": "",
+                          "type": "text",
+                          "uuid": "93fa03a5-72c3-457e-bd53-31320baff27e"
+                        },
+                        {
+                          "key": "is_favorite",
+                          "value": "",
+                          "type": "text",
+                          "uuid": "022613b0-a143-451f-9805-c59acca239ed"
+                        },
+                        {
+                          "key": "_method",
+                          "value": "PUT",
+                          "type": "text",
+                          "uuid": "4fa05ef4-e183-49e5-b5ac-e50ca2ce4496"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/admin/applications/contacts/{id}",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "applications",
+                        "contacts",
+                        "{id}"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "show all contact list",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{url}}/api/admin/applications/contacts?pagination_limit&search_keyword&is_favorite=1",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "applications",
+                        "contacts"
+                      ],
+                      "query": [
+                        {
+                          "key": "pagination_limit",
+                          "value": null
+                        },
+                        {
+                          "key": "search_keyword",
+                          "value": null
+                        },
+                        {
+                          "key": "is_favorite",
+                          "value": "1"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "show single contact detail",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{url}}/api/admin/applications/contacts/{id}",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "applications",
+                        "contacts",
+                        "{id}"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "delete contact",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{url}}/api/admin/applications/contacts/{id}",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "applications",
+                        "contacts",
+                        "{id}"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "toggle contact favourite",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "is_favorite",
+                          "value": "0",
+                          "type": "text",
+                          "uuid": "d203a942-b3af-436d-b288-111746b096a7"
+                        },
+                        {
+                          "key": "_method",
+                          "value": "PATCH",
+                          "type": "text",
+                          "uuid": "c9ea3be8-2761-4c89-8e46-ad88bb129ed3"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/admin/applications/contacts/{id}/favorite",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "applications",
+                        "contacts",
+                        "{id}",
+                        "favorite"
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
             }
           ]
         },
@@ -2848,7 +3273,7 @@
                       "formdata": [
                         {
                           "key": "employee_id",
-                          "value": "2",
+                          "value": "3",
                           "type": "text",
                           "uuid": "18fabbad-6668-4cfe-9d13-c56593b393ae"
                         },
@@ -2872,7 +3297,7 @@
                         },
                         {
                           "key": "status",
-                          "value": "approved",
+                          "value": "pending",
                           "type": "text",
                           "uuid": "d83a8da6-3a80-4393-9023-665a61d3a582"
                         }
@@ -3098,6 +3523,46 @@
                         "admin",
                         "employee-resignations",
                         "{employee_slug}"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "show all pending employee resignation",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{url}}/api/admin/pending-employee-resignations",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "pending-employee-resignations"
                       ]
                     }
                   },
@@ -6264,6 +6729,58 @@
                         "quotations",
                         "{id}",
                         "status"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "show quotation on client",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{url}}/api/admin/quotations/{client_id}/client?pagination_limit&search_keyword",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "quotations",
+                        "{client_id}",
+                        "client"
+                      ],
+                      "query": [
+                        {
+                          "key": "pagination_limit",
+                          "value": null
+                        },
+                        {
+                          "key": "search_keyword",
+                          "value": null
+                        }
                       ]
                     }
                   },
