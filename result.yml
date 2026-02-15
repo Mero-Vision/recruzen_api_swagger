@@ -59,6 +59,8 @@ tags:
   - name: Admin > Settings
   - name: Admin > Settings > App Setting
   - name: Admin > Settings > Payment Method
+  - name: Admin > Settings > Plugin
+  - name: Admin > Settings > Plugin > Google Calender
   - name: Admin > Accounting
   - name: Admin > Accounting > Invoice
   - name: Admin > Accounting > Chart of Accounts
@@ -66,6 +68,7 @@ tags:
   - name: Admin > Accounting > Invoice Payment
   - name: Admin > Payroll
   - name: Admin > Payroll > Employee Payroll
+  - name: Admin > Payroll > Employee Payroll Payment
   - name: Admin > Assets & Software Licenses
   - name: Admin > Recruitment
   - name: Admin > Purchase
@@ -3326,6 +3329,34 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/admin/project-summaries-by-client:
+    get:
+      tags:
+        - Admin > Projects > Projects
+      summary: show project summaries by client id
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: client_id
+          in: query
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/admin/project-members:
     post:
       tags:
@@ -3655,6 +3686,130 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/admin/plugins/google_calendar/enable:
+    post:
+      tags:
+        - Admin > Settings > Plugin > Google Calender
+      summary: enable plugin
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                _method:
+                  type: string
+                  example: PATCH
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/plugins/google_calendar/disable:
+    post:
+      tags:
+        - Admin > Settings > Plugin > Google Calender
+      summary: disable plugin
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                _method:
+                  type: string
+                  example: PATCH
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/plugins/google-calendar/google_calendar/configure:
+    post:
+      tags:
+        - Admin > Settings > Plugin > Google Calender
+      summary: configure plugin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                client_id: xxxx.apps.googleusercontent.com
+                client_secret: xxxx
+                redirect_uri: http://127.0.0.1:8000/api/plugins/google-calendar/callback
+                calendar_id: primary
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/plugins:
+    get:
+      tags:
+        - Admin > Settings > Plugin
+      summary: show all plugins
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/admin/invoices:
     post:
       tags:
@@ -3897,6 +4052,29 @@ paths:
           schema:
             type: string
           required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/due-invoices:
+    get:
+      tags:
+        - Admin > Accounting > Invoice
+      summary: show due invoices list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -4316,6 +4494,108 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/admin/employee-payroll-payments:
+    post:
+      tags:
+        - Admin > Payroll > Employee Payroll Payment
+      summary: store payroll payment data
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                employee_payroll_ids:
+                  - 1
+                  - 2
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Admin > Payroll > Employee Payroll Payment
+      summary: show employee payroll payment data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: pay_year
+          in: query
+          schema:
+            type: integer
+          example: '2026'
+        - name: pay_month
+          in: query
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/employee-payroll-payments/{id}:
+    get:
+      tags:
+        - Admin > Payroll > Employee Payroll Payment
+      summary: show single payroll payment data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: pay_year
+          in: query
+          schema:
+            type: integer
+          example: '2026'
+        - name: pay_month
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/admin/accounting/financial-expenses:
     post:
       tags:
@@ -4328,7 +4608,7 @@ paths:
               type: object
               example:
                 supplier_id: 1
-                expense_date: '2026-01-09'
+                expense_date: '2026-02-09'
                 reference_no: EXP-2026-001
                 paid_amount: 200
                 sub_total: 1000
