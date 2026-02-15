@@ -5765,6 +5765,60 @@
                     }
                   },
                   "response": []
+                },
+                {
+                  "name": "show project summaries by client id",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": []
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/admin/project-summaries-by-client?client_id=1",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "project-summaries-by-client"
+                      ],
+                      "query": [
+                        {
+                          "key": "client_id",
+                          "value": "1",
+                          "type": "text"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
                 }
               ]
             },
@@ -6348,6 +6402,221 @@
                   "response": []
                 }
               ]
+            },
+            {
+              "name": "Plugin",
+              "item": [
+                {
+                  "name": "Google Calender",
+                  "item": [
+                    {
+                      "name": "enable plugin",
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{token}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json",
+                            "type": "text"
+                          },
+                          {
+                            "key": "branch-id",
+                            "value": "1",
+                            "type": "text"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "key": "_method",
+                              "value": "PATCH",
+                              "type": "text",
+                              "uuid": "06ce13e7-f4f7-4348-ad8c-0f955a303f5e"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{url}}/api/admin/plugins/google_calendar/enable",
+                          "host": [
+                            "{{url}}"
+                          ],
+                          "path": [
+                            "api",
+                            "admin",
+                            "plugins",
+                            "google_calendar",
+                            "enable"
+                          ]
+                        }
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "disable plugin",
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{token}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json",
+                            "type": "text"
+                          },
+                          {
+                            "key": "branch-id",
+                            "value": "1",
+                            "type": "text"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "key": "_method",
+                              "value": "PATCH",
+                              "type": "text",
+                              "uuid": "aa36d1ab-8918-419e-8192-8444f227b417"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{url}}/api/admin/plugins/google_calendar/disable",
+                          "host": [
+                            "{{url}}"
+                          ],
+                          "path": [
+                            "api",
+                            "admin",
+                            "plugins",
+                            "google_calendar",
+                            "disable"
+                          ]
+                        }
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "configure plugin",
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{token}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json",
+                            "type": "text"
+                          },
+                          {
+                            "key": "branch-id",
+                            "value": "1",
+                            "type": "text"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\r\n  \"client_id\": \"xxxx.apps.googleusercontent.com\",\r\n  \"client_secret\": \"xxxx\",\r\n  \"redirect_uri\": \"http://127.0.0.1:8000/api/plugins/google-calendar/callback\",\r\n  \"calendar_id\": \"primary\"\r\n}",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{url}}/api/admin/plugins/google-calendar/google_calendar/configure",
+                          "host": [
+                            "{{url}}"
+                          ],
+                          "path": [
+                            "api",
+                            "admin",
+                            "plugins",
+                            "google-calendar",
+                            "google_calendar",
+                            "configure"
+                          ]
+                        }
+                      },
+                      "response": []
+                    }
+                  ]
+                },
+                {
+                  "name": "show all plugins",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{url}}/api/admin/plugins?search_keyword",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "plugins"
+                      ],
+                      "query": [
+                        {
+                          "key": "search_keyword",
+                          "value": null,
+                          "type": "text"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
             }
           ]
         },
@@ -6687,6 +6956,46 @@
                         "admin",
                         "client-invoices",
                         "{client_id}"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "show due invoices list",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{url}}/api/admin/due-invoices",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "due-invoices"
                       ]
                     }
                   },
@@ -7326,6 +7635,163 @@
                   "response": []
                 }
               ]
+            },
+            {
+              "name": "Employee Payroll Payment",
+              "item": [
+                {
+                  "name": "store payroll payment data",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"employee_payroll_ids\": [1,2]\r\n}\r\n",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/admin/employee-payroll-payments",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "employee-payroll-payments"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "show employee payroll payment data",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{url}}/api/admin/employee-payroll-payments?pay_year=2026&pay_month=1",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "employee-payroll-payments"
+                      ],
+                      "query": [
+                        {
+                          "key": "pay_year",
+                          "value": "2026",
+                          "type": "text"
+                        },
+                        {
+                          "key": "pay_month",
+                          "value": "1",
+                          "type": "text"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "show single payroll payment data",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{url}}/api/admin/employee-payroll-payments/{id}?pay_year=2026&pay_month=1",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "employee-payroll-payments",
+                        "{id}"
+                      ],
+                      "query": [
+                        {
+                          "key": "pay_year",
+                          "value": "2026"
+                        },
+                        {
+                          "key": "pay_month",
+                          "value": "1"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
             }
           ]
         },
@@ -7371,7 +7837,7 @@
                     ],
                     "body": {
                       "mode": "raw",
-                      "raw": "{\r\n  \"supplier_id\": 1,\r\n  \"expense_date\": \"2026-01-09\",\r\n  \"reference_no\": \"EXP-2026-001\",\r\n  \"paid_amount\": 200,\r\n  \"sub_total\": 1000,\r\n  \"non_taxable_total\": 0,\r\n  \"taxable_total\": 1000,\r\n  \"vat_amount\": 130,\r\n  \"grand_total\": 1230,\r\n  \"note\": \"Office stationery purchase\",\r\n  \"items\": [\r\n    {\r\n      \"particulars\": \"A4 Paper (Bundle)\",\r\n      \"expense_account_id\": 12,\r\n      \"amount\": 1000,\r\n      \"tax_rate\": 13,\r\n      \"tax_amount\": 130,\r\n      \"total\": 1130\r\n    }\r\n  ]\r\n}\r\n",
+                      "raw": "{\r\n  \"supplier_id\": 1,\r\n  \"expense_date\": \"2026-02-09\",\r\n  \"reference_no\": \"EXP-2026-001\",\r\n  \"paid_amount\": 200,\r\n  \"sub_total\": 1000,\r\n  \"non_taxable_total\": 0,\r\n  \"taxable_total\": 1000,\r\n  \"vat_amount\": 130,\r\n  \"grand_total\": 1230,\r\n  \"note\": \"Office stationery purchase\",\r\n  \"items\": [\r\n    {\r\n      \"particulars\": \"A4 Paper (Bundle)\",\r\n      \"expense_account_id\": 12,\r\n      \"amount\": 1000,\r\n      \"tax_rate\": 13,\r\n      \"tax_amount\": 130,\r\n      \"total\": 1130\r\n    }\r\n  ]\r\n}\r\n",
                       "options": {
                         "raw": {
                           "language": "json"
