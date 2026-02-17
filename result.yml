@@ -29,6 +29,8 @@ tags:
   - name: Admin > Authentication Log
   - name: Admin > Admin
   - name: Admin > Dashboard
+  - name: Admin > Dashboard > Overview
+  - name: Admin > Dashboard > Analytics
   - name: Admin > Company Branches
   - name: Admin > Reference Data
   - name: Admin > Company
@@ -195,8 +197,154 @@ paths:
   /api/admin/dashboard/dashboard-overview:
     get:
       tags:
-        - Admin > Dashboard
+        - Admin > Dashboard > Overview
       summary: show dashboard overview
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/dashboard/analytics/overview:
+    get:
+      tags:
+        - Admin > Dashboard > Analytics
+      summary: show analytics overview
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/dashboard/analytics/attendance:
+    get:
+      tags:
+        - Admin > Dashboard > Analytics
+      summary: show current month employees analytics attendance
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/dashboard/analytics/payroll:
+    get:
+      tags:
+        - Admin > Dashboard > Analytics
+      summary: show analytics payroll
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/dashboard/analytics/department-cost:
+    get:
+      tags:
+        - Admin > Dashboard > Analytics
+      summary: show department cost analytics
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: pay_year
+          in: query
+          schema:
+            type: string
+        - name: pay_month
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/dashboard/analytics/billing:
+    get:
+      tags:
+        - Admin > Dashboard > Analytics
+      summary: show billing analytics
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/dashboard/analytics/expenses:
+    get:
+      tags:
+        - Admin > Dashboard > Analytics
+      summary: show expenses analytics
       security:
         - bearerAuth: []
       parameters:
@@ -2600,14 +2748,14 @@ paths:
             schema:
               type: object
               example:
-                type: check_in
-                log_date: '2026-01-11'
+                type: check_out
+                log_date: '2026-02-26'
                 employees:
-                  - employee_id: 1
-                    check_in: '2026-01-11 06:01:00'
+                  - employee_id: 6
+                    check_out: '2026-02-26 11:01:00'
                     remarks: On time
                   - employee_id: 2
-                    check_in: '2026-01-11 09:20:00'
+                    check_out: '2026-02-26 11:50:00'
       security:
         - bearerAuth: []
       parameters:
@@ -2813,6 +2961,44 @@ paths:
           schema:
             type: string
           example: 2026-01
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/employee-attendances-history/{employee_id}:
+    get:
+      tags:
+        - Admin > Attendance/Leave > Employee Attendance
+      summary: show single employee attendance history
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: year
+          in: query
+          schema:
+            type: integer
+          example: '2026'
+        - name: month
+          in: query
+          schema:
+            type: integer
+          example: '2'
+        - name: employee_id
+          in: path
+          schema:
+            type: string
+          required: true
       responses:
         '200':
           description: Successful response
@@ -3425,21 +3611,12 @@ paths:
             schema:
               type: object
               properties:
-                site_name:
-                  type: string
-                  example: Recruzen
-                site_description:
-                  type: string
-                  example: Best HR management software
                 timezone:
                   type: string
                   example: Asia/Kathmandu
                 currency:
                   type: string
                   example: NPR
-                maintenance_mode:
-                  type: string
-                  example: 'off'
                 theme_mode:
                   type: string
                   example: dark
@@ -4587,6 +4764,34 @@ paths:
             type: integer
           example: '1'
         - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/employee-payroll-payment-history/{employee_id}:
+    get:
+      tags:
+        - Admin > Payroll > Employee Payroll Payment
+      summary: show single employee payroll history
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: employee_id
           in: path
           schema:
             type: string
