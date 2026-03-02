@@ -49,6 +49,7 @@ tags:
   - name: Admin > HR Master > Employee Identity
   - name: Admin > HR Master > Employee Bank Account
   - name: Admin > HR Master > Employee Resignation
+  - name: Admin > HR Master > Employee Project Payment
   - name: Admin > Attendance/Leave
   - name: Admin > Attendance/Leave > Shifts
   - name: Admin > Attendance/Leave > Employee Shift
@@ -1781,6 +1782,13 @@ paths:
                 allowances[0][amount]:
                   type: integer
                   example: '100'
+                salary_type:
+                  type: string
+                  example: project,hourly,commission,salary
+                hourly_rate:
+                  type: string
+                commission_rate:
+                  type: string
       security:
         - bearerAuth: []
       parameters:
@@ -2452,6 +2460,105 @@ paths:
           schema:
             type: integer
           example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/employee-project-payments:
+    post:
+      tags:
+        - Admin > HR Master > Employee Project Payment
+      summary: store employee project payment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example: "{\r\n    \"employee_id\": 3,\r\n    \"salary_type\": \"hourly\",\r\n    \"project_id\": 2,\r\n    \"hours\": 10,\r\n    \"pay_year\": 2026,\r\n    \"pay_month\": 2,\r\n    \"payment_date\": \"2026-02-21\",\r\n    \"payment_method_id\": 2,\r\n    \"remarks\": \"Hourly payment for extra work\"\r\n}\r\n{\r\n  \"employee_id\": 12,\r\n  \"salary_type\": \"commission\",\r\n  \"project_id\": 5,\r\n  \"pay_year\": 2026,\r\n  \"pay_month\": 2,\r\n  \"payment_date\": \"2026-02-21\",\r\n  \"payment_method_id\": 1,\r\n  \"remarks\": \"Commission from Project #5\"\r\n}\r\n{\r\n    \"employee_id\": 3,\r\n    \"project_id\": 2,\r\n    \"salary_type\": \"project\",\r\n    \"amount\": 500,\r\n    \"pay_year\": 2026,\r\n    \"pay_month\": 2,\r\n    \"payment_method_id\": 1,\r\n    \"payment_date\": \"2026-02-21\",\r\n    \"remarks\": \"Milestone 1 payout\"\r\n}"
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Admin > HR Master > Employee Project Payment
+      summary: show employee project payment data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: salary_type
+          in: query
+          schema:
+            type: string
+          example: project,commission,hourly
+        - name: employee_id
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: payment_method_id
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: project_id
+          in: query
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/employee-project-payments/{id}:
+    get:
+      tags:
+        - Admin > HR Master > Employee Project Payment
+      summary: show single employee project payment data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
       responses:
         '200':
           description: Successful response
