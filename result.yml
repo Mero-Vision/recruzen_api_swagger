@@ -74,6 +74,8 @@ tags:
   - name: Admin > Payroll > Employee Payroll Payment
   - name: Admin > Assets & Software Licenses
   - name: Admin > Recruitment
+  - name: Admin > Recruitment > Job Category
+  - name: Admin > Recruitment > Vacancy
   - name: Admin > Purchase
   - name: Admin > Purchase > Financial Expenses
   - name: Admin > Purchase > Supplier
@@ -4903,6 +4905,225 @@ paths:
           schema:
             type: string
           required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/recruitment/job-categories:
+    get:
+      tags:
+        - Admin > Recruitment > Job Category
+      summary: show all job category list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/recruitment/vacancies:
+    post:
+      tags:
+        - Admin > Recruitment > Vacancy
+      summary: store vacancy data
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                company_id: 1
+                department_id: 1
+                designation_id: 1
+                title: Senior Laravel Developer
+                job_code: LRV-2026-01
+                job_type: full_time
+                vacancies: 2
+                category: IT & Software
+                description: We are looking for an experienced Laravel Developer.
+                responsibilities: Build APIs, optimize queries, maintain code quality.
+                requirements: 3+ years Laravel experience, MySQL, REST API.
+                benefits: Remote work, bonus, flexible hours.
+                workplace_type: hybrid
+                skills:
+                  - Laravel
+                  - MySQL
+                  - REST API
+                  - Git
+                country: Nepal
+                province: Bagmati
+                district: Kathmandu
+                city: Kathmandu
+                address: Baneshwor, Kathmandu
+                experience_level: senior
+                min_experience_years: 3
+                max_experience_years: 6
+                min_salary: 80000
+                max_salary: 120000
+                salary_currency: NPR
+                salary_period: monthly
+                hide_salary: false
+                negotiable_salary: true
+                publish_date: '2026-03-01'
+                deadline: '2026-04-01'
+                status: published
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Admin > Recruitment > Vacancy
+      summary: show all vacancies
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/recruitment/vacancies/{id}:
+    post:
+      tags:
+        - Admin > Recruitment > Vacancy
+      summary: update vacancy data
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                company_id: 1
+                department_id: 1
+                designation_id: 1
+                title: Senior Laravel Developer
+                job_code: LRV-2026-01
+                job_type: full_time
+                vacancies: 2
+                description: We are looking for an experienced Laravel Developer.
+                responsibilities: Build APIs, optimize queries, maintain code quality.
+                requirements: 3+ years Laravel experience, MySQL, REST API.
+                benefits: Remote work, bonus, flexible hours.
+                workplace_type: hybrid
+                skills:
+                  - Laravel
+                  - MySQL
+                  - REST API
+                  - Git
+                country: Nepal
+                province: Bagmati
+                district: Kathmandu
+                city: Kathmandu
+                address: Baneshwor, Kathmandu
+                experience_level: senior
+                min_experience_years: 3
+                max_experience_years: 6
+                min_salary: 80000
+                max_salary: 120000
+                salary_currency: NPR
+                salary_period: monthly
+                hide_salary: false
+                negotiable_salary: true
+                publish_date: '2026-03-01'
+                deadline: '2026-04-01'
+                status: published
+                _method: PUT
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/recruitment/vacancies/{slug}:
+    get:
+      tags:
+        - Admin > Recruitment > Vacancy
+      summary: show single vacancy data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: slug
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/recruitment/vacancies/1:
+    delete:
+      tags:
+        - Admin > Recruitment > Vacancy
+      summary: delete vacancy
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
       responses:
         '200':
           description: Successful response
