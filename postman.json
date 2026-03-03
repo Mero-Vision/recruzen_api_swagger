@@ -8326,7 +8326,275 @@
         },
         {
           "name": "Recruitment",
-          "item": []
+          "item": [
+            {
+              "name": "Job Category",
+              "item": [
+                {
+                  "name": "show all job category list",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{url}}/api/admin/recruitment/job-categories",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "recruitment",
+                        "job-categories"
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "Vacancy",
+              "item": [
+                {
+                  "name": "store vacancy data",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"company_id\": 1,\r\n  \"department_id\": 1,\r\n  \"designation_id\": 1,\r\n  \"title\": \"Senior Laravel Developer\",\r\n  \"job_code\": \"LRV-2026-01\",\r\n  \"job_type\": \"full_time\",\r\n  \"vacancies\": 2,\r\n  \"category\":\"IT & Software\",\r\n\r\n  \"description\": \"We are looking for an experienced Laravel Developer.\",\r\n  \"responsibilities\": \"Build APIs, optimize queries, maintain code quality.\",\r\n  \"requirements\": \"3+ years Laravel experience, MySQL, REST API.\",\r\n  \"benefits\": \"Remote work, bonus, flexible hours.\",\r\n\r\n  \"workplace_type\": \"hybrid\",\r\n  \"skills\": [\"Laravel\", \"MySQL\", \"REST API\", \"Git\"],\r\n\r\n  \"country\": \"Nepal\",\r\n  \"province\": \"Bagmati\",\r\n  \"district\": \"Kathmandu\",\r\n  \"city\": \"Kathmandu\",\r\n  \"address\": \"Baneshwor, Kathmandu\",\r\n\r\n  \"experience_level\": \"senior\",\r\n  \"min_experience_years\": 3,\r\n  \"max_experience_years\": 6,\r\n\r\n  \"min_salary\": 80000,\r\n  \"max_salary\": 120000,\r\n  \"salary_currency\": \"NPR\",\r\n  \"salary_period\": \"monthly\",\r\n  \"hide_salary\": false,\r\n  \"negotiable_salary\": true,\r\n\r\n  \"publish_date\": \"2026-03-01\",\r\n  \"deadline\": \"2026-04-01\",\r\n  \"status\": \"published\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/admin/recruitment/vacancies",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "recruitment",
+                        "vacancies"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "update vacancy data",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"company_id\": 1,\r\n  \"department_id\": 1,\r\n  \"designation_id\": 1,\r\n  \"title\": \"Senior Laravel Developer\",\r\n  \"job_code\": \"LRV-2026-01\",\r\n  \"job_type\": \"full_time\",\r\n  \"vacancies\": 2,\r\n\r\n  \"description\": \"We are looking for an experienced Laravel Developer.\",\r\n  \"responsibilities\": \"Build APIs, optimize queries, maintain code quality.\",\r\n  \"requirements\": \"3+ years Laravel experience, MySQL, REST API.\",\r\n  \"benefits\": \"Remote work, bonus, flexible hours.\",\r\n\r\n  \"workplace_type\": \"hybrid\",\r\n  \"skills\": [\"Laravel\", \"MySQL\", \"REST API\", \"Git\"],\r\n\r\n  \"country\": \"Nepal\",\r\n  \"province\": \"Bagmati\",\r\n  \"district\": \"Kathmandu\",\r\n  \"city\": \"Kathmandu\",\r\n  \"address\": \"Baneshwor, Kathmandu\",\r\n\r\n  \"experience_level\": \"senior\",\r\n  \"min_experience_years\": 3,\r\n  \"max_experience_years\": 6,\r\n\r\n  \"min_salary\": 80000,\r\n  \"max_salary\": 120000,\r\n  \"salary_currency\": \"NPR\",\r\n  \"salary_period\": \"monthly\",\r\n  \"hide_salary\": false,\r\n  \"negotiable_salary\": true,\r\n\r\n  \"publish_date\": \"2026-03-01\",\r\n  \"deadline\": \"2026-04-01\",\r\n  \"status\": \"published\",\r\n  \"_method\":\"PUT\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/admin/recruitment/vacancies/{id}",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "recruitment",
+                        "vacancies",
+                        "{id}"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "show all vacancies",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{url}}/api/admin/recruitment/vacancies",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "recruitment",
+                        "vacancies"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "show single vacancy data",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{url}}/api/admin/recruitment/vacancies/{slug}",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "recruitment",
+                        "vacancies",
+                        "{slug}"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "delete vacancy",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{url}}/api/admin/recruitment/vacancies/1",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "recruitment",
+                        "vacancies",
+                        "1"
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            }
+          ]
         },
         {
           "name": "Purchase",
