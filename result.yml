@@ -26,6 +26,7 @@ components:
 tags:
   - name: Admin
   - name: Admin > Auth
+  - name: Admin > Sign Up
   - name: Admin > Authentication Log
   - name: Admin > Admin
   - name: Admin > Dashboard
@@ -79,6 +80,8 @@ tags:
   - name: Admin > Purchase
   - name: Admin > Purchase > Financial Expenses
   - name: Admin > Purchase > Supplier
+  - name: Website
+  - name: Website > Vacancy
 paths:
   /api/admin/login:
     post:
@@ -97,6 +100,96 @@ paths:
                 password:
                   type: string
                   example: Password
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/signup:
+    post:
+      tags:
+        - Admin > Sign Up
+      summary: store signup data
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                company_name: Mero Vision
+                legal_name: Mero Vision Pvt. Ltd.
+                pan_vat_number: '556577'
+                company_reg_no: '565676'
+                company_email: info@merovision.com
+                company_phone: '9825915122'
+                address: Kathmandu, Nepal
+                district: Kathmandu
+                province: Bagmati
+                country: Nepal
+                branch_name: Head Office
+                name: Admin
+                email: hanciephago@gmail.com
+                password: Password123
+                password_confirmation: Password123
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/signup-verify-otp:
+    post:
+      tags:
+        - Admin > Sign Up
+      summary: verify signup otp
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                otp:
+                  type: integer
+                  example: '484448'
+                email:
+                  type: string
+                  example: hanciephago@gmail.com
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/signup-otp-resend:
+    post:
+      tags:
+        - Admin > Sign Up
+      summary: resend signup otp
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: hanciephago@gmail.com
       parameters:
         - name: Accept
           in: header
@@ -4942,11 +5035,11 @@ paths:
                 company_id: 1
                 department_id: 1
                 designation_id: 1
-                title: Senior Laravel Developer
+                title: Laravel Developer
                 job_code: LRV-2026-01
                 job_type: full_time
                 vacancies: 2
-                category: IT & Software
+                job_category_id: 25
                 description: We are looking for an experienced Laravel Developer.
                 responsibilities: Build APIs, optimize queries, maintain code quality.
                 requirements: 3+ years Laravel experience, MySQL, REST API.
@@ -5444,6 +5537,123 @@ paths:
           schema:
             type: integer
           example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/vacancies:
+    get:
+      tags:
+        - Website > Vacancy
+      summary: show all vacancies
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: pagination_limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/vacancies/{slug}:
+    get:
+      tags:
+        - Website > Vacancy
+      summary: show single vacancy data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: slug
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/job-categories/with-vacancies:
+    get:
+      tags:
+        - Website > Vacancy
+      summary: show job category with vacancies
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: vacancy_limit
+          in: query
+          schema:
+            type: integer
+          example: '5'
+        - name: company_id
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/top-recruiters:
+    get:
+      tags:
+        - Website > Vacancy
+      summary: show top recruiters
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/companies/{company_id}/vacancies:
+    get:
+      tags:
+        - Website > Vacancy
+      summary: show single company vacancies
+      parameters:
+        - name: company_id
+          in: path
+          schema:
+            type: string
+          required: true
       responses:
         '200':
           description: Successful response
