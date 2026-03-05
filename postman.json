@@ -72,6 +72,123 @@
           ]
         },
         {
+          "name": "Sign Up",
+          "item": [
+            {
+              "name": "store signup data",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"company_name\": \"Mero Vision\",\r\n  \"legal_name\": \"Mero Vision Pvt. Ltd.\",\r\n  \"pan_vat_number\": \"556577\",\r\n  \"company_reg_no\": \"565676\",\r\n  \"company_email\": \"info@merovision.com\",\r\n  \"company_phone\": \"9825915122\",\r\n  \"address\": \"Kathmandu, Nepal\",\r\n  \"district\": \"Kathmandu\",\r\n  \"province\": \"Bagmati\",\r\n  \"country\": \"Nepal\",\r\n  \"branch_name\": \"Head Office\",\r\n  \"name\": \"Admin\",\r\n  \"email\": \"hanciephago@gmail.com\",\r\n  \"password\": \"Password123\",\r\n  \"password_confirmation\": \"Password123\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/signup",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "signup"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "verify signup otp",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "otp",
+                      "value": "484448",
+                      "type": "text",
+                      "uuid": "aa6cfcee-c281-49f1-ad40-5e812d8888c3"
+                    },
+                    {
+                      "key": "email",
+                      "value": "hanciephago@gmail.com",
+                      "type": "text",
+                      "uuid": "21f015f2-b77c-4643-88c7-a6c94e8efe30"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/signup-verify-otp",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "signup-verify-otp"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "resend signup otp",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "email",
+                      "value": "hanciephago@gmail.com",
+                      "type": "text",
+                      "uuid": "21f015f2-b77c-4643-88c7-a6c94e8efe30"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/signup-otp-resend",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "signup-otp-resend"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
           "name": "Authentication Log",
           "item": [
             {
@@ -8399,7 +8516,7 @@
                     ],
                     "body": {
                       "mode": "raw",
-                      "raw": "{\r\n  \"company_id\": 1,\r\n  \"department_id\": 1,\r\n  \"designation_id\": 1,\r\n  \"title\": \"Senior Laravel Developer\",\r\n  \"job_code\": \"LRV-2026-01\",\r\n  \"job_type\": \"full_time\",\r\n  \"vacancies\": 2,\r\n  \"category\":\"IT & Software\",\r\n\r\n  \"description\": \"We are looking for an experienced Laravel Developer.\",\r\n  \"responsibilities\": \"Build APIs, optimize queries, maintain code quality.\",\r\n  \"requirements\": \"3+ years Laravel experience, MySQL, REST API.\",\r\n  \"benefits\": \"Remote work, bonus, flexible hours.\",\r\n\r\n  \"workplace_type\": \"hybrid\",\r\n  \"skills\": [\"Laravel\", \"MySQL\", \"REST API\", \"Git\"],\r\n\r\n  \"country\": \"Nepal\",\r\n  \"province\": \"Bagmati\",\r\n  \"district\": \"Kathmandu\",\r\n  \"city\": \"Kathmandu\",\r\n  \"address\": \"Baneshwor, Kathmandu\",\r\n\r\n  \"experience_level\": \"senior\",\r\n  \"min_experience_years\": 3,\r\n  \"max_experience_years\": 6,\r\n\r\n  \"min_salary\": 80000,\r\n  \"max_salary\": 120000,\r\n  \"salary_currency\": \"NPR\",\r\n  \"salary_period\": \"monthly\",\r\n  \"hide_salary\": false,\r\n  \"negotiable_salary\": true,\r\n\r\n  \"publish_date\": \"2026-03-01\",\r\n  \"deadline\": \"2026-04-01\",\r\n  \"status\": \"published\"\r\n}",
+                      "raw": "{\r\n  \"company_id\": 1,\r\n  \"department_id\": 1,\r\n  \"designation_id\": 1,\r\n  \"title\": \"Laravel Developer\",\r\n  \"job_code\": \"LRV-2026-01\",\r\n  \"job_type\": \"full_time\",\r\n  \"vacancies\": 2,\r\n  \"job_category_id\":25,\r\n\r\n  \"description\": \"We are looking for an experienced Laravel Developer.\",\r\n  \"responsibilities\": \"Build APIs, optimize queries, maintain code quality.\",\r\n  \"requirements\": \"3+ years Laravel experience, MySQL, REST API.\",\r\n  \"benefits\": \"Remote work, bonus, flexible hours.\",\r\n\r\n  \"workplace_type\": \"hybrid\",\r\n  \"skills\": [\"Laravel\", \"MySQL\", \"REST API\", \"Git\"],\r\n\r\n  \"country\": \"Nepal\",\r\n  \"province\": \"Bagmati\",\r\n  \"district\": \"Kathmandu\",\r\n  \"city\": \"Kathmandu\",\r\n  \"address\": \"Baneshwor, Kathmandu\",\r\n\r\n  \"experience_level\": \"senior\",\r\n  \"min_experience_years\": 3,\r\n  \"max_experience_years\": 6,\r\n\r\n  \"min_salary\": 80000,\r\n  \"max_salary\": 120000,\r\n  \"salary_currency\": \"NPR\",\r\n  \"salary_period\": \"monthly\",\r\n  \"hide_salary\": false,\r\n  \"negotiable_salary\": true,\r\n\r\n  \"publish_date\": \"2026-03-01\",\r\n  \"deadline\": \"2026-04-01\",\r\n  \"status\": \"published\"\r\n}",
                       "options": {
                         "raw": {
                           "language": "json"
@@ -9108,6 +9225,194 @@
                   "response": []
                 }
               ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Website",
+      "item": [
+        {
+          "name": "Vacancy",
+          "item": [
+            {
+              "name": "show all vacancies",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/vacancies?pagination_limit&search_keyword",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "vacancies"
+                  ],
+                  "query": [
+                    {
+                      "key": "pagination_limit",
+                      "value": null
+                    },
+                    {
+                      "key": "search_keyword",
+                      "value": null,
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show single vacancy data",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/vacancies/{slug}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "vacancies",
+                    "{slug}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show job category with vacancies",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/job-categories/with-vacancies?vacancy_limit=5&company_id=",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "job-categories",
+                    "with-vacancies"
+                  ],
+                  "query": [
+                    {
+                      "key": "vacancy_limit",
+                      "value": "5"
+                    },
+                    {
+                      "key": "company_id",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show top recruiters",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/api/top-recruiters",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "top-recruiters"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show single company vacancies",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/api/companies/{company_id}/vacancies",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "companies",
+                    "{company_id}",
+                    "vacancies"
+                  ]
+                }
+              },
+              "response": []
             }
           ]
         }
