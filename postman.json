@@ -25,7 +25,15 @@
                       "pm.environment.set('refresh_token', response.data.refresh_token)"
                     ],
                     "type": "text/javascript",
-                    "packages": {}
+                    "packages": {},
+                    "requests": {}
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [],
+                    "type": "text/javascript"
                   }
                 }
               ],
@@ -2095,22 +2103,22 @@
                       "formdata": [
                         {
                           "key": "title",
-                          "value": "hhh",
+                          "value": "nitesh",
                           "type": "text"
                         },
                         {
                           "key": "description",
-                          "value": "hhh",
+                          "value": "my birthday",
                           "type": "text"
                         },
                         {
                           "key": "date",
-                          "value": "2023-08-20 ",
+                          "value": "2026-03-07",
                           "type": "text"
                         },
                         {
                           "key": "time",
-                          "value": "02:12 pm",
+                          "value": "02:30 PM",
                           "type": "text"
                         }
                       ]
@@ -2333,15 +2341,16 @@
                       }
                     ],
                     "url": {
-                      "raw": "{{url}}/api/agent/events/{id}",
+                      "raw": "{{url}}/api/admin/applications/events/13",
                       "host": [
                         "{{url}}"
                       ],
                       "path": [
                         "api",
-                        "agent",
+                        "admin",
+                        "applications",
                         "events",
-                        "{id}"
+                        "13"
                       ]
                     }
                   },
@@ -7048,7 +7057,7 @@
                           ]
                         },
                         "url": {
-                          "raw": "{{url}}/api/admin/plugins/google_calendar/enable",
+                          "raw": "{{url}}/api/admin/plugins/google-calendar/enable",
                           "host": [
                             "{{url}}"
                           ],
@@ -7056,7 +7065,7 @@
                             "api",
                             "admin",
                             "plugins",
-                            "google_calendar",
+                            "google-calendar",
                             "enable"
                           ]
                         }
@@ -7101,7 +7110,7 @@
                           ]
                         },
                         "url": {
-                          "raw": "{{url}}/api/admin/plugins/google_calendar/disable",
+                          "raw": "{{url}}/api/admin/plugins/google-calendar/disable",
                           "host": [
                             "{{url}}"
                           ],
@@ -7109,7 +7118,7 @@
                             "api",
                             "admin",
                             "plugins",
-                            "google_calendar",
+                            "google-calendar",
                             "disable"
                           ]
                         }
@@ -7144,7 +7153,7 @@
                         ],
                         "body": {
                           "mode": "raw",
-                          "raw": "{\r\n  \"client_id\": \"xxxx.apps.googleusercontent.com\",\r\n  \"client_secret\": \"xxxx\",\r\n  \"redirect_uri\": \"http://127.0.0.1:8000/api/plugins/google-calendar/callback\",\r\n  \"calendar_id\": \"primary\"\r\n}",
+                          "raw": "{\r\n  \"client_id\": \"728800371511-3t66tpk1jd00uu85fv41pcbka416tsbe.apps.googleusercontent.com\",\r\n  \"client_secret\": \"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\"\r\n}",
                           "options": {
                             "raw": {
                               "language": "json"
@@ -7163,6 +7172,114 @@
                             "google-calendar",
                             "google_calendar",
                             "configure"
+                          ]
+                        }
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "google calender callback",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{token}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json",
+                            "type": "text"
+                          },
+                          {
+                            "key": "branch-id",
+                            "value": "1",
+                            "type": "text"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": []
+                        },
+                        "url": {
+                          "raw": "{{url}}/api/admin/plugins/google-calendar/callback?state=eyJpdiI6InREOTQ1UHk2cjZpNDdPQVc4a1FpcXc9PSIsInZhbHVlIjoiUWFVcDhwNlVHU2szZ3ViVXFqQ2lNOHJCL1lURFJJZDdiWEt6VUFOajViSUVHRHRKYkNoK083R2pNQkNMUzZkZyIsIm1hYyI6IjI3ZWMzNGEwNDVjYmU5ZDkzNmRlYTdjZjM5NzlmMzI5NTkxNDFkMWE0MDRkZjk0NjE1NTFmM2FkNmI0MDRhNTciLCJ0YWciOiIifQ%3D%3D%26&code=4/0AfrIepBjnBCJILjuogCOTwO0MiViGlXypTYbMjsw6SjHn8RSthAxILlU2xwh0YZXqqmJ2A%26",
+                          "host": [
+                            "{{url}}"
+                          ],
+                          "path": [
+                            "api",
+                            "admin",
+                            "plugins",
+                            "google-calendar",
+                            "callback"
+                          ],
+                          "query": [
+                            {
+                              "key": "state",
+                              "value": "eyJpdiI6InREOTQ1UHk2cjZpNDdPQVc4a1FpcXc9PSIsInZhbHVlIjoiUWFVcDhwNlVHU2szZ3ViVXFqQ2lNOHJCL1lURFJJZDdiWEt6VUFOajViSUVHRHRKYkNoK083R2pNQkNMUzZkZyIsIm1hYyI6IjI3ZWMzNGEwNDVjYmU5ZDkzNmRlYTdjZjM5NzlmMzI5NTkxNDFkMWE0MDRkZjk0NjE1NTFmM2FkNmI0MDRhNTciLCJ0YWciOiIifQ%3D%3D%26"
+                            },
+                            {
+                              "key": "code",
+                              "value": "4/0AfrIepBjnBCJILjuogCOTwO0MiViGlXypTYbMjsw6SjHn8RSthAxILlU2xwh0YZXqqmJ2A%26"
+                            }
+                          ]
+                        }
+                      },
+                      "response": []
+                    },
+                    {
+                      "name": "show status",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{token}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json",
+                            "type": "text"
+                          },
+                          {
+                            "key": "branch-id",
+                            "value": "1",
+                            "type": "text"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": []
+                        },
+                        "url": {
+                          "raw": "{{url}}/api/admin/plugins/google-calendar/status",
+                          "host": [
+                            "{{url}}"
+                          ],
+                          "path": [
+                            "api",
+                            "admin",
+                            "plugins",
+                            "google-calendar",
+                            "status"
                           ]
                         }
                       },
@@ -9225,6 +9342,373 @@
                   "response": []
                 }
               ]
+            }
+          ]
+        },
+        {
+          "name": "HR Assistant",
+          "item": [
+            {
+              "name": "ask question",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "question",
+                      "value": "show me list of projects",
+                      "type": "text",
+                      "uuid": "0f16c7a0-284e-41ab-9aad-2c73845a6d96"
+                    },
+                    {
+                      "key": "conversation_id",
+                      "value": "12",
+                      "type": "text",
+                      "uuid": "46f35b90-6a98-46ec-b999-0837dd6f9e15"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/assistant/ask",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "assistant",
+                    "ask"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "ask question",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "question",
+                          "value": "show me list of projects",
+                          "type": "text",
+                          "uuid": "0f16c7a0-284e-41ab-9aad-2c73845a6d96"
+                        },
+                        {
+                          "key": "conversation_id",
+                          "value": "12",
+                          "type": "text",
+                          "uuid": "46f35b90-6a98-46ec-b999-0837dd6f9e15"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/admin/assistant/ask",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "assistant",
+                        "ask"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "Host",
+                      "value": "127.0.0.1:8000"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "close"
+                    },
+                    {
+                      "key": "X-Powered-By",
+                      "value": "PHP/8.3.0"
+                    },
+                    {
+                      "key": "Cache-Control",
+                      "value": "no-cache, private"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Sat, 07 Mar 2026 12:41:11 GMT"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "key": "X-RateLimit-Limit",
+                      "value": "120"
+                    },
+                    {
+                      "key": "X-RateLimit-Remaining",
+                      "value": "119"
+                    },
+                    {
+                      "key": "X-Content-Type-Options",
+                      "value": "nosniff"
+                    },
+                    {
+                      "key": "X-Frame-Options",
+                      "value": "DENY"
+                    },
+                    {
+                      "key": "X-XSS-Protection",
+                      "value": "1; mode=block"
+                    },
+                    {
+                      "key": "Strict-Transport-Security",
+                      "value": "max-age=31536000; includeSubDomains; preload"
+                    },
+                    {
+                      "key": "Referrer-Policy",
+                      "value": "strict-origin-when-cross-origin"
+                    },
+                    {
+                      "key": "Permissions-Policy",
+                      "value": "geolocation=(), microphone=(), camera=()"
+                    },
+                    {
+                      "key": "Content-Security-Policy",
+                      "value": "default-src 'self'"
+                    },
+                    {
+                      "key": "Access-Control-Allow-Origin",
+                      "value": "*"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"data\": {\n        \"conversation_id\": 12,\n        \"answer\": \"Based on the HR data, here's the list of projects:\\n\\n| # | Project Name | Type | Status | Start Date | End Date | Budget | Client | Members |\\n|---|--------------|------|--------|------------|----------|--------|--------|---------|\\n| 1 | Recruzen | Fixed | Planning | 2025-12-12 | 2026-01-20 | ₹10,000.00 | Mero Vision Pvt. Ltd | 0 |\\n| 2 | Recruzen | Fixed | Planning | 2025-12-12 | 2026-01-20 | ₹10,000.00 | Mero Vision Pvt. Ltd | 0 |\\n\\n### Summary:\\n- **Total Projects:** 2\\n- **Active Projects:** 0\\n- **Status:** Both projects are in \\\"Planning\\\" stage\\n- **Total Budget:** ₹20,000.00\"\n    }\n}"
+                }
+              ]
+            },
+            {
+              "name": "show conversation list",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "question",
+                      "value": "total payroll cost",
+                      "type": "text",
+                      "uuid": "0f16c7a0-284e-41ab-9aad-2c73845a6d96"
+                    },
+                    {
+                      "key": "conversation_id",
+                      "value": "12",
+                      "type": "text",
+                      "uuid": "46f35b90-6a98-46ec-b999-0837dd6f9e15"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/assistant/conversations",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "assistant",
+                    "conversations"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show single conversation data",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "question",
+                      "value": "total payroll cost",
+                      "type": "text",
+                      "uuid": "0f16c7a0-284e-41ab-9aad-2c73845a6d96"
+                    },
+                    {
+                      "key": "conversation_id",
+                      "value": "12",
+                      "type": "text",
+                      "uuid": "46f35b90-6a98-46ec-b999-0837dd6f9e15"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/assistant/conversations/{id}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "assistant",
+                    "conversations",
+                    "{id}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "delete conversation",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/admin/assistant/conversations/{id}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "assistant",
+                    "conversations",
+                    "{id}"
+                  ]
+                }
+              },
+              "response": []
             }
           ]
         }
