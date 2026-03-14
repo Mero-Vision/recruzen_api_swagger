@@ -61,7 +61,7 @@
                     },
                     {
                       "key": "password",
-                      "value": "Password1",
+                      "value": "Password",
                       "type": "text",
                       "uuid": "eb372d41-b4a7-4876-b313-b88b285f33a8"
                     }
@@ -84,6 +84,84 @@
           ]
         },
         {
+          "name": "Google Auth",
+          "item": [
+            {
+              "name": "google auth redirect",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/admin/auth/google/redirect",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "auth",
+                    "google",
+                    "redirect"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "google auth calback",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/auth/google/callback?code=4%2F0AfrIepDJyJT94aO0Jwmoev4MVWQwVHxoPXfZUhkFYDa1DoHyxVjWswB0Fkfin-W60R_PQg",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "auth",
+                    "google",
+                    "callback"
+                  ],
+                  "query": [
+                    {
+                      "key": "code",
+                      "value": "4%2F0AfrIepDJyJT94aO0Jwmoev4MVWQwVHxoPXfZUhkFYDa1DoHyxVjWswB0Fkfin-W60R_PQg"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
           "name": "Sign Up",
           "item": [
             {
@@ -98,13 +176,89 @@
                   }
                 ],
                 "body": {
-                  "mode": "raw",
-                  "raw": "{\r\n  \"company_name\": \"Mero Vision\",\r\n  \"legal_name\": \"Mero Vision Pvt. Ltd.\",\r\n  \"pan_vat_number\": \"556577\",\r\n  \"company_reg_no\": \"565676\",\r\n  \"company_email\": \"info@merovision.com\",\r\n  \"company_phone\": \"9825915122\",\r\n  \"address\": \"Kathmandu, Nepal\",\r\n  \"district\": \"Kathmandu\",\r\n  \"province\": \"Bagmati\",\r\n  \"country\": \"Nepal\",\r\n  \"branch_name\": \"Head Office\",\r\n  \"name\": \"Admin\",\r\n  \"email\": \"hanciephago@gmail.com\",\r\n  \"password\": \"Password123\",\r\n  \"password_confirmation\": \"Password123\"\r\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "company_name",
+                      "value": "Mero Vision",
+                      "type": "text"
+                    },
+                    {
+                      "key": "legal_name",
+                      "value": "Mero Vision Pvt. Ltd",
+                      "type": "text"
+                    },
+                    {
+                      "key": "pan_vat_number",
+                      "value": "55657",
+                      "type": "text"
+                    },
+                    {
+                      "key": "company_reg_no",
+                      "value": "565676",
+                      "type": "text"
+                    },
+                    {
+                      "key": "company_email",
+                      "value": "support@merovision.com",
+                      "type": "text"
+                    },
+                    {
+                      "key": "company_phone",
+                      "value": "9825915122",
+                      "type": "text"
+                    },
+                    {
+                      "key": "address",
+                      "value": "Kathmandu, Nepal",
+                      "type": "text"
+                    },
+                    {
+                      "key": "district",
+                      "value": "Kathmandu",
+                      "type": "text"
+                    },
+                    {
+                      "key": "province",
+                      "value": "Bagmati",
+                      "type": "text"
+                    },
+                    {
+                      "key": "country",
+                      "value": "Nepal",
+                      "type": "text"
+                    },
+                    {
+                      "key": "branch_name",
+                      "value": "Head Office",
+                      "type": "text"
+                    },
+                    {
+                      "key": "name",
+                      "value": "Admin",
+                      "type": "text"
+                    },
+                    {
+                      "key": "email",
+                      "value": "hancie0phago@gmail.com",
+                      "type": "text"
+                    },
+                    {
+                      "key": "password",
+                      "value": "Password123",
+                      "type": "text"
+                    },
+                    {
+                      "key": "password_confirmation",
+                      "value": "Password123",
+                      "type": "text"
+                    },
+                    {
+                      "key": "company_logo",
+                      "type": "file",
+                      "src": "/C:/Users/user/Videos/WhatsApp Image 2026-01-28 at 8.58.12 AM.jpeg"
                     }
-                  }
+                  ]
                 },
                 "url": {
                   "raw": "{{url}}/api/admin/signup",
@@ -136,7 +290,7 @@
                   "formdata": [
                     {
                       "key": "otp",
-                      "value": "484448",
+                      "value": "526927",
                       "type": "text",
                       "uuid": "aa6cfcee-c281-49f1-ad40-5e812d8888c3"
                     },
@@ -962,6 +1116,123 @@
                     "api",
                     "admin",
                     "user-company"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "update company detail",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "name",
+                      "value": "Recruzen Pvt. Ltd.",
+                      "type": "text",
+                      "uuid": "73c2716c-5fe9-4c13-bee8-82fd0b71b95d"
+                    },
+                    {
+                      "key": "legal_name",
+                      "value": "Recruzen Private Limited",
+                      "type": "text",
+                      "uuid": "28c0abeb-eaac-4739-9f20-c1955c3bd948"
+                    },
+                    {
+                      "key": "pan_vat_number",
+                      "value": "123456789",
+                      "type": "text",
+                      "uuid": "5746dcf7-cd81-40a1-96ba-abe6a2ac513c"
+                    },
+                    {
+                      "key": "company_reg_no",
+                      "value": "REG-2024-001",
+                      "type": "text",
+                      "uuid": "e4f09689-5a9b-4d65-89ec-6ab5a3d5a478"
+                    },
+                    {
+                      "key": "address",
+                      "value": "Kathmandu, Baneshwor",
+                      "type": "text",
+                      "uuid": "0d19293f-c792-444b-918f-c440e1fc7e56"
+                    },
+                    {
+                      "key": "district",
+                      "value": "Kathmandu",
+                      "type": "text",
+                      "uuid": "1bd65ac1-db16-47de-bad4-d9589cd0069e"
+                    },
+                    {
+                      "key": "province",
+                      "value": "Bagmati",
+                      "type": "text",
+                      "uuid": "48e79101-32f6-4e34-bf5a-5fdb900cc7b0"
+                    },
+                    {
+                      "key": "country",
+                      "value": "Nepal",
+                      "type": "text",
+                      "uuid": "2b70c94f-c16a-4755-b09a-23d84acefedf"
+                    },
+                    {
+                      "key": "phone",
+                      "value": "+977-9800000000",
+                      "type": "text",
+                      "uuid": "b53d4558-3ad4-4eb9-9a9c-de83023364e9"
+                    },
+                    {
+                      "key": "email",
+                      "value": "info@recruzen.com",
+                      "type": "text",
+                      "uuid": "b69c2dac-cc49-486e-9032-25e1bfe6e859"
+                    },
+                    {
+                      "key": "company_logo",
+                      "type": "file",
+                      "uuid": "9cabd44c-39a2-478e-b504-9a19688647d3",
+                      "src": "/C:/Users/user/Videos/WhatsApp Image 2026-01-28 at 8.59.08 AM.jpeg"
+                    },
+                    {
+                      "key": "_method",
+                      "value": "PUT",
+                      "type": "text",
+                      "uuid": "823c9bff-f8b9-4a2a-96c0-92bbfc24fe7d"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/company-update",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "company-update"
                   ]
                 }
               },
@@ -3191,13 +3462,13 @@
                         },
                         {
                           "key": "personal_email",
-                          "value": "pravesh6565@gmail.com",
+                          "value": "pravesh65@gmail.com",
                           "type": "text",
                           "uuid": "a644c617-ca50-4cb1-bd14-540ea89a22e7"
                         },
                         {
                           "key": "work_email",
-                          "value": "pravesh7565@gmail.com",
+                          "value": "pravesh65@gmail.com",
                           "type": "text",
                           "uuid": "8e01eb41-3114-4f77-af99-4bbf1db1b11c"
                         },
@@ -3235,7 +3506,7 @@
                           "key": "employee_image",
                           "type": "file",
                           "uuid": "38f6544e-77cc-49a1-b62e-28bf067914ac",
-                          "src": "/Users/hanciephago/Desktop/Black-and-Red-Simple-Car-Icon-Industrial-Logo-(6).jpeg"
+                          "src": "/C:/Users/user/Videos/WhatsApp Image 2026-01-28 at 8.49.41 AM.jpeg"
                         },
                         {
                           "key": "salary",
@@ -3263,7 +3534,7 @@
                         },
                         {
                           "key": "salary_type",
-                          "value": "project,hourly,commission,salary",
+                          "value": "monthly",
                           "type": "text",
                           "uuid": "a3eb2932-a157-4caa-b0ee-e6cf6c6424b9"
                         },
@@ -3668,7 +3939,7 @@
                           "key": "employee_document",
                           "type": "file",
                           "uuid": "cfa99334-a1c5-4637-8892-9d331296401f",
-                          "src": "/Users/hanciephago/Desktop/Black-and-Red-Simple-Car-Icon-Industrial-Logo-(6).jpeg"
+                          "src": "/C:/Users/user/Videos/Screenshot 2025-08-16 020628.png"
                         }
                       ]
                     },
@@ -3713,7 +3984,7 @@
                       }
                     ],
                     "url": {
-                      "raw": "{{url}}/api/admin/employee-identities/{employee_id}",
+                      "raw": "{{url}}/api/admin/employee-identities/5",
                       "host": [
                         "{{url}}"
                       ],
@@ -3721,7 +3992,7 @@
                         "api",
                         "admin",
                         "employee-identities",
-                        "{employee_id}"
+                        "5"
                       ]
                     }
                   },
@@ -3795,10 +4066,15 @@
                         "key": "Accept",
                         "value": "application/json",
                         "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
                       }
                     ],
                     "url": {
-                      "raw": "{{url}}/api/admin/employee-identities/{id}",
+                      "raw": "{{url}}/api/admin/employee-identities/4",
                       "host": [
                         "{{url}}"
                       ],
@@ -3806,7 +4082,7 @@
                         "api",
                         "admin",
                         "employee-identities",
-                        "{id}"
+                        "4"
                       ]
                     }
                   },
@@ -6524,6 +6800,53 @@
                     }
                   },
                   "response": []
+                },
+                {
+                  "name": "show project status count",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": []
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/admin/projects-status-counts",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "projects-status-counts"
+                      ]
+                    }
+                  },
+                  "response": []
                 }
               ]
             },
@@ -6839,19 +7162,19 @@
                       "formdata": [
                         {
                           "key": "name",
-                          "value": "Cash",
+                          "value": "Fonepay",
                           "type": "text",
                           "uuid": "836d4875-c181-421f-9a05-c0be61cbb971"
                         },
                         {
                           "key": "secret_key",
-                          "value": "",
+                          "value": "fgfdg",
                           "type": "text",
                           "uuid": "91744d2f-3893-4d66-aa1f-82c0dae8ef3a"
                         },
                         {
                           "key": "public_key",
-                          "value": "",
+                          "value": "hgfhgfh",
                           "type": "text",
                           "uuid": "94ea2107-eedd-40f2-b824-da2184312b19"
                         },
@@ -6869,7 +7192,7 @@
                         },
                         {
                           "key": "password",
-                          "value": "",
+                          "value": "cdfgvfcgf",
                           "type": "text",
                           "uuid": "3c6fb304-c06f-4957-90c5-a6b2815cb22d"
                         },
@@ -6894,7 +7217,7 @@
                       ]
                     },
                     "url": {
-                      "raw": "{{url}}/api/admin/payment-method/{id}",
+                      "raw": "{{url}}/api/admin/payment-method/2",
                       "host": [
                         "{{url}}"
                       ],
@@ -6902,7 +7225,7 @@
                         "api",
                         "admin",
                         "payment-method",
-                        "{id}"
+                        "2"
                       ]
                     }
                   },
@@ -7087,6 +7410,47 @@
                     }
                   },
                   "response": []
+                },
+                {
+                  "name": "show single payment method",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{url}}/api/admin/payment-method/{id}",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "payment-method",
+                        "{id}"
+                      ]
+                    }
+                  },
+                  "response": []
                 }
               ]
             },
@@ -7124,14 +7488,7 @@
                         ],
                         "body": {
                           "mode": "formdata",
-                          "formdata": [
-                            {
-                              "key": "_method",
-                              "value": "PATCH",
-                              "type": "text",
-                              "uuid": "06ce13e7-f4f7-4348-ad8c-0f955a303f5e"
-                            }
-                          ]
+                          "formdata": []
                         },
                         "url": {
                           "raw": "{{url}}/api/admin/plugins/google-calendar/enable",
@@ -7203,83 +7560,19 @@
                       "response": []
                     },
                     {
-                      "name": "configure plugin",
-                      "request": {
-                        "auth": {
-                          "type": "bearer",
-                          "bearer": [
-                            {
-                              "key": "token",
-                              "value": "{{token}}",
-                              "type": "string"
-                            }
-                          ]
-                        },
-                        "method": "POST",
-                        "header": [
-                          {
-                            "key": "Accept",
-                            "value": "application/json",
-                            "type": "text"
-                          },
-                          {
-                            "key": "branch-id",
-                            "value": "1",
-                            "type": "text"
-                          }
-                        ],
-                        "body": {
-                          "mode": "raw",
-                          "raw": "{\r\n  \"client_id\": \"728800371511-3t66tpk1jd00uu85fv41pcbka416tsbe.apps.googleusercontent.com\",\r\n  \"client_secret\": \"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\"\r\n}",
-                          "options": {
-                            "raw": {
-                              "language": "json"
-                            }
-                          }
-                        },
-                        "url": {
-                          "raw": "{{url}}/api/admin/plugins/google-calendar/google_calendar/configure",
-                          "host": [
-                            "{{url}}"
-                          ],
-                          "path": [
-                            "api",
-                            "admin",
-                            "plugins",
-                            "google-calendar",
-                            "google_calendar",
-                            "configure"
-                          ]
-                        }
-                      },
-                      "response": []
-                    },
-                    {
                       "name": "google calender callback",
                       "protocolProfileBehavior": {
                         "disableBodyPruning": true
                       },
                       "request": {
                         "auth": {
-                          "type": "bearer",
-                          "bearer": [
-                            {
-                              "key": "token",
-                              "value": "{{token}}",
-                              "type": "string"
-                            }
-                          ]
+                          "type": "noauth"
                         },
                         "method": "GET",
                         "header": [
                           {
                             "key": "Accept",
                             "value": "application/json",
-                            "type": "text"
-                          },
-                          {
-                            "key": "branch-id",
-                            "value": "1",
                             "type": "text"
                           }
                         ],
@@ -7288,7 +7581,7 @@
                           "formdata": []
                         },
                         "url": {
-                          "raw": "{{url}}/api/admin/plugins/google-calendar/callback?state=eyJpdiI6InREOTQ1UHk2cjZpNDdPQVc4a1FpcXc9PSIsInZhbHVlIjoiUWFVcDhwNlVHU2szZ3ViVXFqQ2lNOHJCL1lURFJJZDdiWEt6VUFOajViSUVHRHRKYkNoK083R2pNQkNMUzZkZyIsIm1hYyI6IjI3ZWMzNGEwNDVjYmU5ZDkzNmRlYTdjZjM5NzlmMzI5NTkxNDFkMWE0MDRkZjk0NjE1NTFmM2FkNmI0MDRhNTciLCJ0YWciOiIifQ%3D%3D%26&code=4/0AfrIepBjnBCJILjuogCOTwO0MiViGlXypTYbMjsw6SjHn8RSthAxILlU2xwh0YZXqqmJ2A%26",
+                          "raw": "{{url}}/api/admin/plugins/google-calendar/callback?state=eyJpdiI6IjBLQkxnKzlYME9uSFJrWjVSTVdvREE9PSIsInZhbHVlIjoiK1Y1UkV2L09MMGpZdzhZc1gzdDVYcFZsa3o3UnpxNVlmSGRkZEFkT280RT0iLCJtYWMiOiJkNTFjOTI1Y2M1MzgzNGM4Nzc1MDc5YjNlNGEzZWEyY2FlN2MwYjQ5MzY4NzBiMTZhZDBmYmNhNzY1ZWE5NTZhIiwidGFnIjoiIn0%3D%26&code=4/0AfrIepDdNHkEIgi4czWh8uUVWLpQTIlG8mLiES15GHbevabRXeowx3O04qFGZlY47tyE9g%26",
                           "host": [
                             "{{url}}"
                           ],
@@ -7302,11 +7595,11 @@
                           "query": [
                             {
                               "key": "state",
-                              "value": "eyJpdiI6InREOTQ1UHk2cjZpNDdPQVc4a1FpcXc9PSIsInZhbHVlIjoiUWFVcDhwNlVHU2szZ3ViVXFqQ2lNOHJCL1lURFJJZDdiWEt6VUFOajViSUVHRHRKYkNoK083R2pNQkNMUzZkZyIsIm1hYyI6IjI3ZWMzNGEwNDVjYmU5ZDkzNmRlYTdjZjM5NzlmMzI5NTkxNDFkMWE0MDRkZjk0NjE1NTFmM2FkNmI0MDRhNTciLCJ0YWciOiIifQ%3D%3D%26"
+                              "value": "eyJpdiI6IjBLQkxnKzlYME9uSFJrWjVSTVdvREE9PSIsInZhbHVlIjoiK1Y1UkV2L09MMGpZdzhZc1gzdDVYcFZsa3o3UnpxNVlmSGRkZEFkT280RT0iLCJtYWMiOiJkNTFjOTI1Y2M1MzgzNGM4Nzc1MDc5YjNlNGEzZWEyY2FlN2MwYjQ5MzY4NzBiMTZhZDBmYmNhNzY1ZWE5NTZhIiwidGFnIjoiIn0%3D%26"
                             },
                             {
                               "key": "code",
-                              "value": "4/0AfrIepBjnBCJILjuogCOTwO0MiViGlXypTYbMjsw6SjHn8RSthAxILlU2xwh0YZXqqmJ2A%26"
+                              "value": "4/0AfrIepDdNHkEIgi4czWh8uUVWLpQTIlG8mLiES15GHbevabRXeowx3O04qFGZlY47tyE9g%26"
                             }
                           ]
                         }
@@ -7717,7 +8010,7 @@
                       "formdata": [
                         {
                           "key": "otp",
-                          "value": "536825",
+                          "value": "460525",
                           "type": "text",
                           "uuid": "a06f0886-2538-44d9-846e-9559f302d04b"
                         }
@@ -9331,6 +9624,248 @@
                   "response": []
                 }
               ]
+            },
+            {
+              "name": "Candidate",
+              "item": [
+                {
+                  "name": "show all candidates",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{url}}/api/admin/recruitment/candidates",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "recruitment",
+                        "candidates"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "show single candidate",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{url}}/api/admin/recruitment/candidates/{slug}",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "recruitment",
+                        "candidates",
+                        "{slug}"
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "Job Application",
+              "item": [
+                {
+                  "name": "update job application stage",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "stage",
+                          "value": "interview_scheduled",
+                          "type": "text",
+                          "uuid": "3c622222-1ef1-4012-acea-f3d0e8161565"
+                        },
+                        {
+                          "key": "remarks",
+                          "value": "hy",
+                          "type": "text",
+                          "uuid": "b8e1a388-38e8-4026-9c8b-505f64b79402"
+                        },
+                        {
+                          "key": "_method",
+                          "value": "PATCH",
+                          "type": "text",
+                          "uuid": "ae658504-6ac6-4010-b134-399bc7629ada"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/admin/recruitment/job-applications/2/stage",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "recruitment",
+                        "job-applications",
+                        "2",
+                        "stage"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "show all job applications",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{url}}/api/admin/recruitment/job-applications",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "recruitment",
+                        "job-applications"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "show single application data",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{url}}/api/admin/recruitment/job-applications/{application}",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "recruitment",
+                        "job-applications",
+                        "{application}"
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
             }
           ]
         },
@@ -10276,6 +10811,82 @@
               "response": []
             }
           ]
+        },
+        {
+          "name": "Version",
+          "item": [
+            {
+              "name": "show all version list",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/admin/versions",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "versions"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show single version data",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/admin/versions/{id}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "versions",
+                    "{id}"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
         }
       ]
     },
@@ -10458,6 +11069,145 @@
                     "companies",
                     "{company_id}",
                     "vacancies"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Candidate",
+          "item": [
+            {
+              "name": "store candidate data",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "vacancy_id",
+                      "value": "2",
+                      "type": "text",
+                      "uuid": "ffb6434b-9f69-4191-bcf1-9c97df261f13"
+                    },
+                    {
+                      "key": "name",
+                      "value": "Aveshesh KC",
+                      "type": "text",
+                      "uuid": "7838f677-2d23-45c5-96ff-272dab7115f5"
+                    },
+                    {
+                      "key": "email",
+                      "value": "avesh@gmail.com",
+                      "type": "text",
+                      "uuid": "529fe2d2-6f72-470a-99dd-ef5643acde7c"
+                    },
+                    {
+                      "key": "phone",
+                      "value": "45656576",
+                      "type": "text",
+                      "uuid": "aa58b1d2-a57e-42de-9c16-ba52a6188c94"
+                    },
+                    {
+                      "key": "date_of_birth",
+                      "value": "2000-01-20",
+                      "type": "text",
+                      "uuid": "b9b9d5f5-c70c-43cc-8e04-41554590f23c"
+                    },
+                    {
+                      "key": "gender",
+                      "value": "male",
+                      "type": "text",
+                      "uuid": "b4e42a0e-9da0-4d75-ab1f-824344350561"
+                    },
+                    {
+                      "key": "nationality",
+                      "value": "Nepalese",
+                      "type": "text",
+                      "uuid": "90fd35a8-cc85-4a5e-9cf3-d7b55a5a0c1f"
+                    },
+                    {
+                      "key": "is_married",
+                      "value": "0",
+                      "type": "text",
+                      "uuid": "0ac6066c-5691-46ca-b52e-a76d7a04aa4f"
+                    },
+                    {
+                      "key": "note",
+                      "value": "hhh",
+                      "type": "text",
+                      "uuid": "6cb13e18-0fb1-4310-a0b2-7d18ccbaafe8"
+                    },
+                    {
+                      "key": "address",
+                      "value": "Kathmandu",
+                      "type": "text",
+                      "uuid": "52c4075b-2ced-401b-bf0d-30c58121af74"
+                    },
+                    {
+                      "key": "district",
+                      "value": "Kathmandu",
+                      "type": "text",
+                      "uuid": "cb614934-2bcd-4b78-83e0-382b79fa1f2b"
+                    },
+                    {
+                      "key": "province",
+                      "value": "Bagmati",
+                      "type": "text",
+                      "uuid": "16d2e03c-96ad-432d-bcd8-b4192842630e"
+                    },
+                    {
+                      "key": "country",
+                      "value": "Nepal",
+                      "type": "text",
+                      "uuid": "9a2fecbe-66e5-436f-8360-32141b9dbc1e"
+                    },
+                    {
+                      "key": "profile_image",
+                      "type": "file",
+                      "uuid": "d58aa066-a1fe-447b-9913-af31c65d4e25",
+                      "src": "/C:/Users/user/Downloads/Blue Red Modern Step By Step Guide To Starting A Business Graph.png"
+                    },
+                    {
+                      "key": "cover_letter",
+                      "value": "hy",
+                      "type": "text",
+                      "uuid": "68b4ae88-c156-47be-9f6f-dce678de44b2"
+                    },
+                    {
+                      "key": "expected_salary",
+                      "value": "20000",
+                      "type": "text",
+                      "uuid": "3b73515b-eeb2-47ad-a16c-a14d1568189f"
+                    },
+                    {
+                      "key": "available_from",
+                      "value": "2026-03-25",
+                      "type": "text",
+                      "uuid": "0322d1f2-8df6-49f8-9310-6aaf197c2569"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{url}}/api/candidates",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "candidates"
                   ]
                 }
               },
