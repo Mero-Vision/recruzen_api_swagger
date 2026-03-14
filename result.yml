@@ -20,12 +20,16 @@ servers:
     description: server
 components:
   securitySchemes:
+    noauthAuth:
+      type: http
+      scheme: noauth
     bearerAuth:
       type: http
       scheme: bearer
 tags:
   - name: Admin
   - name: Admin > Auth
+  - name: Admin > Google Auth
   - name: Admin > Sign Up
   - name: Admin > Device Management
   - name: Admin > Admin
@@ -78,12 +82,16 @@ tags:
   - name: Admin > Recruitment
   - name: Admin > Recruitment > Job Category
   - name: Admin > Recruitment > Vacancy
+  - name: Admin > Recruitment > Candidate
+  - name: Admin > Recruitment > Job Application
   - name: Admin > Purchase
   - name: Admin > Purchase > Financial Expenses
   - name: Admin > Purchase > Supplier
   - name: Admin > HR Assistant
+  - name: Admin > Version
   - name: Website
   - name: Website > Vacancy
+  - name: Website > Candidate
 paths:
   /api/admin/login:
     post:
@@ -101,13 +109,55 @@ paths:
                   example: admin
                 password:
                   type: string
-                  example: Password1
+                  example: Password
       parameters:
         - name: Accept
           in: header
           schema:
             type: string
           example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/auth/google/redirect:
+    get:
+      tags:
+        - Admin > Google Auth
+      summary: google auth redirect
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/auth/google/callback:
+    get:
+      tags:
+        - Admin > Google Auth
+      summary: google auth calback
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: code
+          in: query
+          schema:
+            type: string
+          example: >-
+            4%2F0AfrIepDJyJT94aO0Jwmoev4MVWQwVHxoPXfZUhkFYDa1DoHyxVjWswB0Fkfin-W60R_PQg
       responses:
         '200':
           description: Successful response
@@ -120,25 +170,58 @@ paths:
       summary: store signup data
       requestBody:
         content:
-          application/json:
+          multipart/form-data:
             schema:
               type: object
-              example:
-                company_name: Mero Vision
-                legal_name: Mero Vision Pvt. Ltd.
-                pan_vat_number: '556577'
-                company_reg_no: '565676'
-                company_email: info@merovision.com
-                company_phone: '9825915122'
-                address: Kathmandu, Nepal
-                district: Kathmandu
-                province: Bagmati
-                country: Nepal
-                branch_name: Head Office
-                name: Admin
-                email: hanciephago@gmail.com
-                password: Password123
-                password_confirmation: Password123
+              properties:
+                company_name:
+                  type: string
+                  example: Mero Vision
+                legal_name:
+                  type: string
+                  example: Mero Vision Pvt. Ltd
+                pan_vat_number:
+                  type: integer
+                  example: '55657'
+                company_reg_no:
+                  type: integer
+                  example: '565676'
+                company_email:
+                  type: string
+                  example: support@merovision.com
+                company_phone:
+                  type: integer
+                  example: '9825915122'
+                address:
+                  type: string
+                  example: Kathmandu, Nepal
+                district:
+                  type: string
+                  example: Kathmandu
+                province:
+                  type: string
+                  example: Bagmati
+                country:
+                  type: string
+                  example: Nepal
+                branch_name:
+                  type: string
+                  example: Head Office
+                name:
+                  type: string
+                  example: Admin
+                email:
+                  type: string
+                  example: hancie0phago@gmail.com
+                password:
+                  type: string
+                  example: Password123
+                password_confirmation:
+                  type: string
+                  example: Password123
+                company_logo:
+                  type: string
+                  format: binary
       parameters:
         - name: Accept
           in: header
@@ -163,7 +246,7 @@ paths:
               properties:
                 otp:
                   type: integer
-                  example: '484448'
+                  example: '526927'
                 email:
                   type: string
                   example: hanciephago@gmail.com
@@ -588,6 +671,71 @@ paths:
           schema:
             type: string
           example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/company-update:
+    post:
+      tags:
+        - Admin > Company
+      summary: update company detail
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Recruzen Pvt. Ltd.
+                legal_name:
+                  type: string
+                  example: Recruzen Private Limited
+                pan_vat_number:
+                  type: integer
+                  example: '123456789'
+                company_reg_no:
+                  type: string
+                  example: REG-2024-001
+                address:
+                  type: string
+                  example: Kathmandu, Baneshwor
+                district:
+                  type: string
+                  example: Kathmandu
+                province:
+                  type: string
+                  example: Bagmati
+                country:
+                  type: string
+                  example: Nepal
+                phone:
+                  type: string
+                  example: +977-9800000000
+                email:
+                  type: string
+                  example: info@recruzen.com
+                company_logo:
+                  type: string
+                  format: binary
+                _method:
+                  type: string
+                  example: PUT
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -1883,10 +2031,10 @@ paths:
                   example: '4654656777'
                 personal_email:
                   type: string
-                  example: pravesh6565@gmail.com
+                  example: pravesh65@gmail.com
                 work_email:
                   type: string
-                  example: pravesh7565@gmail.com
+                  example: pravesh65@gmail.com
                 address:
                   type: string
                   example: KTM
@@ -1919,7 +2067,7 @@ paths:
                   example: '100'
                 salary_type:
                   type: string
-                  example: project,hourly,commission,salary
+                  example: monthly
                 hourly_rate:
                   type: string
                 commission_rate:
@@ -2174,7 +2322,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/admin/employee-identities/{employee_id}:
+  /api/admin/employee-identities/5:
     get:
       tags:
         - Admin > HR Master > Employee Identity
@@ -2192,11 +2340,6 @@ paths:
           schema:
             type: integer
           example: '1'
-        - name: employee_id
-          in: path
-          schema:
-            type: string
-          required: true
       responses:
         '200':
           description: Successful response
@@ -2236,6 +2379,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/admin/employee-identities/4:
     delete:
       tags:
         - Admin > HR Master > Employee Identity
@@ -2248,11 +2392,11 @@ paths:
           schema:
             type: string
           example: application/json
-        - name: id
-          in: path
+        - name: branch-id
+          in: header
           schema:
-            type: string
-          required: true
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -3785,6 +3929,29 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/admin/projects-status-counts:
+    get:
+      tags:
+        - Admin > Projects > Projects
+      summary: show project status count
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/admin/project-members:
     post:
       tags:
@@ -3959,7 +4126,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/admin/payment-method/{id}:
+  /api/admin/payment-method/2:
     post:
       tags:
         - Admin > Settings > Payment Method
@@ -3972,17 +4139,20 @@ paths:
               properties:
                 name:
                   type: string
-                  example: Cash
+                  example: Fonepay
                 secret_key:
                   type: string
+                  example: fgfdg
                 public_key:
                   type: string
+                  example: hgfhgfh
                 merchant_code:
                   type: string
                 username:
                   type: string
                 password:
                   type: string
+                  example: cdfgvfcgf
                 status:
                   type: string
                   example: active
@@ -3992,6 +4162,41 @@ paths:
                 _method:
                   type: string
                   example: PUT
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/payment-method/{id}/status:
+    post:
+      tags:
+        - Admin > Settings > Payment Method
+      summary: update payment method status
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  example: inactive
+                _method:
+                  type: string
+                  example: PATCH
       security:
         - bearerAuth: []
       parameters:
@@ -4015,6 +4220,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/admin/payment-method/{id}:
     delete:
       tags:
         - Admin > Settings > Payment Method
@@ -4042,23 +4248,10 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/admin/payment-method/{id}/status:
-    post:
+    get:
       tags:
         - Admin > Settings > Payment Method
-      summary: update payment method status
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                status:
-                  type: string
-                  example: inactive
-                _method:
-                  type: string
-                  example: PATCH
+      summary: show single payment method
       security:
         - bearerAuth: []
       parameters:
@@ -4115,10 +4308,6 @@ paths:
           multipart/form-data:
             schema:
               type: object
-              properties:
-                _method:
-                  type: string
-                  example: PATCH
       security:
         - bearerAuth: []
       parameters:
@@ -4169,68 +4358,31 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/admin/plugins/google-calendar/google_calendar/configure:
-    post:
-      tags:
-        - Admin > Settings > Plugin > Google Calender
-      summary: configure plugin
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                client_id: >-
-                  728800371511-3t66tpk1jd00uu85fv41pcbka416tsbe.apps.googleusercontent.com
-                client_secret: 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
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: Accept
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: branch-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
   /api/admin/plugins/google-calendar/callback:
     get:
       tags:
         - Admin > Settings > Plugin > Google Calender
       summary: google calender callback
       security:
-        - bearerAuth: []
+        - noauthAuth: []
       parameters:
         - name: Accept
           in: header
           schema:
             type: string
           example: application/json
-        - name: branch-id
-          in: header
-          schema:
-            type: integer
-          example: '1'
         - name: state
           in: query
           schema:
             type: string
           example: >-
-            eyJpdiI6InREOTQ1UHk2cjZpNDdPQVc4a1FpcXc9PSIsInZhbHVlIjoiUWFVcDhwNlVHU2szZ3ViVXFqQ2lNOHJCL1lURFJJZDdiWEt6VUFOajViSUVHRHRKYkNoK083R2pNQkNMUzZkZyIsIm1hYyI6IjI3ZWMzNGEwNDVjYmU5ZDkzNmRlYTdjZjM5NzlmMzI5NTkxNDFkMWE0MDRkZjk0NjE1NTFmM2FkNmI0MDRhNTciLCJ0YWciOiIifQ%3D%3D%26
+            eyJpdiI6IjBLQkxnKzlYME9uSFJrWjVSTVdvREE9PSIsInZhbHVlIjoiK1Y1UkV2L09MMGpZdzhZc1gzdDVYcFZsa3o3UnpxNVlmSGRkZEFkT280RT0iLCJtYWMiOiJkNTFjOTI1Y2M1MzgzNGM4Nzc1MDc5YjNlNGEzZWEyY2FlN2MwYjQ5MzY4NzBiMTZhZDBmYmNhNzY1ZWE5NTZhIiwidGFnIjoiIn0%3D%26
         - name: code
           in: query
           schema:
             type: string
           example: >-
-            4/0AfrIepBjnBCJILjuogCOTwO0MiViGlXypTYbMjsw6SjHn8RSthAxILlU2xwh0YZXqqmJ2A%26
+            4/0AfrIepDdNHkEIgi4czWh8uUVWLpQTIlG8mLiES15GHbevabRXeowx3O04qFGZlY47tyE9g%26
       responses:
         '200':
           description: Successful response
@@ -4359,7 +4511,7 @@ paths:
               properties:
                 otp:
                   type: integer
-                  example: '536825'
+                  example: '460525'
       security:
         - bearerAuth: []
       parameters:
@@ -5466,6 +5618,146 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/admin/recruitment/candidates:
+    get:
+      tags:
+        - Admin > Recruitment > Candidate
+      summary: show all candidates
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/recruitment/candidates/{slug}:
+    get:
+      tags:
+        - Admin > Recruitment > Candidate
+      summary: show single candidate
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: slug
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/recruitment/job-applications/2/stage:
+    post:
+      tags:
+        - Admin > Recruitment > Job Application
+      summary: update job application stage
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                stage:
+                  type: string
+                  example: interview_scheduled
+                remarks:
+                  type: string
+                  example: hy
+                _method:
+                  type: string
+                  example: PATCH
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/recruitment/job-applications:
+    get:
+      tags:
+        - Admin > Recruitment > Job Application
+      summary: show all job applications
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/recruitment/job-applications/{application}:
+    get:
+      tags:
+        - Admin > Recruitment > Job Application
+      summary: show single application data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: application
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/admin/accounting/financial-expenses:
     post:
       tags:
@@ -5992,6 +6284,47 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/admin/versions:
+    get:
+      tags:
+        - Admin > Version
+      summary: show all version list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/versions/{id}:
+    get:
+      tags:
+        - Admin > Version
+      summary: show single version data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/vacancies:
     get:
       tags:
@@ -6104,6 +6437,81 @@ paths:
           schema:
             type: string
           required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/candidates:
+    post:
+      tags:
+        - Website > Candidate
+      summary: store candidate data
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                vacancy_id:
+                  type: integer
+                  example: '2'
+                name:
+                  type: string
+                  example: Aveshesh KC
+                email:
+                  type: string
+                  example: avesh@gmail.com
+                phone:
+                  type: integer
+                  example: '45656576'
+                date_of_birth:
+                  type: string
+                  example: '2000-01-20'
+                gender:
+                  type: string
+                  example: male
+                nationality:
+                  type: string
+                  example: Nepalese
+                is_married:
+                  type: integer
+                  example: '0'
+                note:
+                  type: string
+                  example: hhh
+                address:
+                  type: string
+                  example: Kathmandu
+                district:
+                  type: string
+                  example: Kathmandu
+                province:
+                  type: string
+                  example: Bagmati
+                country:
+                  type: string
+                  example: Nepal
+                profile_image:
+                  type: string
+                  format: binary
+                cover_letter:
+                  type: string
+                  example: hy
+                expected_salary:
+                  type: integer
+                  example: '20000'
+                available_from:
+                  type: string
+                  example: '2026-03-25'
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
       responses:
         '200':
           description: Successful response
