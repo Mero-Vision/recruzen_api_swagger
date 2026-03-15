@@ -9571,7 +9571,7 @@
                       }
                     ],
                     "url": {
-                      "raw": "{{url}}/api/admin/recruitment/vacancies/{slug}",
+                      "raw": "{{url}}/api/admin/recruitment/vacancies/laravel-developer",
                       "host": [
                         "{{url}}"
                       ],
@@ -9580,7 +9580,7 @@
                         "admin",
                         "recruitment",
                         "vacancies",
-                        "{slug}"
+                        "laravel-developer"
                       ]
                     }
                   },
@@ -11110,7 +11110,7 @@
                     },
                     {
                       "key": "email",
-                      "value": "avesh@gmail.com",
+                      "value": "avesh1@gmail.com",
                       "type": "text",
                       "uuid": "529fe2d2-6f72-470a-99dd-ef5643acde7c"
                     },
@@ -11178,7 +11178,7 @@
                       "key": "profile_image",
                       "type": "file",
                       "uuid": "d58aa066-a1fe-447b-9913-af31c65d4e25",
-                      "src": "/C:/Users/user/Downloads/Blue Red Modern Step By Step Guide To Starting A Business Graph.png"
+                      "src": "/C:/Users/user/Videos/WhatsApp Image 2026-01-28 at 8.59.07 AM.jpeg"
                     },
                     {
                       "key": "cover_letter",
@@ -11197,6 +11197,12 @@
                       "value": "2026-03-25",
                       "type": "text",
                       "uuid": "0322d1f2-8df6-49f8-9310-6aaf197c2569"
+                    },
+                    {
+                      "key": "resume",
+                      "type": "file",
+                      "uuid": "b77ca3f9-e65d-4471-af97-b3f0a7dfa404",
+                      "src": "/C:/Users/user/Videos/Initial updation doc.pdf"
                     }
                   ]
                 },
