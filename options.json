@@ -21,7 +21,7 @@
     },
     "servers": [
         {
-            "url": "https://api.recruzen.com/",
+            "url": "https://recruzen-api.merovision.com/",
             "description": "server"
         }
     ]
