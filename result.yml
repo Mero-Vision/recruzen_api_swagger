@@ -16,7 +16,7 @@ info:
     name: MIT
     url: https://es.wikipedia.org/wiki/Licencia_MIT
 servers:
-  - url: https://api.recruzen.com/
+  - url: https://recruzen-api.merovision.com/
     description: server
 components:
   securitySchemes:
