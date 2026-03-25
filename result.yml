@@ -78,7 +78,10 @@ tags:
   - name: Admin > Payroll
   - name: Admin > Payroll > Employee Payroll
   - name: Admin > Payroll > Employee Payroll Payment
-  - name: Admin > Assets & Software Licenses
+  - name: Admin > Helpdesk / IT
+  - name: Admin > Helpdesk / IT > IT Asset
+  - name: Admin > Helpdesk / IT > Software Licenses
+  - name: Admin > Helpdesk / IT > Help Desk Ticket
   - name: Admin > Recruitment
   - name: Admin > Recruitment > Job Category
   - name: Admin > Recruitment > Vacancy
@@ -89,6 +92,7 @@ tags:
   - name: Admin > Purchase > Supplier
   - name: Admin > HR Assistant
   - name: Admin > Version
+  - name: Admin > Notifications
   - name: Website
   - name: Website > Vacancy
   - name: Website > Candidate
@@ -5399,6 +5403,1388 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/admin/it-assets:
+    post:
+      tags:
+        - Admin > Helpdesk / IT > IT Asset
+      summary: store it asset data
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: Dell Latitude 5520
+                type: laptop
+                brand: Dell
+                model: Latitude 5520
+                serial_number: DL-2024-00123
+                status: available
+                condition: good
+                assigned_to: 3
+                assigned_at: '2024-11-01'
+                purchase_date: '2024-01-15'
+                purchase_price: 1250
+                vendor: Dell Technologies
+                warranty_expires_at: '2027-01-15'
+                location: Office Floor 2 - Desk 14
+                notes: Assigned to dev team. Has docking station.
+                specs:
+                  cpu: Intel Core i7-1165G7
+                  ram: 16GB DDR4
+                  storage: 512GB NVMe SSD
+                  display: 15.6 inch FHD
+                  os: Windows 11 Pro
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '201':
+          description: Created
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 127.0.0.1:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.3.0
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Tue, 24 Mar 2026 11:24:37 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '120'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '115'
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Frame-Options:
+              schema:
+                type: string
+                example: DENY
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000; includeSubDomains; preload
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            Permissions-Policy:
+              schema:
+                type: string
+                example: geolocation=(), microphone=(), camera=()
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: default-src 'self'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: |-
+                {
+                    "data": {
+                        "id": 4,
+                        "asset_tag": "LAP-ZGWUFH",
+                        "name": "Dell Latitude 5520",
+                        "type": "laptop",
+                        "brand": "Dell",
+                        "model": "Latitude 5520",
+                        "serial_number": "DL-2024-00123",
+                        "status": "available",
+                        "condition": "good",
+                        "location": "Office Floor 2 - Desk 14",
+                        "purchase_date": "2024-01-15",
+                        "purchase_price": 1250,
+                        "vendor": "Dell Technologies",
+                        "warranty_expires_at": "2027-01-15",
+                        "warranty_status": "Valid (296 days left)",
+                        "specs": {
+                            "cpu": "Intel Core i7-1165G7",
+                            "ram": "16GB DDR4",
+                            "storage": "512GB NVMe SSD",
+                            "display": "15.6 inch FHD",
+                            "os": "Windows 11 Pro"
+                        },
+                        "notes": "Assigned to dev team. Has docking station.",
+                        "assigned_at": "2024-11-01",
+                        "assigned_employee": {
+                            "id": 3,
+                            "name": "Pravesh Rai",
+                            "slug": "pravesh-rai-1",
+                            "employee_image": null,
+                            "designation": "Software Developer",
+                            "department": "Frontend Department"
+                        },
+                        "created_at": "24 Mar, 2026"
+                    }
+                }
+    get:
+      tags:
+        - Admin > Helpdesk / IT > IT Asset
+      summary: show all it assets data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 127.0.0.1:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.3.0
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Tue, 24 Mar 2026 11:25:23 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '120'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '119'
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Frame-Options:
+              schema:
+                type: string
+                example: DENY
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000; includeSubDomains; preload
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            Permissions-Policy:
+              schema:
+                type: string
+                example: geolocation=(), microphone=(), camera=()
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: default-src 'self'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: |-
+                {
+                    "data": [
+                        {
+                            "id": 4,
+                            "asset_tag": "LAP-ZGWUFH",
+                            "name": "Dell Latitude 5520",
+                            "type": "laptop",
+                            "brand": "Dell",
+                            "model": "Latitude 5520",
+                            "serial_number": "DL-2024-00123",
+                            "status": "available",
+                            "condition": "good",
+                            "location": "Office Floor 2 - Desk 14",
+                            "purchase_date": "2024-01-15",
+                            "purchase_price": "1250.00",
+                            "vendor": "Dell Technologies",
+                            "warranty_expires_at": "2027-01-15",
+                            "warranty_status": "Valid (296 days left)",
+                            "specs": {
+                                "os": "Windows 11 Pro",
+                                "cpu": "Intel Core i7-1165G7",
+                                "ram": "16GB DDR4",
+                                "display": "15.6 inch FHD",
+                                "storage": "512GB NVMe SSD"
+                            },
+                            "notes": "Assigned to dev team. Has docking station.",
+                            "assigned_at": "2024-11-01",
+                            "assigned_employee": {
+                                "id": 3,
+                                "name": "Pravesh Rai",
+                                "slug": "pravesh-rai-1",
+                                "employee_image": null,
+                                "designation": "Software Developer",
+                                "department": "Frontend Department"
+                            },
+                            "created_at": "24 Mar, 2026"
+                        }
+                    ],
+                    "links": {
+                        "first": null,
+                        "last": null,
+                        "prev": null,
+                        "next": null
+                    },
+                    "meta": {
+                        "path": "http://127.0.0.1:8000/api/admin/it-assets",
+                        "per_page": 20,
+                        "next_cursor": null,
+                        "prev_cursor": null
+                    }
+                }
+  /api/admin/it-assets/{id}:
+    post:
+      tags:
+        - Admin > Helpdesk / IT > IT Asset
+      summary: update it asset data
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: Dell Latitude 5520
+                type: laptop
+                brand: Dell
+                model: Latitude 5520
+                serial_number: DL-2024-00123
+                status: available
+                condition: good
+                assigned_to: 3
+                assigned_at: '2024-11-01'
+                purchase_date: '2024-01-15'
+                purchase_price: 1250
+                vendor: Dell Technologies
+                warranty_expires_at: '2027-01-15'
+                location: Office Floor 2 - Desk 14
+                notes: Assigned to dev team. Has docking station.
+                specs:
+                  cpu: Intel Core i7-1165G7
+                  ram: 16GB DDR4
+                  storage: 512GB NVMe SSD
+                  display: 15.6 inch FHD
+                  os: Windows 11 Pro
+                _method: PUT
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 127.0.0.1:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.3.0
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Tue, 24 Mar 2026 11:30:24 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '120'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '119'
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Frame-Options:
+              schema:
+                type: string
+                example: DENY
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000; includeSubDomains; preload
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            Permissions-Policy:
+              schema:
+                type: string
+                example: geolocation=(), microphone=(), camera=()
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: default-src 'self'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: |-
+                {
+                    "data": {
+                        "id": 4,
+                        "asset_tag": "LAP-ZGWUFH",
+                        "name": "Dell Latitude 5520",
+                        "type": "laptop",
+                        "brand": "Dell",
+                        "model": "Latitude 5520",
+                        "serial_number": "DL-2024-00123",
+                        "status": "available",
+                        "condition": "good",
+                        "location": "Office Floor 2 - Desk 14",
+                        "purchase_date": "2024-01-15",
+                        "purchase_price": "1250.00",
+                        "vendor": "Dell Technologies",
+                        "warranty_expires_at": "2027-01-15",
+                        "warranty_status": "Valid (296 days left)",
+                        "specs": {
+                            "os": "Windows 11 Pro",
+                            "cpu": "Intel Core i7-1165G7",
+                            "ram": "16GB DDR4",
+                            "display": "15.6 inch FHD",
+                            "storage": "512GB NVMe SSD"
+                        },
+                        "notes": "Assigned to dev team. Has docking station.",
+                        "assigned_at": "2024-11-01",
+                        "assigned_employee": {
+                            "id": 3,
+                            "name": "Pravesh Rai",
+                            "slug": "pravesh-rai-1",
+                            "employee_image": null,
+                            "designation": "Software Developer",
+                            "department": "Frontend Department"
+                        },
+                        "created_at": "24 Mar, 2026"
+                    },
+                    "message": "Asset updated successfully."
+                }
+    get:
+      tags:
+        - Admin > Helpdesk / IT > IT Asset
+      summary: show single it assets data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 127.0.0.1:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.3.0
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Tue, 24 Mar 2026 11:25:34 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '120'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '118'
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Frame-Options:
+              schema:
+                type: string
+                example: DENY
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000; includeSubDomains; preload
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            Permissions-Policy:
+              schema:
+                type: string
+                example: geolocation=(), microphone=(), camera=()
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: default-src 'self'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: |-
+                {
+                    "data": {
+                        "id": 4,
+                        "asset_tag": "LAP-ZGWUFH",
+                        "name": "Dell Latitude 5520",
+                        "type": "laptop",
+                        "brand": "Dell",
+                        "model": "Latitude 5520",
+                        "serial_number": "DL-2024-00123",
+                        "status": "available",
+                        "condition": "good",
+                        "location": "Office Floor 2 - Desk 14",
+                        "purchase_date": "2024-01-15",
+                        "purchase_price": "1250.00",
+                        "vendor": "Dell Technologies",
+                        "warranty_expires_at": "2027-01-15",
+                        "warranty_status": "Valid (296 days left)",
+                        "specs": {
+                            "os": "Windows 11 Pro",
+                            "cpu": "Intel Core i7-1165G7",
+                            "ram": "16GB DDR4",
+                            "display": "15.6 inch FHD",
+                            "storage": "512GB NVMe SSD"
+                        },
+                        "notes": "Assigned to dev team. Has docking station.",
+                        "assigned_at": "2024-11-01",
+                        "assigned_employee": {
+                            "id": 3,
+                            "name": "Pravesh Rai",
+                            "slug": "pravesh-rai-1",
+                            "employee_image": null,
+                            "designation": "Software Developer",
+                            "department": "Frontend Department"
+                        },
+                        "history": [
+                            {
+                                "id": 20,
+                                "company_id": 1,
+                                "branch_id": 1,
+                                "asset_id": 4,
+                                "employee_id": 3,
+                                "action": "assigned",
+                                "notes": "Initial assignment on asset creation.",
+                                "performed_by": {
+                                    "id": 1,
+                                    "google_id": null,
+                                    "avatar": null,
+                                    "company_id": 1,
+                                    "name": "Admin",
+                                    "username": "admin",
+                                    "email": "admin@merovision.com",
+                                    "email_verified_at": "2026-01-01T15:50:25.000000Z",
+                                    "two_factor_enabled": false,
+                                    "two_factor_confirmed_at": null,
+                                    "created_at": "2026-01-01T15:50:25.000000Z",
+                                    "updated_at": "2026-03-07T16:05:53.000000Z"
+                                },
+                                "performed_at": "2026-03-24T11:24:37.000000Z",
+                                "created_at": "2026-03-24T11:24:37.000000Z",
+                                "updated_at": "2026-03-24T11:24:37.000000Z"
+                            }
+                        ],
+                        "created_at": "24 Mar, 2026"
+                    }
+                }
+    delete:
+      tags:
+        - Admin > Helpdesk / IT > IT Asset
+      summary: delete it assets
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/it-assets/{id}/assign:
+    post:
+      tags:
+        - Admin > Helpdesk / IT > IT Asset
+      summary: assign employee to asset
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                employee_id:
+                  type: integer
+                  example: '4'
+                notes:
+                  type: string
+                  example: hy
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/it-assets/{id}/unassign:
+    post:
+      tags:
+        - Admin > Helpdesk / IT > IT Asset
+      summary: unassign employee to asset
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                notes:
+                  type: string
+                  example: hello
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/it-assets/stats:
+    get:
+      tags:
+        - Admin > Helpdesk / IT > IT Asset
+      summary: IT Assets Stats
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/software-licenses:
+    post:
+      tags:
+        - Admin > Helpdesk / IT > Software Licenses
+      summary: store software licenses
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                software_name: Microsoft 365
+                vendor: Microsoft
+                version: '2024'
+                license_type: subscription
+                license_key: XXXXX-XXXXX-XXXXX-XXXXX-XXXXX
+                total_seats: 50
+                cost_per_seat: 12.99
+                total_cost: 649.5
+                billing_cycle: monthly
+                purchase_date: '2024-01-01'
+                expires_at: '2026-05-01'
+                auto_renew: true
+                status: active
+                vendor_contact: support@microsoft.com
+                support_url: https://support.microsoft.com
+                notes: Company-wide Microsoft 365 Business Standard license.
+                tags:
+                  - productivity
+                  - required
+                  - remote-work
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Admin > Helpdesk / IT > Software Licenses
+      summary: show all software licenses data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: pagination_limit
+          in: query
+          schema:
+            type: string
+        - name: status
+          in: query
+          schema:
+            type: string
+        - name: license_type
+          in: query
+          schema:
+            type: string
+        - name: expiring_within_days
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/software-licenses/1:
+    post:
+      tags:
+        - Admin > Helpdesk / IT > Software Licenses
+      summary: update software licenses
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                software_name: Microsoft 365
+                vendor: Microsoft
+                version: '2024'
+                license_type: subscription
+                license_key: XXXXX-XXXXX-XXXXX-XXXXX-XXXXX
+                total_seats: 50
+                cost_per_seat: 12.99
+                total_cost: 649.5
+                billing_cycle: monthly
+                purchase_date: '2024-01-01'
+                expires_at: '2026-05-01'
+                auto_renew: true
+                status: active
+                vendor_contact: support@microsoft.com
+                support_url: https://support.microsoft.com
+                notes: Company-wide Microsoft 365 Business Standard license.
+                tags:
+                  - productivity
+                  - required
+                  - remote-work
+                _method: PUT
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/software-licenses/2:
+    get:
+      tags:
+        - Admin > Helpdesk / IT > Software Licenses
+      summary: show single software license data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Host:
+              schema:
+                type: string
+                example: 127.0.0.1:8000
+            Connection:
+              schema:
+                type: string
+                example: close
+            X-Powered-By:
+              schema:
+                type: string
+                example: PHP/8.3.0
+            Cache-Control:
+              schema:
+                type: string
+                example: no-cache, private
+            Date:
+              schema:
+                type: string
+                example: Tue, 24 Mar 2026 12:56:52 GMT
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            X-RateLimit-Limit:
+              schema:
+                type: integer
+                example: '120'
+            X-RateLimit-Remaining:
+              schema:
+                type: integer
+                example: '117'
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-Frame-Options:
+              schema:
+                type: string
+                example: DENY
+            X-XSS-Protection:
+              schema:
+                type: string
+                example: 1; mode=block
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000; includeSubDomains; preload
+            Referrer-Policy:
+              schema:
+                type: string
+                example: strict-origin-when-cross-origin
+            Permissions-Policy:
+              schema:
+                type: string
+                example: geolocation=(), microphone=(), camera=()
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: default-src 'self'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: |-
+                {
+                    "data": {
+                        "id": 1,
+                        "software_name": "Microsoft 365",
+                        "vendor": "Microsoft",
+                        "version": "2024",
+                        "license_type": "subscription",
+                        "total_seats": 50,
+                        "used_seats": 0,
+                        "available_seats": 50,
+                        "billing_cycle": "monthly",
+                        "cost_per_seat": "12.99",
+                        "total_cost": "649.50",
+                        "purchase_date": "2024-01-01",
+                        "expires_at": "2026-05-01",
+                        "expiry_status": "expiring_soon",
+                        "auto_renew": true,
+                        "status": "active",
+                        "vendor_contact": "support@microsoft.com",
+                        "support_url": "https://support.microsoft.com",
+                        "tags": [
+                            "productivity",
+                            "required",
+                            "remote-work"
+                        ],
+                        "notes": "Company-wide Microsoft 365 Business Standard license.",
+                        "assignments": [],
+                        "created_at": "24 Mar, 2026"
+                    }
+                }
+  /api/admin/software-licenses/{id}:
+    delete:
+      tags:
+        - Admin > Helpdesk / IT > Software Licenses
+      summary: delete software license data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/software-licenses/2/assign:
+    post:
+      tags:
+        - Admin > Helpdesk / IT > Software Licenses
+      summary: software licenses employee assignment
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                employee_id:
+                  type: integer
+                  example: '4'
+                notes:
+                  type: string
+                  example: hy
+                seat_identifier:
+                  type: string
+                  example: hancie4545
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/software-licenses/stats:
+    get:
+      tags:
+        - Admin > Helpdesk / IT > Software Licenses
+      summary: show software license stats
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/software-licenses/{assignment_id}/revoke:
+    delete:
+      tags:
+        - Admin > Helpdesk / IT > Software Licenses
+      summary: revoke employee from software licenses
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: assignment_id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/helpdesk-tickets:
+    post:
+      tags:
+        - Admin > Helpdesk / IT > Help Desk Ticket
+      summary: store help desk ticket data
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                subject: Laptop not connecting to office Wi-Fi
+                description: >-
+                  My laptop (Dell XPS 15) has been unable to connect to the
+                  office Wi-Fi network since this morning. It connects fine on
+                  mobile hotspot. I've tried restarting and forgetting the
+                  network. Other colleagues on the same floor are unaffected.
+                category: it_network
+                priority: high
+                raised_by: 3
+                asset_id: 4
+                tags:
+                  - wifi
+                  - connectivity
+                  - dell-xps
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Admin > Helpdesk / IT > Help Desk Ticket
+      summary: show all help desk ticket data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: pagination_limit
+          in: query
+          schema:
+            type: integer
+          example: '8'
+        - name: status
+          in: query
+          schema:
+            type: string
+        - name: priority
+          in: query
+          schema:
+            type: string
+        - name: category
+          in: query
+          schema:
+            type: string
+        - name: assigned_to
+          in: query
+          schema:
+            type: string
+        - name: raised_by
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/helpdesk-tickets/{id}:
+    post:
+      tags:
+        - Admin > Helpdesk / IT > Help Desk Ticket
+      summary: update help desk ticket data
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                subject: Laptop not connecting to office Wi-Fi
+                description: >-
+                  My laptop (Dell XPS 15) has been unable to connect to the
+                  office Wi-Fi network since this morning. It connects fine on
+                  mobile hotspot. I've tried restarting and forgetting the
+                  network. Other colleagues on the same floor are unaffected.
+                category: it_network
+                priority: high
+                raised_by: 3
+                asset_id: 4
+                tags:
+                  - wifi
+                  - connectivity
+                  - dell-xps
+                _method: PUT
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Admin > Helpdesk / IT > Help Desk Ticket
+      summary: delete help desk ticket
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/helpdesk-tickets/1/comments:
+    post:
+      tags:
+        - Admin > Helpdesk / IT > Help Desk Ticket
+      summary: add comment to help desk ticket
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                comment:
+                  type: string
+                  example: problem solved
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/helpdesk-tickets/{id}/rate:
+    post:
+      tags:
+        - Admin > Helpdesk / IT > Help Desk Ticket
+      summary: rate to help desk ticket
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                rating:
+                  type: integer
+                  example: '3'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/helpdesk-tickets/{id}/status:
+    post:
+      tags:
+        - Admin > Helpdesk / IT > Help Desk Ticket
+      summary: update help desk ticket status
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  example: resolved
+                resolution_notes:
+                  type: string
+                  example: hy
+                _method:
+                  type: string
+                  example: PATCH
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/admin/recruitment/job-categories:
     get:
       tags:
@@ -5664,7 +7050,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/admin/recruitment/job-applications/2/stage:
+  /api/admin/recruitment/job-applications/5/stage:
     post:
       tags:
         - Admin > Recruitment > Job Application
@@ -5677,7 +7063,7 @@ paths:
               properties:
                 stage:
                   type: string
-                  example: interview_scheduled
+                  example: rejected
                 remarks:
                   type: string
                   example: hy
@@ -6320,6 +7706,158 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/admin/notifications:
+    get:
+      tags:
+        - Admin > Notifications
+      summary: show all notifications
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/notifications/unread-count:
+    get:
+      tags:
+        - Admin > Notifications
+      summary: unread count
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/notifications/read-all:
+    post:
+      tags:
+        - Admin > Notifications
+      summary: read all
+      requestBody:
+        content: {}
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/notifications/preferences:
+    get:
+      tags:
+        - Admin > Notifications
+      summary: preferences
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/notifications/{id}/read:
+    post:
+      tags:
+        - Admin > Notifications
+      summary: read notification
+      requestBody:
+        content: {}
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/notifications/{id}:
+    delete:
+      tags:
+        - Admin > Notifications
+      summary: delete notifications
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/vacancies:
     get:
       tags:
@@ -6453,10 +7991,10 @@ paths:
                   example: '2'
                 name:
                   type: string
-                  example: Aveshesh KC
+                  example: Hancie Phago
                 email:
                   type: string
-                  example: avesh1@gmail.com
+                  example: hanciephago@gmail.com
                 phone:
                   type: integer
                   example: '45656576'
