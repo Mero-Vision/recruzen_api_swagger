@@ -9352,8 +9352,1674 @@
           ]
         },
         {
-          "name": "Assets & Software Licenses",
-          "item": []
+          "name": "Helpdesk / IT",
+          "item": [
+            {
+              "name": "IT Asset",
+              "item": [
+                {
+                  "name": "store it asset data",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"name\": \"Dell Latitude 5520\",\r\n  \"type\": \"laptop\",\r\n  \"brand\": \"Dell\",\r\n  \"model\": \"Latitude 5520\",\r\n  \"serial_number\": \"DL-2024-00123\",\r\n  \"status\": \"available\",\r\n  \"condition\": \"good\",\r\n  \"assigned_to\": 3,\r\n  \"assigned_at\": \"2024-11-01\",\r\n  \"purchase_date\": \"2024-01-15\",\r\n  \"purchase_price\": 1250.00,\r\n  \"vendor\": \"Dell Technologies\",\r\n  \"warranty_expires_at\": \"2027-01-15\",\r\n  \"location\": \"Office Floor 2 - Desk 14\",\r\n  \"notes\": \"Assigned to dev team. Has docking station.\",\r\n  \"specs\": {\r\n    \"cpu\": \"Intel Core i7-1165G7\",\r\n    \"ram\": \"16GB DDR4\",\r\n    \"storage\": \"512GB NVMe SSD\",\r\n    \"display\": \"15.6 inch FHD\",\r\n    \"os\": \"Windows 11 Pro\"\r\n  }\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/admin/it-assets",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "it-assets"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "store it asset data",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json",
+                            "type": "text"
+                          },
+                          {
+                            "key": "branch-id",
+                            "value": "1",
+                            "type": "text"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\r\n  \"name\": \"Dell Latitude 5520\",\r\n  \"type\": \"laptop\",\r\n  \"brand\": \"Dell\",\r\n  \"model\": \"Latitude 5520\",\r\n  \"serial_number\": \"DL-2024-00123\",\r\n  \"status\": \"available\",\r\n  \"condition\": \"good\",\r\n  \"assigned_to\": 3,\r\n  \"assigned_at\": \"2024-11-01\",\r\n  \"purchase_date\": \"2024-01-15\",\r\n  \"purchase_price\": 1250.00,\r\n  \"vendor\": \"Dell Technologies\",\r\n  \"warranty_expires_at\": \"2027-01-15\",\r\n  \"location\": \"Office Floor 2 - Desk 14\",\r\n  \"notes\": \"Assigned to dev team. Has docking station.\",\r\n  \"specs\": {\r\n    \"cpu\": \"Intel Core i7-1165G7\",\r\n    \"ram\": \"16GB DDR4\",\r\n    \"storage\": \"512GB NVMe SSD\",\r\n    \"display\": \"15.6 inch FHD\",\r\n    \"os\": \"Windows 11 Pro\"\r\n  }\r\n}",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{url}}/api/admin/it-assets",
+                          "host": [
+                            "{{url}}"
+                          ],
+                          "path": [
+                            "api",
+                            "admin",
+                            "it-assets"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": null,
+                      "header": [
+                        {
+                          "key": "Host",
+                          "value": "127.0.0.1:8000"
+                        },
+                        {
+                          "key": "Connection",
+                          "value": "close"
+                        },
+                        {
+                          "key": "X-Powered-By",
+                          "value": "PHP/8.3.0"
+                        },
+                        {
+                          "key": "Cache-Control",
+                          "value": "no-cache, private"
+                        },
+                        {
+                          "key": "Date",
+                          "value": "Tue, 24 Mar 2026 11:24:37 GMT"
+                        },
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "key": "X-RateLimit-Limit",
+                          "value": "120"
+                        },
+                        {
+                          "key": "X-RateLimit-Remaining",
+                          "value": "115"
+                        },
+                        {
+                          "key": "X-Content-Type-Options",
+                          "value": "nosniff"
+                        },
+                        {
+                          "key": "X-Frame-Options",
+                          "value": "DENY"
+                        },
+                        {
+                          "key": "X-XSS-Protection",
+                          "value": "1; mode=block"
+                        },
+                        {
+                          "key": "Strict-Transport-Security",
+                          "value": "max-age=31536000; includeSubDomains; preload"
+                        },
+                        {
+                          "key": "Referrer-Policy",
+                          "value": "strict-origin-when-cross-origin"
+                        },
+                        {
+                          "key": "Permissions-Policy",
+                          "value": "geolocation=(), microphone=(), camera=()"
+                        },
+                        {
+                          "key": "Content-Security-Policy",
+                          "value": "default-src 'self'"
+                        },
+                        {
+                          "key": "Access-Control-Allow-Origin",
+                          "value": "*"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n    \"data\": {\n        \"id\": 4,\n        \"asset_tag\": \"LAP-ZGWUFH\",\n        \"name\": \"Dell Latitude 5520\",\n        \"type\": \"laptop\",\n        \"brand\": \"Dell\",\n        \"model\": \"Latitude 5520\",\n        \"serial_number\": \"DL-2024-00123\",\n        \"status\": \"available\",\n        \"condition\": \"good\",\n        \"location\": \"Office Floor 2 - Desk 14\",\n        \"purchase_date\": \"2024-01-15\",\n        \"purchase_price\": 1250,\n        \"vendor\": \"Dell Technologies\",\n        \"warranty_expires_at\": \"2027-01-15\",\n        \"warranty_status\": \"Valid (296 days left)\",\n        \"specs\": {\n            \"cpu\": \"Intel Core i7-1165G7\",\n            \"ram\": \"16GB DDR4\",\n            \"storage\": \"512GB NVMe SSD\",\n            \"display\": \"15.6 inch FHD\",\n            \"os\": \"Windows 11 Pro\"\n        },\n        \"notes\": \"Assigned to dev team. Has docking station.\",\n        \"assigned_at\": \"2024-11-01\",\n        \"assigned_employee\": {\n            \"id\": 3,\n            \"name\": \"Pravesh Rai\",\n            \"slug\": \"pravesh-rai-1\",\n            \"employee_image\": null,\n            \"designation\": \"Software Developer\",\n            \"department\": \"Frontend Department\"\n        },\n        \"created_at\": \"24 Mar, 2026\"\n    }\n}"
+                    }
+                  ]
+                },
+                {
+                  "name": "update it asset data",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"name\": \"Dell Latitude 5520\",\r\n  \"type\": \"laptop\",\r\n  \"brand\": \"Dell\",\r\n  \"model\": \"Latitude 5520\",\r\n  \"serial_number\": \"DL-2024-00123\",\r\n  \"status\": \"available\",\r\n  \"condition\": \"good\",\r\n  \"assigned_to\": 3,\r\n  \"assigned_at\": \"2024-11-01\",\r\n  \"purchase_date\": \"2024-01-15\",\r\n  \"purchase_price\": 1250.00,\r\n  \"vendor\": \"Dell Technologies\",\r\n  \"warranty_expires_at\": \"2027-01-15\",\r\n  \"location\": \"Office Floor 2 - Desk 14\",\r\n  \"notes\": \"Assigned to dev team. Has docking station.\",\r\n  \"specs\": {\r\n    \"cpu\": \"Intel Core i7-1165G7\",\r\n    \"ram\": \"16GB DDR4\",\r\n    \"storage\": \"512GB NVMe SSD\",\r\n    \"display\": \"15.6 inch FHD\",\r\n    \"os\": \"Windows 11 Pro\"\r\n  },\r\n  \"_method\":\"PUT\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/admin/it-assets/{id}",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "it-assets",
+                        "{id}"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "update it asset data",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json",
+                            "type": "text"
+                          },
+                          {
+                            "key": "branch-id",
+                            "value": "1",
+                            "type": "text"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\r\n  \"name\": \"Dell Latitude 5520\",\r\n  \"type\": \"laptop\",\r\n  \"brand\": \"Dell\",\r\n  \"model\": \"Latitude 5520\",\r\n  \"serial_number\": \"DL-2024-00123\",\r\n  \"status\": \"available\",\r\n  \"condition\": \"good\",\r\n  \"assigned_to\": 3,\r\n  \"assigned_at\": \"2024-11-01\",\r\n  \"purchase_date\": \"2024-01-15\",\r\n  \"purchase_price\": 1250.00,\r\n  \"vendor\": \"Dell Technologies\",\r\n  \"warranty_expires_at\": \"2027-01-15\",\r\n  \"location\": \"Office Floor 2 - Desk 14\",\r\n  \"notes\": \"Assigned to dev team. Has docking station.\",\r\n  \"specs\": {\r\n    \"cpu\": \"Intel Core i7-1165G7\",\r\n    \"ram\": \"16GB DDR4\",\r\n    \"storage\": \"512GB NVMe SSD\",\r\n    \"display\": \"15.6 inch FHD\",\r\n    \"os\": \"Windows 11 Pro\"\r\n  },\r\n  \"_method\":\"PUT\"\r\n}",
+                          "options": {
+                            "raw": {
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{url}}/api/admin/it-assets/{id}",
+                          "host": [
+                            "{{url}}"
+                          ],
+                          "path": [
+                            "api",
+                            "admin",
+                            "it-assets",
+                            "{id}"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": null,
+                      "header": [
+                        {
+                          "key": "Host",
+                          "value": "127.0.0.1:8000"
+                        },
+                        {
+                          "key": "Connection",
+                          "value": "close"
+                        },
+                        {
+                          "key": "X-Powered-By",
+                          "value": "PHP/8.3.0"
+                        },
+                        {
+                          "key": "Cache-Control",
+                          "value": "no-cache, private"
+                        },
+                        {
+                          "key": "Date",
+                          "value": "Tue, 24 Mar 2026 11:30:24 GMT"
+                        },
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "key": "X-RateLimit-Limit",
+                          "value": "120"
+                        },
+                        {
+                          "key": "X-RateLimit-Remaining",
+                          "value": "119"
+                        },
+                        {
+                          "key": "X-Content-Type-Options",
+                          "value": "nosniff"
+                        },
+                        {
+                          "key": "X-Frame-Options",
+                          "value": "DENY"
+                        },
+                        {
+                          "key": "X-XSS-Protection",
+                          "value": "1; mode=block"
+                        },
+                        {
+                          "key": "Strict-Transport-Security",
+                          "value": "max-age=31536000; includeSubDomains; preload"
+                        },
+                        {
+                          "key": "Referrer-Policy",
+                          "value": "strict-origin-when-cross-origin"
+                        },
+                        {
+                          "key": "Permissions-Policy",
+                          "value": "geolocation=(), microphone=(), camera=()"
+                        },
+                        {
+                          "key": "Content-Security-Policy",
+                          "value": "default-src 'self'"
+                        },
+                        {
+                          "key": "Access-Control-Allow-Origin",
+                          "value": "*"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n    \"data\": {\n        \"id\": 4,\n        \"asset_tag\": \"LAP-ZGWUFH\",\n        \"name\": \"Dell Latitude 5520\",\n        \"type\": \"laptop\",\n        \"brand\": \"Dell\",\n        \"model\": \"Latitude 5520\",\n        \"serial_number\": \"DL-2024-00123\",\n        \"status\": \"available\",\n        \"condition\": \"good\",\n        \"location\": \"Office Floor 2 - Desk 14\",\n        \"purchase_date\": \"2024-01-15\",\n        \"purchase_price\": \"1250.00\",\n        \"vendor\": \"Dell Technologies\",\n        \"warranty_expires_at\": \"2027-01-15\",\n        \"warranty_status\": \"Valid (296 days left)\",\n        \"specs\": {\n            \"os\": \"Windows 11 Pro\",\n            \"cpu\": \"Intel Core i7-1165G7\",\n            \"ram\": \"16GB DDR4\",\n            \"display\": \"15.6 inch FHD\",\n            \"storage\": \"512GB NVMe SSD\"\n        },\n        \"notes\": \"Assigned to dev team. Has docking station.\",\n        \"assigned_at\": \"2024-11-01\",\n        \"assigned_employee\": {\n            \"id\": 3,\n            \"name\": \"Pravesh Rai\",\n            \"slug\": \"pravesh-rai-1\",\n            \"employee_image\": null,\n            \"designation\": \"Software Developer\",\n            \"department\": \"Frontend Department\"\n        },\n        \"created_at\": \"24 Mar, 2026\"\n    },\n    \"message\": \"Asset updated successfully.\"\n}"
+                    }
+                  ]
+                },
+                {
+                  "name": "show all it assets data",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{url}}/api/admin/it-assets",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "it-assets"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "show all it assets data",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json",
+                            "type": "text"
+                          },
+                          {
+                            "key": "branch-id",
+                            "value": "1",
+                            "type": "text"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{url}}/api/admin/it-assets",
+                          "host": [
+                            "{{url}}"
+                          ],
+                          "path": [
+                            "api",
+                            "admin",
+                            "it-assets"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": null,
+                      "header": [
+                        {
+                          "key": "Host",
+                          "value": "127.0.0.1:8000"
+                        },
+                        {
+                          "key": "Connection",
+                          "value": "close"
+                        },
+                        {
+                          "key": "X-Powered-By",
+                          "value": "PHP/8.3.0"
+                        },
+                        {
+                          "key": "Cache-Control",
+                          "value": "no-cache, private"
+                        },
+                        {
+                          "key": "Date",
+                          "value": "Tue, 24 Mar 2026 11:25:23 GMT"
+                        },
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "key": "X-RateLimit-Limit",
+                          "value": "120"
+                        },
+                        {
+                          "key": "X-RateLimit-Remaining",
+                          "value": "119"
+                        },
+                        {
+                          "key": "X-Content-Type-Options",
+                          "value": "nosniff"
+                        },
+                        {
+                          "key": "X-Frame-Options",
+                          "value": "DENY"
+                        },
+                        {
+                          "key": "X-XSS-Protection",
+                          "value": "1; mode=block"
+                        },
+                        {
+                          "key": "Strict-Transport-Security",
+                          "value": "max-age=31536000; includeSubDomains; preload"
+                        },
+                        {
+                          "key": "Referrer-Policy",
+                          "value": "strict-origin-when-cross-origin"
+                        },
+                        {
+                          "key": "Permissions-Policy",
+                          "value": "geolocation=(), microphone=(), camera=()"
+                        },
+                        {
+                          "key": "Content-Security-Policy",
+                          "value": "default-src 'self'"
+                        },
+                        {
+                          "key": "Access-Control-Allow-Origin",
+                          "value": "*"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n    \"data\": [\n        {\n            \"id\": 4,\n            \"asset_tag\": \"LAP-ZGWUFH\",\n            \"name\": \"Dell Latitude 5520\",\n            \"type\": \"laptop\",\n            \"brand\": \"Dell\",\n            \"model\": \"Latitude 5520\",\n            \"serial_number\": \"DL-2024-00123\",\n            \"status\": \"available\",\n            \"condition\": \"good\",\n            \"location\": \"Office Floor 2 - Desk 14\",\n            \"purchase_date\": \"2024-01-15\",\n            \"purchase_price\": \"1250.00\",\n            \"vendor\": \"Dell Technologies\",\n            \"warranty_expires_at\": \"2027-01-15\",\n            \"warranty_status\": \"Valid (296 days left)\",\n            \"specs\": {\n                \"os\": \"Windows 11 Pro\",\n                \"cpu\": \"Intel Core i7-1165G7\",\n                \"ram\": \"16GB DDR4\",\n                \"display\": \"15.6 inch FHD\",\n                \"storage\": \"512GB NVMe SSD\"\n            },\n            \"notes\": \"Assigned to dev team. Has docking station.\",\n            \"assigned_at\": \"2024-11-01\",\n            \"assigned_employee\": {\n                \"id\": 3,\n                \"name\": \"Pravesh Rai\",\n                \"slug\": \"pravesh-rai-1\",\n                \"employee_image\": null,\n                \"designation\": \"Software Developer\",\n                \"department\": \"Frontend Department\"\n            },\n            \"created_at\": \"24 Mar, 2026\"\n        }\n    ],\n    \"links\": {\n        \"first\": null,\n        \"last\": null,\n        \"prev\": null,\n        \"next\": null\n    },\n    \"meta\": {\n        \"path\": \"http://127.0.0.1:8000/api/admin/it-assets\",\n        \"per_page\": 20,\n        \"next_cursor\": null,\n        \"prev_cursor\": null\n    }\n}"
+                    }
+                  ]
+                },
+                {
+                  "name": "show single it assets data",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{url}}/api/admin/it-assets/{id}",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "it-assets",
+                        "{id}"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "show single it assets data",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json",
+                            "type": "text"
+                          },
+                          {
+                            "key": "branch-id",
+                            "value": "1",
+                            "type": "text"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{url}}/api/admin/it-assets/4",
+                          "host": [
+                            "{{url}}"
+                          ],
+                          "path": [
+                            "api",
+                            "admin",
+                            "it-assets",
+                            "4"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": null,
+                      "header": [
+                        {
+                          "key": "Host",
+                          "value": "127.0.0.1:8000"
+                        },
+                        {
+                          "key": "Connection",
+                          "value": "close"
+                        },
+                        {
+                          "key": "X-Powered-By",
+                          "value": "PHP/8.3.0"
+                        },
+                        {
+                          "key": "Cache-Control",
+                          "value": "no-cache, private"
+                        },
+                        {
+                          "key": "Date",
+                          "value": "Tue, 24 Mar 2026 11:25:34 GMT"
+                        },
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "key": "X-RateLimit-Limit",
+                          "value": "120"
+                        },
+                        {
+                          "key": "X-RateLimit-Remaining",
+                          "value": "118"
+                        },
+                        {
+                          "key": "X-Content-Type-Options",
+                          "value": "nosniff"
+                        },
+                        {
+                          "key": "X-Frame-Options",
+                          "value": "DENY"
+                        },
+                        {
+                          "key": "X-XSS-Protection",
+                          "value": "1; mode=block"
+                        },
+                        {
+                          "key": "Strict-Transport-Security",
+                          "value": "max-age=31536000; includeSubDomains; preload"
+                        },
+                        {
+                          "key": "Referrer-Policy",
+                          "value": "strict-origin-when-cross-origin"
+                        },
+                        {
+                          "key": "Permissions-Policy",
+                          "value": "geolocation=(), microphone=(), camera=()"
+                        },
+                        {
+                          "key": "Content-Security-Policy",
+                          "value": "default-src 'self'"
+                        },
+                        {
+                          "key": "Access-Control-Allow-Origin",
+                          "value": "*"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n    \"data\": {\n        \"id\": 4,\n        \"asset_tag\": \"LAP-ZGWUFH\",\n        \"name\": \"Dell Latitude 5520\",\n        \"type\": \"laptop\",\n        \"brand\": \"Dell\",\n        \"model\": \"Latitude 5520\",\n        \"serial_number\": \"DL-2024-00123\",\n        \"status\": \"available\",\n        \"condition\": \"good\",\n        \"location\": \"Office Floor 2 - Desk 14\",\n        \"purchase_date\": \"2024-01-15\",\n        \"purchase_price\": \"1250.00\",\n        \"vendor\": \"Dell Technologies\",\n        \"warranty_expires_at\": \"2027-01-15\",\n        \"warranty_status\": \"Valid (296 days left)\",\n        \"specs\": {\n            \"os\": \"Windows 11 Pro\",\n            \"cpu\": \"Intel Core i7-1165G7\",\n            \"ram\": \"16GB DDR4\",\n            \"display\": \"15.6 inch FHD\",\n            \"storage\": \"512GB NVMe SSD\"\n        },\n        \"notes\": \"Assigned to dev team. Has docking station.\",\n        \"assigned_at\": \"2024-11-01\",\n        \"assigned_employee\": {\n            \"id\": 3,\n            \"name\": \"Pravesh Rai\",\n            \"slug\": \"pravesh-rai-1\",\n            \"employee_image\": null,\n            \"designation\": \"Software Developer\",\n            \"department\": \"Frontend Department\"\n        },\n        \"history\": [\n            {\n                \"id\": 20,\n                \"company_id\": 1,\n                \"branch_id\": 1,\n                \"asset_id\": 4,\n                \"employee_id\": 3,\n                \"action\": \"assigned\",\n                \"notes\": \"Initial assignment on asset creation.\",\n                \"performed_by\": {\n                    \"id\": 1,\n                    \"google_id\": null,\n                    \"avatar\": null,\n                    \"company_id\": 1,\n                    \"name\": \"Admin\",\n                    \"username\": \"admin\",\n                    \"email\": \"admin@merovision.com\",\n                    \"email_verified_at\": \"2026-01-01T15:50:25.000000Z\",\n                    \"two_factor_enabled\": false,\n                    \"two_factor_confirmed_at\": null,\n                    \"created_at\": \"2026-01-01T15:50:25.000000Z\",\n                    \"updated_at\": \"2026-03-07T16:05:53.000000Z\"\n                },\n                \"performed_at\": \"2026-03-24T11:24:37.000000Z\",\n                \"created_at\": \"2026-03-24T11:24:37.000000Z\",\n                \"updated_at\": \"2026-03-24T11:24:37.000000Z\"\n            }\n        ],\n        \"created_at\": \"24 Mar, 2026\"\n    }\n}"
+                    }
+                  ]
+                },
+                {
+                  "name": "assign employee to asset",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "employee_id",
+                          "value": "4",
+                          "type": "text",
+                          "uuid": "85d89dad-a67c-4458-bbf6-9bffcbe02567"
+                        },
+                        {
+                          "key": "notes",
+                          "value": "hy",
+                          "type": "text",
+                          "uuid": "7983184c-357d-4299-8948-6ce54f051f9f"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/admin/it-assets/{id}/assign",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "it-assets",
+                        "{id}",
+                        "assign"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "unassign employee to asset",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "notes",
+                          "value": "hello",
+                          "type": "text",
+                          "uuid": "443b9179-4285-42cf-a2fd-c4556ce9d5ac"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/admin/it-assets/{id}/unassign",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "it-assets",
+                        "{id}",
+                        "unassign"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "IT Assets Stats",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{url}}/api/admin/it-assets/stats",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "it-assets",
+                        "stats"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "delete it assets",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{url}}/api/admin/it-assets/{id}",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "it-assets",
+                        "{id}"
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "Software Licenses",
+              "item": [
+                {
+                  "name": "store software licenses",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"software_name\": \"Microsoft 365\",\r\n  \"vendor\": \"Microsoft\",\r\n  \"version\": \"2024\",\r\n  \"license_type\": \"subscription\",\r\n  \"license_key\": \"XXXXX-XXXXX-XXXXX-XXXXX-XXXXX\",\r\n  \"total_seats\": 50,\r\n  \"cost_per_seat\": 12.99,\r\n  \"total_cost\": 649.50,\r\n  \"billing_cycle\": \"monthly\",\r\n  \"purchase_date\": \"2024-01-01\",\r\n  \"expires_at\": \"2026-05-01\",\r\n  \"auto_renew\": true,\r\n  \"status\": \"active\",\r\n  \"vendor_contact\": \"support@microsoft.com\",\r\n  \"support_url\": \"https://support.microsoft.com\",\r\n  \"notes\": \"Company-wide Microsoft 365 Business Standard license.\",\r\n  \"tags\": [\"productivity\", \"required\", \"remote-work\"]\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/admin/software-licenses",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "software-licenses"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "update software licenses",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"software_name\": \"Microsoft 365\",\r\n  \"vendor\": \"Microsoft\",\r\n  \"version\": \"2024\",\r\n  \"license_type\": \"subscription\",\r\n  \"license_key\": \"XXXXX-XXXXX-XXXXX-XXXXX-XXXXX\",\r\n  \"total_seats\": 50,\r\n  \"cost_per_seat\": 12.99,\r\n  \"total_cost\": 649.50,\r\n  \"billing_cycle\": \"monthly\",\r\n  \"purchase_date\": \"2024-01-01\",\r\n  \"expires_at\": \"2026-05-01\",\r\n  \"auto_renew\": true,\r\n  \"status\": \"active\",\r\n  \"vendor_contact\": \"support@microsoft.com\",\r\n  \"support_url\": \"https://support.microsoft.com\",\r\n  \"notes\": \"Company-wide Microsoft 365 Business Standard license.\",\r\n  \"tags\": [\"productivity\", \"required\", \"remote-work\"],\r\n  \"_method\":\"PUT\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/admin/software-licenses/1",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "software-licenses",
+                        "1"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "show all software licenses data",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{url}}/api/admin/software-licenses?pagination_limit&status&license_type&expiring_within_days",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "software-licenses"
+                      ],
+                      "query": [
+                        {
+                          "key": "pagination_limit",
+                          "value": null
+                        },
+                        {
+                          "key": "status",
+                          "value": null
+                        },
+                        {
+                          "key": "license_type",
+                          "value": null
+                        },
+                        {
+                          "key": "expiring_within_days",
+                          "value": null,
+                          "type": "text"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "show single software license data",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{url}}/api/admin/software-licenses/2",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "software-licenses",
+                        "2"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "show single software license data",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json",
+                            "type": "text"
+                          },
+                          {
+                            "key": "branch-id",
+                            "value": "1",
+                            "type": "text"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{url}}/api/admin/software-licenses/{id}",
+                          "host": [
+                            "{{url}}"
+                          ],
+                          "path": [
+                            "api",
+                            "admin",
+                            "software-licenses",
+                            "{id}"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": null,
+                      "header": [
+                        {
+                          "key": "Host",
+                          "value": "127.0.0.1:8000"
+                        },
+                        {
+                          "key": "Connection",
+                          "value": "close"
+                        },
+                        {
+                          "key": "X-Powered-By",
+                          "value": "PHP/8.3.0"
+                        },
+                        {
+                          "key": "Cache-Control",
+                          "value": "no-cache, private"
+                        },
+                        {
+                          "key": "Date",
+                          "value": "Tue, 24 Mar 2026 12:56:52 GMT"
+                        },
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "key": "X-RateLimit-Limit",
+                          "value": "120"
+                        },
+                        {
+                          "key": "X-RateLimit-Remaining",
+                          "value": "117"
+                        },
+                        {
+                          "key": "X-Content-Type-Options",
+                          "value": "nosniff"
+                        },
+                        {
+                          "key": "X-Frame-Options",
+                          "value": "DENY"
+                        },
+                        {
+                          "key": "X-XSS-Protection",
+                          "value": "1; mode=block"
+                        },
+                        {
+                          "key": "Strict-Transport-Security",
+                          "value": "max-age=31536000; includeSubDomains; preload"
+                        },
+                        {
+                          "key": "Referrer-Policy",
+                          "value": "strict-origin-when-cross-origin"
+                        },
+                        {
+                          "key": "Permissions-Policy",
+                          "value": "geolocation=(), microphone=(), camera=()"
+                        },
+                        {
+                          "key": "Content-Security-Policy",
+                          "value": "default-src 'self'"
+                        },
+                        {
+                          "key": "Access-Control-Allow-Origin",
+                          "value": "*"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n    \"data\": {\n        \"id\": 1,\n        \"software_name\": \"Microsoft 365\",\n        \"vendor\": \"Microsoft\",\n        \"version\": \"2024\",\n        \"license_type\": \"subscription\",\n        \"total_seats\": 50,\n        \"used_seats\": 0,\n        \"available_seats\": 50,\n        \"billing_cycle\": \"monthly\",\n        \"cost_per_seat\": \"12.99\",\n        \"total_cost\": \"649.50\",\n        \"purchase_date\": \"2024-01-01\",\n        \"expires_at\": \"2026-05-01\",\n        \"expiry_status\": \"expiring_soon\",\n        \"auto_renew\": true,\n        \"status\": \"active\",\n        \"vendor_contact\": \"support@microsoft.com\",\n        \"support_url\": \"https://support.microsoft.com\",\n        \"tags\": [\n            \"productivity\",\n            \"required\",\n            \"remote-work\"\n        ],\n        \"notes\": \"Company-wide Microsoft 365 Business Standard license.\",\n        \"assignments\": [],\n        \"created_at\": \"24 Mar, 2026\"\n    }\n}"
+                    }
+                  ]
+                },
+                {
+                  "name": "delete software license data",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{url}}/api/admin/software-licenses/{id}",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "software-licenses",
+                        "{id}"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "software licenses employee assignment",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "employee_id",
+                          "value": "4",
+                          "type": "text",
+                          "uuid": "76452d2d-d8a5-4345-ae5d-f89c58a1ce1e"
+                        },
+                        {
+                          "key": "notes",
+                          "value": "hy",
+                          "type": "text",
+                          "uuid": "4ebd8a4b-0658-42cd-9e21-6f35397094d2"
+                        },
+                        {
+                          "key": "seat_identifier",
+                          "value": "hancie4545",
+                          "type": "text",
+                          "uuid": "b07ce415-f3f7-47c7-b35b-d98f46995f6b"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/admin/software-licenses/2/assign",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "software-licenses",
+                        "2",
+                        "assign"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "show software license stats",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{url}}/api/admin/software-licenses/stats",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "software-licenses",
+                        "stats"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "revoke employee from software licenses",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{url}}/api/admin/software-licenses/{assignment_id}/revoke",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "software-licenses",
+                        "{assignment_id}",
+                        "revoke"
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            },
+            {
+              "name": "Help Desk Ticket",
+              "item": [
+                {
+                  "name": "store help desk ticket data",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n  \"subject\": \"Laptop not connecting to office Wi-Fi\",\r\n  \"description\": \"My laptop (Dell XPS 15) has been unable to connect to the office Wi-Fi network since this morning. It connects fine on mobile hotspot. I've tried restarting and forgetting the network. Other colleagues on the same floor are unaffected.\",\r\n  \"category\": \"it_network\",\r\n  \"priority\": \"high\",\r\n  \"raised_by\": 3,\r\n  \"asset_id\": 4,\r\n  \"tags\": [\"wifi\", \"connectivity\", \"dell-xps\"]\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/admin/helpdesk-tickets",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "helpdesk-tickets"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "update help desk ticket data",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"subject\": \"Laptop not connecting to office Wi-Fi\",\r\n    \"description\": \"My laptop (Dell XPS 15) has been unable to connect to the office Wi-Fi network since this morning. It connects fine on mobile hotspot. I've tried restarting and forgetting the network. Other colleagues on the same floor are unaffected.\",\r\n    \"category\": \"it_network\",\r\n    \"priority\": \"high\",\r\n    \"raised_by\": 3,\r\n    \"asset_id\": 4,\r\n    \"tags\": [\r\n        \"wifi\",\r\n        \"connectivity\",\r\n        \"dell-xps\"\r\n    ],\r\n    \"_method\": \"PUT\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/admin/helpdesk-tickets/{id}",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "helpdesk-tickets",
+                        "{id}"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "show all help desk ticket data",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      },
+                      {
+                        "key": "branch-id",
+                        "value": "1",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{url}}/api/admin/helpdesk-tickets?pagination_limit=8&status&priority&category&assigned_to&raised_by&search_keyword",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "helpdesk-tickets"
+                      ],
+                      "query": [
+                        {
+                          "key": "pagination_limit",
+                          "value": "8"
+                        },
+                        {
+                          "key": "status",
+                          "value": null
+                        },
+                        {
+                          "key": "priority",
+                          "value": null
+                        },
+                        {
+                          "key": "category",
+                          "value": null
+                        },
+                        {
+                          "key": "assigned_to",
+                          "value": null
+                        },
+                        {
+                          "key": "raised_by",
+                          "value": null
+                        },
+                        {
+                          "key": "search_keyword",
+                          "value": null,
+                          "type": "text"
+                        }
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "add comment to help desk ticket",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "comment",
+                          "value": "problem solved",
+                          "type": "text",
+                          "uuid": "5b99fefd-985c-44d3-a5d8-d33028404dae"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/admin/helpdesk-tickets/1/comments",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "helpdesk-tickets",
+                        "1",
+                        "comments"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "rate to help desk ticket",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "rating",
+                          "value": "3",
+                          "type": "text",
+                          "uuid": "bdefae16-b38f-4d56-87d5-cffd4899bc81"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/admin/helpdesk-tickets/{id}/rate",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "helpdesk-tickets",
+                        "{id}",
+                        "rate"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "update help desk ticket status",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "status",
+                          "value": "resolved",
+                          "type": "text",
+                          "uuid": "5b99fefd-985c-44d3-a5d8-d33028404dae"
+                        },
+                        {
+                          "key": "resolution_notes",
+                          "value": "hy",
+                          "type": "text",
+                          "uuid": "7a4dc5ed-079d-4786-9e25-218ab2082961"
+                        },
+                        {
+                          "key": "_method",
+                          "value": "PATCH",
+                          "type": "text",
+                          "uuid": "e136f348-ec34-4387-b481-b64bd990cc68"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/admin/helpdesk-tickets/{id}/status",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "helpdesk-tickets",
+                        "{id}",
+                        "status"
+                      ]
+                    }
+                  },
+                  "response": []
+                },
+                {
+                  "name": "delete help desk ticket",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{token}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{url}}/api/admin/helpdesk-tickets/{id}",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "helpdesk-tickets",
+                        "{id}"
+                      ]
+                    }
+                  },
+                  "response": []
+                }
+              ]
+            }
+          ]
         },
         {
           "name": "Recruitment",
@@ -9747,7 +11413,7 @@
                       "formdata": [
                         {
                           "key": "stage",
-                          "value": "interview_scheduled",
+                          "value": "rejected",
                           "type": "text",
                           "uuid": "3c622222-1ef1-4012-acea-f3d0e8161565"
                         },
@@ -9766,7 +11432,7 @@
                       ]
                     },
                     "url": {
-                      "raw": "{{url}}/api/admin/recruitment/job-applications/2/stage",
+                      "raw": "{{url}}/api/admin/recruitment/job-applications/5/stage",
                       "host": [
                         "{{url}}"
                       ],
@@ -9775,7 +11441,7 @@
                         "admin",
                         "recruitment",
                         "job-applications",
-                        "2",
+                        "5",
                         "stage"
                       ]
                     }
@@ -10887,6 +12553,257 @@
               "response": []
             }
           ]
+        },
+        {
+          "name": "Notifications",
+          "item": [
+            {
+              "name": "show all notifications",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/admin/notifications",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "notifications"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "unread count",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/admin/notifications/unread-count",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "notifications",
+                    "unread-count"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "read all",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/admin/notifications/read-all",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "notifications",
+                    "read-all"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "preferences",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/admin/notifications/preferences",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "notifications",
+                    "preferences"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "read notification",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/admin/notifications/{id}/read",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "notifications",
+                    "{id}",
+                    "read"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "delete notifications",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/admin/notifications/{id}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "notifications",
+                    "{id}"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
         }
       ]
     },
@@ -11104,13 +13021,13 @@
                     },
                     {
                       "key": "name",
-                      "value": "Aveshesh KC",
+                      "value": "Hancie Phago",
                       "type": "text",
                       "uuid": "7838f677-2d23-45c5-96ff-272dab7115f5"
                     },
                     {
                       "key": "email",
-                      "value": "avesh1@gmail.com",
+                      "value": "hanciephago@gmail.com",
                       "type": "text",
                       "uuid": "529fe2d2-6f72-470a-99dd-ef5643acde7c"
                     },
@@ -11178,7 +13095,7 @@
                       "key": "profile_image",
                       "type": "file",
                       "uuid": "d58aa066-a1fe-447b-9913-af31c65d4e25",
-                      "src": "/C:/Users/user/Videos/WhatsApp Image 2026-01-28 at 8.59.07 AM.jpeg"
+                      "src": "/C:/Users/user/Pictures/360_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg"
                     },
                     {
                       "key": "cover_letter",
