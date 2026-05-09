@@ -20,13 +20,21 @@ servers:
     description: server
 components:
   securitySchemes:
-    noauthAuth:
-      type: http
-      scheme: noauth
     bearerAuth:
       type: http
       scheme: bearer
+    noauthAuth:
+      type: http
+      scheme: noauth
 tags:
+  - name: Super Admin
+  - name: Super Admin > Auth
+  - name: Super Admin > Company
+  - name: Super Admin > Packages
+  - name: Super Admin > Company Package
+  - name: Super Admin > Users
+  - name: Super Admin > Roles and Permissions
+  - name: Super Admin > Dashboard
   - name: Admin
   - name: Admin > Auth
   - name: Admin > Google Auth
@@ -64,6 +72,7 @@ tags:
   - name: Admin > Projects > Client
   - name: Admin > Projects > Projects
   - name: Admin > Projects > Project Mmebers
+  - name: Admin > Projects > Project Notes
   - name: Admin > Settings
   - name: Admin > Settings > App Setting
   - name: Admin > Settings > Payment Method
@@ -93,10 +102,703 @@ tags:
   - name: Admin > HR Assistant
   - name: Admin > Version
   - name: Admin > Notifications
+  - name: Admin > Report
+  - name: Admin > Report > Activity Log
+  - name: Admin > Subscriptions
+  - name: Admin > Packages
   - name: Website
   - name: Website > Vacancy
   - name: Website > Candidate
 paths:
+  /api/superadmin/login:
+    post:
+      tags:
+        - Super Admin > Auth
+      summary: Login
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  example: superadmin
+                password:
+                  type: string
+                  example: Password@123
+                device_name:
+                  type: string
+                  example: web
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/superadmin/companies:
+    get:
+      tags:
+        - Super Admin > Company
+      summary: show all companies
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/superadmin/companies/{id}:
+    get:
+      tags:
+        - Super Admin > Company
+      summary: single show company details
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Super Admin > Company
+      summary: delete company
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/superadmin/companies/{id}/suspend:
+    post:
+      tags:
+        - Super Admin > Company
+      summary: suspend company
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                reason: >-
+                  Payment dispute pending resolution. Account locked until
+                  cleared.
+                _method: PATCH
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/superadmin/companies/{id}/unsuspend:
+    post:
+      tags:
+        - Super Admin > Company
+      summary: unsuspend company
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                _method:
+                  type: string
+                  example: PATCH
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/superadmin/companies/1/storage:
+    get:
+      tags:
+        - Super Admin > Company
+      summary: show company storage
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/superadmin/packages:
+    get:
+      tags:
+        - Super Admin > Packages
+      summary: show all packages
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Super Admin > Packages
+      summary: store package
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: Pro2
+                description: >-
+                  For growing businesses that need more power across HR,
+                  finance, and operations.
+                type: fixed
+                is_trial: false
+                pricing:
+                  - cycle: monthly
+                    days: 30
+                    price: 4999
+                  - cycle: quarterly
+                    days: 90
+                    price: 13499
+                  - cycle: yearly
+                    days: 365
+                    price: 49999
+                max_users: 20
+                max_branches: 3
+                features:
+                  recruitment: true
+                  payroll: true
+                  hr_assistant: false
+                  it_assets: true
+                  helpdesk: true
+                  activity_logs: true
+                  google_calendar: true
+                  api_access: false
+                  custom_roles: false
+                  attendance: true
+                  project_management: true
+                  crm: true
+                  finance: true
+                  analytics: true
+                  two_factor_auth: true
+                  notifications: true
+                is_active: true
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/superadmin/packages/{id}:
+    post:
+      tags:
+        - Super Admin > Packages
+      summary: update package
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: Pro2
+                description: >-
+                  For growing businesses that need more power across HR,
+                  finance, and operations.
+                type: fixed
+                pricing:
+                  - cycle: monthly
+                    days: 30
+                    price: 4999
+                  - cycle: quarterly
+                    days: 90
+                    price: 13499
+                  - cycle: yearly
+                    days: 365
+                    price: 49999
+                max_users: 20
+                max_branches: 3
+                features:
+                  recruitment: true
+                  payroll: true
+                  hr_assistant: false
+                  it_assets: true
+                  helpdesk: true
+                  activity_logs: true
+                  google_calendar: true
+                  api_access: false
+                  custom_roles: false
+                  attendance: true
+                  project_management: true
+                  crm: true
+                  finance: true
+                  analytics: true
+                  two_factor_auth: true
+                  notifications: true
+                is_active: true
+                _method: PUT
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Super Admin > Packages
+      summary: show single package data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Super Admin > Packages
+      summary: delete package
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/superadmin/companies/1/package:
+    post:
+      tags:
+        - Super Admin > Company Package
+      summary: store company package
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                package_id: 1
+                billing_cycle: monthly
+                started_at: '2026-05-08'
+                expires_at: '2026-06-08'
+                notes: Assigned Pro plan for trial period.
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/superadmin/companies/{id}/package:
+    get:
+      tags:
+        - Super Admin > Company Package
+      summary: show company active subscription
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Super Admin > Company Package
+      summary: cancel existing company package
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/superadmin/companies/{id}/package-history:
+    get:
+      tags:
+        - Super Admin > Company Package
+      summary: show company package history
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/superadmin/users:
+    get:
+      tags:
+        - Super Admin > Users
+      summary: show all users
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Super Admin > Users
+      summary: store users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: Support Staff
+                email: support@merovision.com
+                password: Password@123
+                password_confirmation: Password@123
+                role: superadmin_support
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/superadmin/users/{id}:
+    get:
+      tags:
+        - Super Admin > Users
+      summary: get single user data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Super Admin > Users
+      summary: update users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: Support Staff
+                email: support@merovision.com
+                password: Password@123
+                password_confirmation: Password@123
+                role: superadmin_support
+                _method: PUT
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Super Admin > Users
+      summary: delete user
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/superadmin/me:
+    get:
+      tags:
+        - Super Admin > Users
+      summary: show logged in user data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/superadmin/roles:
+    get:
+      tags:
+        - Super Admin > Roles and Permissions
+      summary: show role list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Super Admin > Roles and Permissions
+      summary: create role with permission
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: superadmin_hr
+                permissions:
+                  - companies.index
+                  - companies.show
+                  - subscriptions.index
+                  - subscriptions.show
+                  - subscriptions.store
+                  - subscriptions.destroy
+                  - reports.view
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/superadmin/permissions:
+    get:
+      tags:
+        - Super Admin > Roles and Permissions
+      summary: show all permission list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/superadmin/dashboard:
+    get:
+      tags:
+        - Super Admin > Dashboard
+      summary: show dashboard api
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/admin/login:
     post:
       tags:
@@ -417,6 +1119,49 @@ paths:
           schema:
             type: string
           example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/user/{id}:
+    post:
+      tags:
+        - Admin > Admin
+      summary: update admin detail
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: hy
+                profile_image:
+                  type: string
+                  format: binary
+                _method:
+                  type: string
+                  example: PUT
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
       responses:
         '200':
           description: Successful response
@@ -3991,6 +4736,156 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/admin/projects/{project_id}/notes:
+    post:
+      tags:
+        - Admin > Projects > Project Notes
+      summary: store project note
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: string
+                  example: hy5
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: project_id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Admin > Projects > Project Notes
+      summary: show project note
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: pagination_limit
+          in: query
+          schema:
+            type: integer
+          example: '8'
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: project_id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/projects/{project_id}/notes/{note_id}:
+    post:
+      tags:
+        - Admin > Projects > Project Notes
+      summary: update note
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: string
+                  example: hy5
+                _method:
+                  type: string
+                  example: PUT
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: project_id
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: note_id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Admin > Projects > Project Notes
+      summary: delete project note
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: project_id
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: note_id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/admin/site-settings:
     get:
       tags:
@@ -4854,6 +5749,43 @@ paths:
           schema:
             type: integer
           example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/invoices/{id}/void:
+    post:
+      tags:
+        - Admin > Accounting > Invoice
+      summary: void invoice
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                _method:
+                  type: string
+                  example: PATCH
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
       responses:
         '200':
           description: Successful response
@@ -6130,6 +7062,29 @@ paths:
       tags:
         - Admin > Helpdesk / IT > IT Asset
       summary: IT Assets Stats
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/it-assets-short:
+    get:
+      tags:
+        - Admin > Helpdesk / IT > IT Asset
+      summary: Show it assets short data
       security:
         - bearerAuth: []
       parameters:
@@ -7858,11 +8813,54 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/vacancies:
+  /api/admin/reports/activity-logs:
     get:
       tags:
-        - Website > Vacancy
-      summary: show all vacancies
+        - Admin > Report > Activity Log
+      summary: show activity log report
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: causer_id
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: pagination_limit
+          in: query
+          schema:
+            type: string
+        - name: date_from
+          in: query
+          schema:
+            type: string
+        - name: date_to
+          in: query
+          schema:
+            type: string
+        - name: search
+          in: query
+          schema:
+            type: string
+        - name: event
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/subscription:
+    get:
+      tags:
+        - Admin > Subscriptions
+      summary: show active subscription
       security:
         - bearerAuth: []
       parameters:
@@ -7876,6 +8874,95 @@ paths:
           schema:
             type: integer
           example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Admin > Packages
+      summary: subscrive package
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                package_id: 3
+                billing_cycle: monthly
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/subscription/history:
+    get:
+      tags:
+        - Admin > Subscriptions
+      summary: show subscription history
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/packages:
+    get:
+      tags:
+        - Admin > Packages
+      summary: show packages list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/vacancies:
+    get:
+      tags:
+        - Website > Vacancy
+      summary: show all vacancies
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
         - name: pagination_limit
           in: query
           schema:
