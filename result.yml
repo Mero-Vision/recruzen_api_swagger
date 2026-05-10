@@ -36,6 +36,7 @@ tags:
   - name: Super Admin > Roles and Permissions
   - name: Super Admin > Dashboard
   - name: Super Admin > Support Ticket
+  - name: Super Admin > Versions
   - name: Admin
   - name: Admin > Auth
   - name: Admin > Google Auth
@@ -956,6 +957,151 @@ paths:
           in: query
           schema:
             type: string
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/superadmin/versions:
+    get:
+      tags:
+        - Super Admin > Versions
+      summary: show all versions
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Super Admin > Versions
+      summary: store version
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                version: 2.1.0
+                title: Summer Release
+                description: Major improvements to the recruitement flow.
+                type: minor
+                is_published: true
+                released_at: '2026-05-10'
+                logs:
+                  - type: feature
+                    title: Bulk candidate import
+                    description: Import candidates via CSV upload.
+                  - type: bugfix
+                    title: Fix pagination on job listings
+                    description: null
+                  - type: improvement
+                    title: Faster dashboard load time
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/superadmin/versions/{id}:
+    post:
+      tags:
+        - Super Admin > Versions
+      summary: update version
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                version: 2.1.0
+                title: Summer Release
+                description: Major improvements to the recruitement flow.
+                type: minor
+                is_published: true
+                released_at: '2026-05-10'
+                logs:
+                  - type: feature
+                    title: Bulk candidate import
+                    description: Import candidates via CSV upload.
+                  - type: bugfix
+                    title: Fix pagination on job listings
+                    description: null
+                  - type: improvement
+                    title: Faster dashboard load time
+                _method: PUT
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Super Admin > Versions
+      summary: show single version data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Super Admin > Versions
+      summary: delete version
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
         - name: id
           in: path
           schema:
