@@ -1176,6 +1176,277 @@
               "response": []
             }
           ]
+        },
+        {
+          "name": "Support Ticket",
+          "item": [
+            {
+              "name": "show all support tickets",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/superadmin/support/tickets?status&priority&category&company_id&assigned_to&unassigned&search_keyword",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "superadmin",
+                    "support",
+                    "tickets"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": null
+                    },
+                    {
+                      "key": "priority",
+                      "value": null
+                    },
+                    {
+                      "key": "category",
+                      "value": null
+                    },
+                    {
+                      "key": "company_id",
+                      "value": null
+                    },
+                    {
+                      "key": "assigned_to",
+                      "value": null
+                    },
+                    {
+                      "key": "unassigned",
+                      "value": null
+                    },
+                    {
+                      "key": "search_keyword",
+                      "value": null
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show all ticket stats",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "{{url}}/api/superadmin/support/tickets/stats",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "superadmin",
+                    "support",
+                    "tickets",
+                    "stats"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show single ticket data",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "{{url}}/api/superadmin/support/tickets/{id}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "superadmin",
+                    "support",
+                    "tickets",
+                    "{id}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "reply to support ticket",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/superadmin/support/tickets/{id}/reply?message=what?&image",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "superadmin",
+                    "support",
+                    "tickets",
+                    "{id}",
+                    "reply"
+                  ],
+                  "query": [
+                    {
+                      "key": "message",
+                      "value": "what?"
+                    },
+                    {
+                      "key": "image",
+                      "value": null
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "update ticket status",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "status",
+                      "value": "resolved",
+                      "type": "text",
+                      "uuid": "9920692c-eddf-4831-84f7-05063bbf84c1"
+                    },
+                    {
+                      "key": "_method",
+                      "value": "PATCH",
+                      "type": "text",
+                      "uuid": "bd45fd77-5648-47e2-8343-dab5f0909c4a"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{url}}/api/superadmin/support/tickets/{id}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "superadmin",
+                    "support",
+                    "tickets",
+                    "{id}"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
         }
       ]
     },
@@ -14602,6 +14873,299 @@
                     "api",
                     "admin",
                     "subscription"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Support Ticket",
+          "item": [
+            {
+              "name": "store support ticket",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "subject",
+                      "value": "hy",
+                      "type": "text",
+                      "uuid": "15575ffb-7aad-4c9f-bd1b-eafa9def806c"
+                    },
+                    {
+                      "key": "category",
+                      "value": "billing",
+                      "type": "text",
+                      "uuid": "02469b79-de69-4f57-bff0-4ef3e0c57823"
+                    },
+                    {
+                      "key": "priority",
+                      "value": "high",
+                      "type": "text",
+                      "uuid": "702c955b-1eb9-4e7a-adf8-7cf0093e2bda"
+                    },
+                    {
+                      "key": "message",
+                      "value": "hy",
+                      "type": "text",
+                      "uuid": "2295c877-b29e-48c9-af06-eed2bcf92154"
+                    },
+                    {
+                      "key": "image",
+                      "type": "file",
+                      "uuid": "44589f18-2616-482d-9f94-7bde80529a59",
+                      "src": "/Users/hanciephago/Desktop/Black-and-Red-Simple-Car-Icon-Industrial-Logo-(6).jpeg"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/support/tickets",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "support",
+                    "tickets"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show all support tickets",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  },
+                  {
+                    "key": "branch-id",
+                    "value": "1",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/support/tickets?status&priority&category&search_keyword&pagination_limit=8",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "support",
+                    "tickets"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": null
+                    },
+                    {
+                      "key": "priority",
+                      "value": null
+                    },
+                    {
+                      "key": "category",
+                      "value": null
+                    },
+                    {
+                      "key": "search_keyword",
+                      "value": null
+                    },
+                    {
+                      "key": "pagination_limit",
+                      "value": "8",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show single ticket data",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/admin/support/tickets/{id}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "support",
+                    "tickets",
+                    "{id}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "reply to support ticket",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "message",
+                      "value": "hello",
+                      "type": "text",
+                      "uuid": "63dbbe3b-7d3f-4d14-b065-9bfce8fd68c0"
+                    },
+                    {
+                      "key": "image",
+                      "type": "file",
+                      "uuid": "3aed37ec-7d3b-49c1-af1c-275073155c02",
+                      "value": null
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/support/tickets/{id}/reply",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "support",
+                    "tickets",
+                    "{id}",
+                    "reply"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "close tickets",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "_method",
+                      "value": "PATCH",
+                      "type": "text",
+                      "uuid": "bc6f4f0f-e1fc-49c7-9f99-af825cd96cfb"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/support/tickets/{id}/close",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "support",
+                    "tickets",
+                    "{id}",
+                    "close"
                   ]
                 }
               },

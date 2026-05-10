@@ -35,6 +35,7 @@ tags:
   - name: Super Admin > Users
   - name: Super Admin > Roles and Permissions
   - name: Super Admin > Dashboard
+  - name: Super Admin > Support Ticket
   - name: Admin
   - name: Admin > Auth
   - name: Admin > Google Auth
@@ -106,6 +107,7 @@ tags:
   - name: Admin > Report > Activity Log
   - name: Admin > Subscriptions
   - name: Admin > Packages
+  - name: Admin > Support Ticket
   - name: Website
   - name: Website > Vacancy
   - name: Website > Candidate
@@ -794,6 +796,171 @@ paths:
           schema:
             type: string
           example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/superadmin/support/tickets:
+    get:
+      tags:
+        - Super Admin > Support Ticket
+      summary: show all support tickets
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: status
+          in: query
+          schema:
+            type: string
+        - name: priority
+          in: query
+          schema:
+            type: string
+        - name: category
+          in: query
+          schema:
+            type: string
+        - name: company_id
+          in: query
+          schema:
+            type: string
+        - name: assigned_to
+          in: query
+          schema:
+            type: string
+        - name: unassigned
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/superadmin/support/tickets/stats:
+    get:
+      tags:
+        - Super Admin > Support Ticket
+      summary: show all ticket stats
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/superadmin/support/tickets/{id}:
+    get:
+      tags:
+        - Super Admin > Support Ticket
+      summary: show single ticket data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Super Admin > Support Ticket
+      summary: update ticket status
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  example: resolved
+                _method:
+                  type: string
+                  example: PATCH
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/superadmin/support/tickets/{id}/reply:
+    post:
+      tags:
+        - Super Admin > Support Ticket
+      summary: reply to support ticket
+      requestBody:
+        content: {}
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: message
+          in: query
+          schema:
+            type: string
+          example: what?
+        - name: image
+          in: query
+          schema:
+            type: string
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
       responses:
         '200':
           description: Successful response
@@ -8945,6 +9112,183 @@ paths:
           schema:
             type: integer
           example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/support/tickets:
+    post:
+      tags:
+        - Admin > Support Ticket
+      summary: store support ticket
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                subject:
+                  type: string
+                  example: hy
+                category:
+                  type: string
+                  example: billing
+                priority:
+                  type: string
+                  example: high
+                message:
+                  type: string
+                  example: hy
+                image:
+                  type: string
+                  format: binary
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Admin > Support Ticket
+      summary: show all support tickets
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: branch-id
+          in: header
+          schema:
+            type: integer
+          example: '1'
+        - name: status
+          in: query
+          schema:
+            type: string
+        - name: priority
+          in: query
+          schema:
+            type: string
+        - name: category
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: pagination_limit
+          in: query
+          schema:
+            type: integer
+          example: '8'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/support/tickets/{id}:
+    get:
+      tags:
+        - Admin > Support Ticket
+      summary: show single ticket data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/support/tickets/{id}/reply:
+    post:
+      tags:
+        - Admin > Support Ticket
+      summary: reply to support ticket
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+                  example: hello
+                image:
+                  type: string
+                  format: binary
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/support/tickets/{id}/close:
+    post:
+      tags:
+        - Admin > Support Ticket
+      summary: close tickets
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                _method:
+                  type: string
+                  example: PATCH
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
       responses:
         '200':
           description: Successful response
